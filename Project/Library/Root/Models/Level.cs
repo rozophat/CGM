@@ -11,6 +11,6 @@ namespace Root.Models
 		public string Id { get; set; }
 		public string Name { get; set; }
 		public string FrenchLevel { get; set; }
-		public int MinPoints
+		public int MinPoints { get; set; }
 	}
 }

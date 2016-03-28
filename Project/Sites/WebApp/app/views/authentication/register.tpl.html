@@ -1,0 +1,64 @@
+﻿<link href="dist/styles/login.min.css" rel="stylesheet" />
+<div class="login">
+	<div class="content">
+		<ng-form name="registerForm">
+			<h3>{{ 'TLTREGISTER' | translate }}</h3>
+			<div class="alert alert-danger" ng-show="error">
+				<button class="close" data-close="alert"></button>
+				<span>
+					{{message}}
+				</span>
+			</div>
+			<div class="alert alert-success" ng-show="success">
+				<button class="close" data-close="alert"></button>
+				<span>
+					{{message}}
+				</span>
+			</div>
+			<p class="hint">
+				{{ 'TLTREGISTERGUIDE' | translate }}
+			</p>
+
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">{{ 'PLHUSERNAME' | translate }}</label>
+				<input form-key-focus input-highlight class="form-control placeholder-no-fix elem-index" type="text" autocomplete="off" placeholder="{{ 'PLHUSERNAME' | translate }}" name="UserName" id="UserName" ng-model="RegisterInfo.UserName"
+					   ng-class="{'error': registerForm.UserName.$invalid && !registerForm.UserName.$pristine}" show-errors required ng-pattern-restrict="^.{0,15}?$"
+					   tooltip-html-unsafe="{{tooltip.error.UserNameErrorRequired}}" tooltip-placement="bottom-left" tooltip-infotype="tooltip-error"
+					   tooltip-trigger="{{{true: 'focus', false: 'never'}[registerForm.UserName.$dirty && registerForm.UserName.$error.required]}}">
+			</div>
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">{{ 'PLHEMPLOYEE' | translate }}</label>
+				<input class="form-control placeholder-no-fix login-employeeC" type="text" autocomplete="off" name="EmployeeC" ng-model="RegisterInfo.EmployeeC" readonly="">
+				<input form-key-focus input-highlight class="form-control placeholder-no-fix login-employeeN elem-index" type="text" autocomplete="off" placeholder="{{ 'PLHEMPLOYEE' | translate }}" name="EmployeeN" ng-model="RegisterInfo.EmployeeN"
+				       typeahead="employee for employee in getASEmployee($viewValue)" typeahead-on-select="onEmpSelect($item)" ng-blur="checkEmpByName()">
+			</div>
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">{{ 'PLHROLE' | translate }}</label>
+				<input class="form-control placeholder-no-fix login-employeeC" type="text" autocomplete="off" name="RoleId" ng-model="RegisterInfo.RoleId" readonly="">
+				<input form-key-focus input-highlight class="form-control placeholder-no-fix login-employeeN elem-index" type="text" autocomplete="off" placeholder="{{ 'PLHROLE' | translate }}" name="RoleN" ng-model="RegisterInfo.RoleN"
+					   typeahead="role for role in getASRole($viewValue)" typeahead-on-select="onRoleSelect($item)" ng-blur="checkRoleByName()"
+					   ng-class="{'error': registerForm.RoleN.$invalid && !registerForm.RoleN.$pristine}" show-errors required ng-pattern-restrict="^.{0,256}?$"
+					   tooltip-html-unsafe="{{tooltip.error.RoleNameErrorRequired}}" tooltip-placement="bottom-left" tooltip-infotype="tooltip-error"
+					   tooltip-trigger="{{{true: 'focus', false: 'never'}[registerForm.RoleN.$dirty && registerForm.RoleN.$error.required]}}">
+			</div>
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">{{ 'PLHPASSWORD' | translate }}</label>
+				<input form-key-focus input-highlight class="form-control placeholder-no-fix elem-index" type="password" autocomplete="off" id="Password" placeholder="{{ 'PLHPASSWORD' | translate }}" name="Password" ng-model="RegisterInfo.Password"
+					   ng-class="{'error': registerForm.Password.$invalid && !registerForm.Password.$pristine}" show-errors required ng-pattern-restrict="^.{0,10}?$" ng-blur="checkLengthPassword()"
+					   tooltip-html-unsafe="{{{true: tooltip.error.PasswordErrorRequired, false: tooltip.error.PasswordErrorLeast}[registerForm.Password.$dirty && registerForm.Password.$error.required]}}" tooltip-placement="bottom-left" tooltip-infotype="tooltip-error"
+					   tooltip-trigger="{{{true: 'focus', false: 'never'}[registerForm.Password.$dirty && (registerForm.Password.$error.required || registerForm.Password.$error.length)]}}">
+			</div>
+			<div class="form-group">
+				<label class="control-label visible-ie8 visible-ie9">{{ 'PLHCONFIRMPASSWORD' | translate }}</label>
+				<input form-key-focus input-highlight class="form-control placeholder-no-fix elem-index" type="password" autocomplete="off" id="ConfirmPassword" placeholder="{{ 'PLHCONFIRMPASSWORD' | translate }}" name="ConfirmPassword" ng-model="RegisterInfo.ConfirmPassword"
+					   ng-class="{'error': registerForm.ConfirmPassword.$invalid && !registerForm.ConfirmPassword.$pristine}" show-errors required ng-pattern-restrict="^.{0,10}?$" ng-blur="checkConfirmPassword()"
+					   tooltip-html-unsafe="{{{true: tooltip.error.ConfirmPasswordErrorRequired, false: tooltip.error.ConfirmPasswordErrorWrong}[registerForm.ConfirmPassword.$dirty && registerForm.ConfirmPassword.$error.required]}}" tooltip-placement="bottom-left" tooltip-infotype="tooltip-error"
+					   tooltip-trigger="{{{true: 'focus', false: 'never'}[registerForm.ConfirmPassword.$dirty && (registerForm.ConfirmPassword.$error.required || registerForm.ConfirmPassword.$error.wrong)]}}">
+			</div>
+			<div class="form-actions">
+				<input form-key-focus name="Insert" style="width: 35%" id="btnInsert" class="btn btn-success uppercase elem-index" ng-click="insert()" value="{{ 'BTNCREATE' | translate }}" readonly />
+				<input form-key-focus name="Back" style="width: 35%" id="btnBack" class="btn btn-default pull-right elem-index" ng-click="back()" value="{{ 'BTNBACK' | translate }}" readonly />
+			</div>
+		</ng-form>
+	</div>
+</div>

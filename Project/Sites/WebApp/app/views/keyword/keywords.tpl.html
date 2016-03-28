@@ -1,0 +1,109 @@
+﻿<!-- BEGIN PAGE HEADER-->
+<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+		<h3 class="page-title"><i class="fa fa-font"></i>Keywords
+		</h3>
+		<ul class="page-breadcrumb breadcrumb">
+			<li>
+				<i class="fa fa-home"></i>
+				<a href="javascript:void()">Home</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a ui-sref="keywords">Keywords</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+		</ul>
+		<!-- END PAGE TITLE & BREADCRUMB-->
+	</div>
+</div>
+<!-- END PAGE HEADER-->
+<div class="row">
+	<div class="col-md-6">
+		<div class="table-toolbar">
+			<!--<div class="btn-group">
+				    <a ui-sref="account-add" class="btn btn-success">Add New Account <i class="fa fa-plus"></i>
+				    </a>
+			    </div>-->
+			<div class="btn-group pull-right">
+				<div class="dataTables_filter">
+					<label>
+						Search:
+						<input type="text" class="form-control input-small" ng-model="SearchValue" ng-change="Search()"></label>
+				</div>
+			</div>
+		</div>
+        <div class="table-responsive">
+            <table ng-table="tableParams" class="table table-bordered table-hover editable-table" ng-form="tableForm">
+                <tr ng-repeat="row in $data" ng-form="rowForm">
+                    <td style="width: 50px; text-align: center" data-title="'Id'" ng-bind="row.Id"></td>
+                    <td style="text-align: left" filter="{keyword: 'text'}" data-title="'Keyword'" sortable="'KeywordName'" ng-switch="row.isEditing" ng-class="keyword.$dirty ? 'bg-warning' : ''" ng-form="keyword">
+                        <span ng-switch-default class="editable-text">{{row.KeywordName}}</span>
+                        <div class="controls" ng-class="keyword.$invalid && keyword.$dirty ? 'has-error' : ''" ng-switch-when="true">
+                            <input type="text" name="keyword" ng-model="row.KeywordName" class="editable-input form-control input-sm" required />
+                        </div>
+                    </td>
+                    <td style="text-align: center" data-title="'Keyword Type'" sortable="'KeywordType'" ng-switch="row.isEditing" ng-class="type.$dirty ? 'bg-warning' : ''" ng-form="type">
+                        <span ng-switch-default class="editable-text" ng-bind="getKeywordType(row.KeywordType)"></span>
+                        <div class="controls" ng-switch-when="true">
+                            <select class="editable-input form-control input-sm" name="type" ng-model="row.KeywordType">
+                                <option value="1">Verb</option>
+                                <option value="2">Noun</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td style="width: 150px; text-align: center">
+                        <button class="btn btn-primary btn-sm" ng-click="save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid"><span class="glyphicon glyphicon-ok"></span></button>
+                        <button class="btn btn-default btn-sm" ng-click="cancel(row, rowForm)" ng-if="row.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
+                        <button class="btn btn-default btn-sm" ng-click="row.isEditing = true" ng-if="!row.isEditing"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <button class="btn btn-danger btn-sm" ng-click="showDeleteConfirmation(row.Id)" ng-if="!row.isEditing"><span class="glyphicon glyphicon-trash"></span></button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+	</div>
+	<div class="col-md-6">
+		<ng-form name="keywordAddForm" class="form-horizontal listing-add-form">
+			<div class="form-body">
+				<h3 class="form-section">Add New Keyword</h3>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group" ng-class="{'has-error': keywordAddForm.KeywordName.$invalid && !keywordAddForm.KeywordName.$pristine}">
+							<label class="control-label col-md-3">Keyword<span class="required">*</span></label>
+							<div class="col-md-6">
+								<input type="text" name="KeywordName" ng-model="Keyword.KeywordName" required show-errors class="form-control">
+								<span class="help-block" ng-show="keywordAddForm.KeywordName.$invalid && !keywordAddForm.KeywordName.$pristine">
+									This field is required
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label class="control-label col-md-3">Type</label>
+							<div class="col-md-6">
+								<select class="form-control" ng-model="Keyword.KeywordType">
+									<option value="1">Verb</option>
+									<option value="2">Noun</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="col-md-offset-3 col-md-6">
+							<button type="button" class="btn btn-success" ng-click="createKeyword()">Create Keyword</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ng-form>
+	</div>
+</div>
+

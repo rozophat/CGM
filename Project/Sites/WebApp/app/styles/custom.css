@@ -1,0 +1,88 @@
+/* here you can put your own css to customize and override the theme */
+.table .header {
+	background-color: transparent;
+	width: auto;
+}
+
+div.dataTables_filter input {
+	display: inline;
+}
+
+.modal-header {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.modal-body {
+	font-size: 18px;
+}
+
+.listing-add-form .form-section {
+	margin-top: 5px;
+}
+
+.tabbable-custom > .tab-content {
+	min-height: 450px;
+}
+
+/*.dropdown-menu {
+	max-height: 150px;
+	overflow-y: auto;
+}*/
+
+.page-header-fixed .page-container {
+	margin-top: 0px;
+}
+
+.page-content {
+	padding-top: 0px;
+}
+
+.editable-table > tbody > tr > td {
+	padding: 4px;
+}
+
+.editable-text {
+	padding-left: 4px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	display: inline-block;
+}
+
+.editable-table tbody > tr > td > .controls {
+	width: 100%;
+}
+
+.editable-input {
+	padding-left: 3px;
+}
+
+	.editable-input.input-sm {
+		height: 30px;
+		font-size: 14px;
+		padding-top: 4px;
+		padding-bottom: 4px;
+	}
+
+.root-admin {
+	color: burlywood;
+	font-weight: bold;
+}
+
+.tabbable-custom > .nav-tabs {
+	font-size: 15px;
+}
+
+.page-title .fa {
+	margin-right: 5px;
+	font-size: 1em;
+}
+
+.forget-password .email label {
+	text-align: left;
+}
+
+.table > tbody > tr > td.center {
+	text-align: center;
+	vertical-align: middle ;
+}

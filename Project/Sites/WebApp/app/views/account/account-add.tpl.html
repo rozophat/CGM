@@ -1,0 +1,242 @@
+﻿<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+		<h3 class="page-title">Add New Account
+		</h3>
+		<ul class="page-breadcrumb breadcrumb">
+			<li>
+				<i class="fa fa-home"></i>
+				<a href="javascript:void()">Home</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a href="accounts">Accounts</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a href="javascript:void()">Add New Account</a>
+			</li>
+			<li class="pull-right">
+				<div id="dashboard-report-range" class="dashboard-date-range tooltips" data-placement="top" data-original-title="Change dashboard date range">
+					<i class="fa fa-calendar"></i>
+					<span></span>
+					<i class="fa fa-angle-down"></i>
+				</div>
+			</li>
+		</ul>
+		<!-- END PAGE TITLE & BREADCRUMB-->
+	</div>
+</div>
+<!-- END PAGE HEADER-->
+<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN FORM-->
+		<ng-form name="accountAddForm" class="form-horizontal">
+			<div class="form-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group" ng-class="{'has-error': accountAddForm.FirstName.$invalid && !accountAddForm.FirstName.$pristine}">
+							<label class="control-label col-md-3">First Name<span class="required">*</span></label>
+							<div class="col-md-9">
+								<input type="text" name="FirstName" ng-model="Account.FirstName" required show-errors class="form-control">
+								<span class="help-block" ng-show="accountAddForm.FirstName.$invalid && !accountAddForm.FirstName.$pristine">
+									This field is required
+								</span>
+							</div>
+						</div>
+					</div>
+					<!--/span-->
+					<div class="col-md-6">
+						<div class="form-group" ng-class="{'has-error': accountAddForm.LastName.$invalid && !accountAddForm.LastName.$pristine}">
+							<label class="control-label col-md-3">Last Name<span class="required">*</span></label>
+							<div class="col-md-9">
+								<input type="text" name="LastName" ng-model="Account.LastName" required show-errors class="form-control">
+								<span class="help-block" ng-show="accountAddForm.LastName.$invalid && !accountAddForm.LastName.$pristine">
+									This field is required
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Phone Number</label>
+							<div class="col-md-9">
+								<input type="text" name="PhoneNumber" ng-model="Account.PhoneNumber"
+									  class="form-control" placeholder="Ex: 0126598125" ng-pattern-restrict="^.{0,20}?$">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group" ng-class="{'has-error': accountAddForm.Email.$invalid && !accountAddForm.Email.$pristine && !accountAddForm.Email.$focused}">
+							<label class="control-label col-md-3">Email</label>
+							<div class="col-md-9">
+								<input type="email" name="Email" ng-model="Account.Email" show-errors class="form-control" placeholder="Ex: admin@besp.com">
+								<span class="help-block" ng-show="accountAddForm.Email.$invalid && !accountAddForm.Email.$pristine && !accountAddForm.Email.$focused">
+									This field has error.
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Sex</label>
+							<div class="col-md-9">
+								<select class="form-control" ng-model="Account.Sex">
+									<option value="M">Male</option>
+									<option value="F">Female</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">DOB</label>
+							<div class="col-md-9">
+								<input type="text" name="StartDateTime" class="form-control date" ng-model="Account.DOB" bs-datepicker
+								       bs-show="showStartDatePicker" ng-blur="showStartDatePicker = false" ng-click="showStartDatePicker = true">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Address Line 1</label>
+							<div class="col-md-9">
+								<input type="text" name="AddressLine1" class="form-control" ng-model="Account.AddressLine1">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Address Line 2</label>
+							<div class="col-md-9">
+								<input type="text" name="AddressLine2" class="form-control" ng-model="Account.AddressLine2">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">City</label>
+							<div class="col-md-9">
+								<input type="text" name="City" class="form-control" ng-model="Account.City">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Province State</label>
+							<div class="col-md-9">
+								<input type="text" name="ProvinceState" class="form-control" ng-model="Account.ProvinceState">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Country</label>
+							<div class="col-md-9">
+								<input type="text" name="Country" class="form-control" ng-model="Account.Country">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Postal Zip</label>
+							<div class="col-md-9">
+								<input type="text" name="PostalZip" class="form-control" ng-model="Account.PostalZip">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">GPS Latitude</label>
+							<div class="col-md-9">
+								<input type="text" name="GPSLatitude" class="form-control" ng-model="Account.GPSLatitude">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">GPS Longitude</label>
+							<div class="col-md-9">
+								<input type="text" name="GPSLongitude" class="form-control" ng-model="Account.GPSLongitude">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Facebook Id</label>
+							<div class="col-md-9">
+								<input type="text" name="FBId" class="form-control" ng-model="Account.FBId">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Google Id</label>
+							<div class="col-md-9">
+								<input type="text" name="GId" class="form-control" ng-model="Account.GId">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Password</label>
+							<div class="col-md-9">
+								<input type="text" name="Password" ng-model="Account.Password" class="form-control">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group" ng-class="{'has-error': accountAddForm.YearGroupAge.$invalid && !accountAddForm.YearGroupAge.$pristine}">
+							<label class="control-label col-md-3">Year Group Age<span class="required">*</span></label>
+							<div class="col-md-9">
+								<input type="text" name="YearGroupAge" ng-model="Account.YearGroupAge" required show-errors class="form-control" ng-pattern-restrict="^\d{0,10}?$">
+								<span class="help-block" ng-show="accountAddForm.YearGroupAge.$invalid && !accountAddForm.YearGroupAge.$pristine">
+									This field is required
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">About Me</label>
+							<div class="col-md-9">
+								<textarea name="AboutMe" ng-model="Account.AboutMe" class="form-control"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="fluid">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="col-md-offset-3 col-md-9">
+							<button type="button" class="btn btn-success" ng-click="createAccount()">Create Account</button>
+							<button type="button" class="btn btn-default" ng-click="doTheBack()">Cancel</button>
+						</div>
+					</div>
+					<div class="col-md-6">
+					</div>
+				</div>
+			</div>
+		</ng-form>
+		<!-- END FORM-->
+	</div>
+</div>

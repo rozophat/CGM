@@ -1,0 +1,5 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=SCRIPTS_005CANGULAR_005CANGULAR_002DDRAGDROP_002EJS/@EntryIndexedValue">Scripts\angular\angular-dragdrop.js</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/MappedPaths/=STYLES_005CSIMPLE_002DLINE_002DICONS/@EntryIndexedValue"></s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=SCRIPTS_005CANGULAR_005CANGULAR_002DDRAGDROP_002EJS/@EntryIndexedValue">Scripts\angular\angular-dragdrop.js</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=STYLES_005CSIMPLE_002DLINE_002DICONS/@EntryIndexedValue">Styles\simple-line-icons</s:String></wpf:ResourceDictionary>

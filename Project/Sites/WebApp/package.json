@@ -1,0 +1,47 @@
+{
+  "name": "OliuCore",
+  "version": "0.0.1",
+  "description": "Framework for building SPA Website",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "~3.9.0",
+    "gulp-clean": "^0.2.4"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-clean": "^0.2.4",
+    "gulp-concat": "^2.2.0",
+    "gulp-jshint": "^1.8.6",
+	"jshint-stylish": "~0.1.5",
+    "gulp-minify-css": "^0.3.4",
+    "gulp-ngmin": "^0.3.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-size": "^0.3.1",
+    "gulp-tap": "^0.1.1",
+    "gulp-uglify": "^0.3.0",
+    "gulp-util": "^2.2.16",
+    "run-sequence": "^0.3.6",
+    "gulp-ng-annotate": "^0.2.0",
+	"karma": "^0.12.16",
+    "karma-jasmine": "^0.1.5",
+    "karma-phantomjs-launcher": "^0.1.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://www.systemgear-vietnam.com/"
+  },
+  "keywords": [
+    "FoundationFramework",
+    "MVC5",
+    "API2.0",
+    "Identity2.0",
+    "AngularJS",
+    "Bootstrap",
+    "EntityFramework6"
+  ],
+  "author": "Nguyen Thanh Phat",
+  "license": "MIT"
+}

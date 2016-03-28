@@ -1,0 +1,141 @@
+﻿<!-- BEGIN PAGE HEADER-->
+<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+		<h3 class="page-title">
+			User Admin
+		</h3>
+		<ul class="page-breadcrumb breadcrumb">
+			<li>
+				<i class="fa fa-home"></i>
+				<a href="#">Home</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a href="#">User Admin</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+		</ul>
+		<!-- END PAGE TITLE & BREADCRUMB-->
+	</div>
+</div>
+<!-- END PAGE HEADER-->
+<div class="row">
+	<div class="col-md-6">
+		<div class="table-toolbar">
+			<!--<div class="btn-group">
+					<a ui-sref="account-add" class="btn btn-success">Add New Account <i class="fa fa-plus"></i>
+					</a>
+				</div>-->
+			<div class="btn-group pull-right">
+				<div class="dataTables_filter">
+					<label>
+						Search:
+						<input type="text" class="form-control input-small" ng-model="SearchValue" ng-change="Search()">
+					</label>
+				</div>
+			</div>
+		</div>
+		<!--<table ng-table="tableParams" class="table table-bordered table-hover">
+			    <tr ng-repeat="user in $data" ng-form="rowForm" ng-class="{'root-admin':user.UserName == 'rootadmin'}">
+				    <td style="width: 50px; text-align: center" data-title="'#'" ng-bind="(tableParams.page() - 1) * tableParams.count() + ($index + 1)"></td>
+				    <td style="text-align: left" data-title="'UserName'" sortable="'UserName'" ng-bind="user.UserName"></td>
+				    <td style="text-align: left" data-title="'Email'" ng-bind="user.Email"></td>
+				    <td style="width: 80px; text-align: center">
+					    <button class="btn btn-danger btn-sm" ng-if="user.UserName != 'rootadmin'" ng-click="showDeleteConfirmation(user)"><span class="glyphicon glyphicon-trash"></span></button>
+				    </td>
+			    </tr>
+		    </table>-->
+		<table ng-table="tableParams" class="table table-bordered table-hover editable-table" ng-form="tableForm">
+			<tr ng-repeat="row in $data" ng-form="rowForm" ng-class="{'root-admin':row.UserName == 'rootadmin'}">
+				<td style="width: 50px; text-align: center" data-title="'#'" ng-bind="(tableParams.page() - 1) * tableParams.count() + ($index + 1)"></td>
+				<td style="text-align: left" data-title="'UserName'" sortable="'UserName'" ng-bind="row.UserName"></td>
+				<td style="text-align: left" filter="{email: 'text'}" data-title="'Email'" ng-switch="row.isEditing" ng-class="email.$dirty ? 'bg-warning' : ''" ng-form="email">
+					<span ng-switch-default class="editable-text">{{row.Email}}</span>
+					<div class="controls" ng-class="email.$invalid && email.$dirty ? 'has-error' : ''" ng-switch-when="true">
+						<input type="email" name="email" ng-model="row.Email" class="editable-input form-control input-sm" required />
+					</div>
+				</td>
+				<td style="width: 120px; text-align: center">
+					<!--<button class="btn btn-danger btn-sm" ng-if="user.UserName != 'rootadmin'" ng-click="showDeleteConfirmation(user)"><span class="glyphicon glyphicon-trash"></span></button>-->
+					<button class="btn btn-primary btn-sm" ng-click="save(row, rowForm)" ng-if="row.isEditing && row.UserName != 'rootadmin'" ng-disabled="rowForm.$pristine || rowForm.$invalid"><span class="glyphicon glyphicon-ok"></span></button>
+					<button class="btn btn-default btn-sm" ng-click="cancel(row, rowForm)" ng-if="row.isEditing && row.UserName != 'rootadmin'"><span class="glyphicon glyphicon-remove"></span></button>
+					<button class="btn btn-default btn-sm" ng-click="row.isEditing = true" ng-if="!row.isEditing && row.UserName != 'rootadmin'"><span class="glyphicon glyphicon-pencil"></span></button>
+					<button class="btn btn-danger btn-sm" ng-click="showDeleteConfirmation(row)" ng-if="!row.isEditing && row.UserName != 'rootadmin'"><span class="glyphicon glyphicon-trash"></span></button>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-md-6">
+		<ng-form name="userAddForm" class="form-horizontal listing-add-form">
+			<div class="form-body">
+				<h3 class="form-section">Add New User</h3>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group" ng-class="{'has-error': userAddForm.UserName.$invalid && !userAddForm.UserName.$pristine}">
+							<label class="control-label col-md-3">User Name<span class="required">*</span></label>
+							<div class="col-md-6">
+								<input type="text" name="KeywordName" ng-model="User.UserName" required show-errors class="form-control">
+								<span class="help-block" ng-show="userAddForm.UserName.$invalid && !userAddForm.UserName.$pristine">
+									This field is required
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group" ng-class="{'has-error': userAddForm.Email.$invalid && !userAddForm.Email.$pristine && !userAddForm.Email.$focused}">
+							<label class="control-label col-md-3">Email</label>
+							<div class="col-md-6">
+								<input type="email" name="Email" ng-model="User.Email" show-errors class="form-control" placeholder="Ex: admin@besp.com">
+								<span class="help-block" ng-show="userAddForm.Email.$invalid && !userAddForm.Email.$pristine && !userAddForm.Email.$focused">
+									This field has error.
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group" ng-class="{'has-error': userAddForm.Password.$invalid && !userAddForm.Password.$pristine}">
+							<label class="control-label col-md-3">Password<span class="required">*</span></label>
+							<div class="col-md-6">
+								<input type="password" name="Password" ng-model="User.Password" required show-errors class="form-control">
+								<span class="help-block" ng-show="userAddForm.Password.$invalid && !userAddForm.Password.$pristine">
+									This field is required
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group" ng-class="{'has-error': userAddForm.ConfirmPassword.$invalid && !userAddForm.ConfirmPassword.$pristine}">
+							<label class="control-label col-md-3">Confirm Password<span class="required">*</span></label>
+							<div class="col-md-6">
+								<input type="password" name="ConfirmPassword" ng-model="User.ConfirmPassword" required show-errors class="form-control">
+								<span class="help-block" ng-show="userAddForm.ConfirmPassword.$error.required && !userAddForm.ConfirmPassword.$pristine">
+									This field is required
+								</span>
+								<span class="help-block" ng-show="userAddForm.ConfirmPassword.$dirty && userAddForm.ConfirmPassword.$error.pwCheck">
+									Confirmation password must match.
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="col-md-offset-3 col-md-6">
+							<button type="button" class="btn btn-success" ng-click="createUser()">Create User</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ng-form>
+	</div>
+</div>
+

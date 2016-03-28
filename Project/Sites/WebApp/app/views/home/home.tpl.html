@@ -1,0 +1,691 @@
+﻿<!-- BEGIN SIDEBAR -->
+<div class="page-sidebar-wrapper">
+	<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+	<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+	<div class="page-sidebar navbar-collapse collapse">
+		<!-- BEGIN SIDEBAR MENU -->
+		<ul class="page-sidebar-menu" data-auto-scroll="true" data-slide-speed="200" ng-class="{'page-sidebar-menu-closed': isSidebarMenuClosed}">
+			<!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+			<li class="sidebar-toggler-wrapper">
+				<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+				<div class="sidebar-toggler">
+				</div>
+				<!-- END SIDEBAR TOGGLER BUTTON -->
+			</li>
+			<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+
+			<li class="start active ">
+				<a href="javascript:;" style="cursor: default">
+					<i class="fa fa-list"></i>
+					<span class="title">{{ 'LBLMENU' | translate }}</span>
+					<span style="right: auto; left: -8px; border-left: 0; border-right: 8px solid #3FD5C0; border-top: 20px double transparent; border-bottom: 20px double transparent; " class="selected"></span>
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;" id="mnOrder" check-display-menu="Order">
+					<i class="fa fa-pencil-square-o"></i>
+					<span class="title">{{ 'MNUORDER' | translate }}</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li access="Order">
+						<a ui-sref="order">
+							<i class="fa fa-pencil-square-o"></i> {{ 'MNUORDERMANAGER' | translate }}
+						</a>
+					</li>
+					<li access="TransportConfirm">
+						<a ui-sref="transportconfirmation">
+							<i class="fa fa-pencil-square-o"></i> {{ 'MNUTRANSPORTCONFIRMATION' | translate }}
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="javascript:;" id="mnDispatch" check-display-menu="Dispatch">
+					<i class="fa fa-map-marker"></i>
+					<span class="title">
+						{{ 'MNUDISPATCH' | translate }}
+					</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li access="Dispatch">
+						<a ui-sref="dispatch">
+							<i class="fa fa-map-marker"></i> {{ 'MNUDISPATCH' | translate }}
+						</a>
+					</li>
+					
+				</ul>
+			</li>
+			<li>
+				<a href="javascript:;" id="mnExpense" check-display-menu="Expense">
+					<i class="fa fa-dollar"></i>
+					<span class="title">{{ 'MNUEXPENSE' | translate }}</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li access="TruckExpense">
+						<a ui-sref="truckExpense">
+							<i class="fa fa-dollar"></i> {{ 'MNUEXPENSEINPUT' | translate }}
+						</a>
+					</li>
+					<li access="FixExpense">
+						<a ui-sref="fixedExpense">
+							<i class="fa fa-dollar"></i> {{ 'MNUFIXEDEXPENSE' | translate }}
+						</a>
+					</li>
+					<li access="FuelConsumptionDetail">
+						<a ui-sref="fuel-consumption-entry">
+							<i class="fa fa-dollar"></i> {{ 'MNUFUELCONSUMPTIONINPUT' | translate }}
+						</a>
+					</li>
+					<li access="Liabilities">
+						<a ui-sref="liabilities">
+							<i class="fa fa-dollar"></i> {{ 'MNULIABILITIES' | translate }}
+						</a>
+					</li>
+					<li access="CustomerPayment">
+						<a ui-sref="customerPayment">
+							<i class="fa fa-dollar"></i> {{ 'MNUCUSTOMERPAYMENT' | translate }}
+						</a>
+					</li>
+					<li access="CustomerPricing">
+						<a ui-sref="customerPricing">
+							<i class="fa fa-dollar"></i> {{ 'MNUCUSTOMERPRICING' | translate }}
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="javascript:;" id="mnTrucks" check-display-menu="Truck">
+					<i class="fa fa-truck"></i>
+					<span class="title">{{ 'LBLTRUCK' | translate }}</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li access="Odo">
+						<a ui-sref="odoEntry">
+							<i class="fa fa-truck"></i> {{ 'MNUODOENTRY' | translate }}
+						</a>
+					</li>
+					<!--<li access="Calendar">-->
+					<li>
+						<a ui-sref="plancalendar">
+							<i class="fa fa-calendar"></i> {{ 'MNUPLANCALENDAR' | translate }}
+						</a>
+					</li>
+					
+				</ul>
+			</li>
+			<li>
+				<a href="javascript:;" id="mnReport" check-display-menu="Report">
+					<i class="fa fa-pie-chart"></i>
+					<span class="title">{{ 'MNUREPORT' | translate }}</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li>
+						<a href="javascript:;" check-display-menu>
+							<i class="fa fa-pie-chart"></i> {{ 'MNUCONFIRMATIONLIST' | translate }} <span class="arrow"></span>
+						</a>
+						<ul class="sub-menu">
+							<li access="Order_R">
+								<a ui-sref="orderReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUORDERREPORT' | translate }}
+								</a>
+							</li>
+							<li access="Dispatch_R">
+								<a ui-sref="dispatchReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUDISPATCHREPORT' | translate }}
+								</a>
+							</li>
+							<li access="TransportConfirm_R">
+								<a ui-sref="transportExpenseReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUTRANSPORTEXPENSEREPORT' | translate }}
+								</a>
+							</li>
+							<li access="Expense_R">
+								<a ui-sref="expenseReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUEXPENSEREPORT' | translate }}
+								</a>
+							</li>
+							<li access="DriverAllowance_R">
+								<a ui-sref="driverAllowanceReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUDRIVERALLOWANCEREPORT' | translate }}
+								</a>
+							</li>
+							<li access="Maintenance_R">
+								<a ui-sref="maintenanceReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUMAINTENANCEREPORT' | translate }}
+								</a>
+							</li>
+							<li access="Liabilities_R">
+								<a ui-sref="liabilitiesReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNULIABILITIESREPORT' | translate }}
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="javascript:;" check-display-menu>
+							<i class="fa fa-pie-chart"></i> {{ 'MNUDAILYREPORT' | translate }} <span class="arrow"></span>
+						</a>
+						<ul class="sub-menu">
+							<li access="DriverDispatch_R">
+								<a ui-sref="driverDispatchReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUDRIVERDISPATCHREPORT' | translate }}
+								</a>
+							</li>
+							<li access="FuelConsumptionDetail_R">
+								<a ui-sref="fuelConsumptionDetailReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUFUELCONSUMPTIONDETAILREPORT' | translate }}
+								</a>
+							</li>
+							<li access="FuelConsumption_R">
+								<a ui-sref="fuelConsumptionReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUFUELCONSUMPTIONREPORT' | translate }}
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="javascript:;" check-display-menu>
+							<i class="fa fa-pie-chart"></i> {{ 'MNUPAYMENTREQUEST' | translate }} <span class="arrow"></span>
+						</a>
+						<ul class="sub-menu">
+							<li access="PaymentRequestDetail_R">
+								<a ui-sref="customerExpenseReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUCUSTOMEREXPENSEREPORT' | translate }}
+								</a>
+							</li>
+							<li access="PaymentRequestTable_R">
+								<a ui-sref="customersExpenseReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUCUSTOMERSEXPENSEREPORT' | translate }}
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="javascript:;" check-display-menu>
+							<i class="fa fa-pie-chart"></i> {{ 'MNUMANAGEMENTREPORT' | translate }} <span class="arrow"></span>
+						</a>
+						<ul class="sub-menu">
+							<li access="CustomerRevenue_R">
+								<a ui-sref="customerRevenueReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUCUSTOMERREVENUEREPORT' | translate }}
+								</a>
+							</li>
+							<li access="OrderBalance_R">
+								<a ui-sref="orderBalanceReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUORDERBALANCEREPORT' | translate }}
+								</a>
+							</li>
+							<li access="CustomerBalance_R">
+								<a ui-sref="customerBalanceReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUCUSTOMERBALANCEREPORT' | translate }}
+								</a>
+							</li>
+							<li access="CustomerPayment_R">
+								<a ui-sref="customerPaymentReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUCUSTOMERPAYMENTREPORT' | translate }}
+								</a>
+							</li>
+							<li access="TruckRevenue_R">
+								<a ui-sref="truckRevenueReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUTRUCKREVENUEREPORT' | translate }}
+								</a>
+							</li>
+							<li access="TruckBalance_R">
+								<a ui-sref="truckBalanceReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUTRUCKBALANCEREPORT' | translate }}
+								</a>
+							</li>
+							<li access="TruckExpense_R">
+								<a ui-sref="truckExpenseReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUTRUCKEXPENSEREPORT' | translate }}
+								</a>
+							</li>
+							<li access="DriverRevenue_R">
+								<a ui-sref="driverRevenueReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUDRIVERREVENUEREPORT' | translate }}
+								</a>
+							</li>
+							<li access="PartnerPaymentTable_R">
+								<a ui-sref="partnerCustomerExpenseReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUPARTNERCUSTOMEREXPENSEREPORT' | translate }}
+								</a>
+							</li>
+							<li access="PartnerPaymentManagement_R">
+								<a ui-sref="partnerExpenseReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUPARTNEREXPENSEREPORT' | translate }}
+								</a>
+							</li>
+							<li access="SupplierPaymentManagement_R">
+								<a ui-sref="supplierExpenseReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUSUPPLIEREXPENSEREPORT' | translate }}
+								</a>
+							</li>
+							<li access="CustomerPricing_R">
+								<a ui-sref="customerPricingReport">
+									<i class="fa fa-list-alt"></i> {{ 'MNUCUSTOMERPRICINGREPORT' | translate }}
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="javascript:;" id="mnMaster" check-display-menu="Master">
+					<i class="fa fa-align-justify"></i>
+					<span class="title">{{ 'MNUMASTER' | translate }}</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li access="Department_M">
+						<a ui-sref="department">
+							<i class="fa fa-tags"></i> {{ 'MNUDEPARTMENT' | translate }}
+						</a>
+					</li>
+					<li access="Expense_M">
+						<a ui-sref="employee">
+							<i class="fa fa-tags"></i> {{ 'MNUEMPLOYEE' | translate }}
+						</a>
+					</li>
+					<li access="Driver_M">
+						<a ui-sref="driver">
+							<i class="fa fa-tags"></i> {{ 'MNUDRIVER' | translate }}
+						</a>
+					</li>
+					<li access="Model_M">
+						<a ui-sref="model">
+							<i class="fa fa-tags"></i> {{ 'MNUMODEL' | translate }}
+						</a>
+					</li>
+					<li access="Truck_M">
+						<a ui-sref="truck">
+							<i class="fa fa-tags"></i> {{ 'MNUTRUCK' | translate }}
+						</a>
+					</li>
+					<li access="Trailer_M">
+						<a ui-sref="trailer">
+							<i class="fa fa-tags"></i> {{ 'MNUTRAILER' | translate }}
+						</a>
+					</li>
+					<li access="Customer_M">
+						<a ui-sref="customer">
+							<i class="fa fa-tags"></i> {{ 'MNUCUSTOMER' | translate }}
+						</a>
+					</li>
+					<li access="OrderPattern_M">
+						<a ui-sref="orderPattern">
+							<i class="fa fa-tags"></i> {{ 'MNUORDERPATTERN' | translate }}
+						</a>
+					</li>
+					<li access="ContractTariffPattern_M">
+						<a ui-sref="contractTariffPattern">
+							<i class="fa fa-tags"></i> {{ 'MNUCONTRACTTARIFFPATTERN' | translate }}
+						</a>
+					</li>
+					<li access="Partner_M">
+						<a ui-sref="partner">
+							<i class="fa fa-tags"></i> {{ 'MNUPARTNER' | translate }}
+						</a>
+					</li>
+					<li access="Supplier_M">
+						<a ui-sref="supplier">
+							<i class="fa fa-tags"></i> {{ 'MNUSUPPLIER' | translate }}
+						</a>
+					</li>
+					<li access="DriverAllowance_M">
+						<a ui-sref="driverallowance">
+							<i class="fa fa-tags"></i> {{ 'MNUDRIVERALLOWANCE' | translate }}
+						</a>
+					</li>
+					<li access="ShippingCompany_M">
+						<a ui-sref="shippingCompany">
+							<i class="fa fa-tags"></i> {{ 'MNUSHIPPINGCOMPANY' | translate }}
+						</a>
+					</li>
+					<li access="Vessel_M">
+						<a ui-sref="vessel">
+							<i class="fa fa-tags"></i> {{ 'MNUVESSEL' | translate }}
+						</a>
+					</li>
+					<li access="Shipper_M">
+						<a ui-sref="shipper">
+							<i class="fa fa-tags"></i> {{ 'MNUSHIPPER' | translate }}
+						</a>
+					</li>
+					<li access="Location_M">
+						<a ui-sref="location">
+							<i class="fa fa-tags"></i> {{ 'MNULOCATION' | translate }}
+						</a>
+					</li>
+					<li access="ContainerType_M">
+						<a ui-sref="containertype">
+							<i class="fa fa-tags"></i> {{ 'MNUCONTYPE' | translate }}
+						</a>
+					</li>
+					<li access="Commodity_M">
+						<a ui-sref="commodity">
+							<i class="fa fa-tags"></i> {{ 'MNUCOMMODITY' | translate }}
+						</a>
+					</li>
+					<li access="ExpenseCategory_M">
+						<a ui-sref="expenseCategory">
+							<i class="fa fa-tags"></i> {{ 'MNUEXPENSECATEGORY' | translate }}
+						</a>
+					</li>
+					<li access="Expense_M">
+						<a ui-sref="expense">
+							<i class="fa fa-tags"></i> {{ 'MNUEXPENSE' | translate }}
+						</a>
+					</li>
+					<li access="FuelConsumption_M">
+						<a ui-sref="fuel-consumption">
+							<i class="fa fa-tags"></i> {{ 'MNUFUELCONSUMPTION' | translate }}
+						</a>
+					</li>
+					<li access="License_M">
+						<a ui-sref="license">
+							<i class="fa fa-tags"></i> {{ 'MNULICENSE' | translate }}
+						</a>
+					</li>
+					<li access="Inspection_M">
+						<a ui-sref="inspection">
+							<i class="fa fa-tags"></i> {{ 'MNUINSPECTION' | translate }}
+						</a>
+					</li>
+					<li access="MaintenanceItem_M">
+						<a ui-sref="maintenanceItem">
+							<i class="fa fa-tags"></i> {{ 'MNUMAINTENANCEITEM' | translate }}
+						</a>
+					</li>
+					<li access="Route_M">
+						<a ui-sref="route">
+							<i class="fa fa-tags"></i> {{ 'MNUROUTE' | translate }}
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="javascript:;" id="mnBasicSetting" check-display-menu="Common">
+					<i class="fa fa-cog"></i>
+					<span class="title">{{ 'MNUBASICSETTING' | translate}}</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li access="BasicSetting">
+						<a ui-sref="basicSetting">
+							<i class="fa fa-cog"></i> {{ 'MNUBASICSETTING' | translate}}
+						</a>
+					</li>
+					<li access="RestoreBackupDb">
+						<a ui-sref="backup-restore-database">
+							<i class="fa fa-database"></i> {{ 'MNUBACKUPANDRESTORE' | translate}}
+						</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<!-- END SIDEBAR MENU -->
+	</div>
+</div>
+<!-- END SIDEBAR -->
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+	<div class="page-content">
+
+		<!-- BEGIN STYLE CUSTOMIZER -->
+		<!-- END STYLE CUSTOMIZER -->
+		<!-- BEGIN PAGE HEADER-->
+		<div class="row">
+			<div class="col-md-12">
+				<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+				<!--<h3 class="page-title">
+					{{ 'TLTDASHBOARD' | translate }} <small>{{ 'TLTDASHBOARDDESC' | translate }}</small>
+				</h3>-->
+				<!--<ul class="page-breadcrumb breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="index-2.html">Home</a>
+						<i class="fa fa-tags"></i>
+					</li>
+					<li>
+						<a href="#">Dashboard</a>
+					</li>
+					<li class="pull-right">
+						<div id="dashboard-report-range" class="dashboard-date-range tooltips" data-placement="top"
+							 data-original-title="Change dashboard date range" style="display: block">
+							<i class="icon-calendar"></i>
+							<span>December 23, 2014 - January 21, 2015</span>
+							<i class="fa fa-angle-down"></i>
+						</div>
+					</li>
+				</ul>-->
+				<!-- END PAGE TITLE & BREADCRUMB-->
+			</div>
+		</div>
+		<!-- END PAGE HEADER-->
+		<!-- BEGIN DASHBOARD STATS -->
+		<div class="row">
+			
+			<div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" ng-click="onMenuClick('mnOrder')" 
+				 check-display-main-menu="Order">
+				<div class="dashboard-stat green-meadow">
+					<div class="visual">
+						<i class="fa fa-pencil-square-o"></i>
+					</div>
+					<div class="details">
+						<div class="number">
+						</div>
+						<div class="desc">
+							{{ 'MNUORDER' | translate }}
+						</div>
+					</div>
+					<a class="more" href="#">
+						{{ 'LBLVIEWMORE' | translate }} <i class="m-icon-swapright m-icon-white"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" ng-click="onMenuClick('mnDispatch')"
+				 access="Dispatch">
+				<div class="dashboard-stat red-intense">
+					<div class="visual">
+						<i class="fa fa-map-marker"></i>
+					</div>
+					<div class="details">
+						<div class="number">
+
+						</div>
+						<div class="desc">
+							{{ 'MNUDISPATCH' | translate }}
+						</div>
+					</div>
+					<a class="more" href="#">
+						{{ 'LBLVIEWMORE' | translate }} <i class="m-icon-swapright m-icon-white"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" ng-click="onMenuClick('mnExpense')"
+				 check-display-main-menu="Expense">
+				<div class="dashboard-stat yellow-crusta">
+					<div class="visual">
+						<i class="fa fa-dollar"></i>
+					</div>
+					<div class="details">
+						<div class="number">
+
+						</div>
+						<div class="desc">
+							{{ 'MNUEXPENSE' | translate }}
+						</div>
+					</div>
+					<a class="more" href="#">
+						{{ 'LBLVIEWMORE' | translate }} <i class="m-icon-swapright m-icon-white"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" ng-click="onMenuClick('mnTrucks')"
+				 check-display-main-menu="Truck">
+				<div class="dashboard-stat purple-plum">
+					<div class="visual">
+						<i class="fa fa-truck"></i>
+					</div>
+					<div class="details">
+						<div class="number">
+
+						</div>
+						<div class="desc">
+							{{ 'LBLTRUCK' | translate }}
+						</div>
+					</div>
+					<a class="more" href="#">
+						{{ 'LBLVIEWMORE' | translate }} <i class="m-icon-swapright m-icon-white"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" ng-click="onMenuClick('mnReport')"
+			     check-display-main-menu="Report">
+				<div class="dashboard-stat blue-chambray">
+					<div class="visual">
+						<i class="fa fa-pie-chart"></i>
+					</div>
+					<div class="details">
+						<div class="number">
+
+						</div>
+						<div class="desc">
+							{{ 'MNUREPORT' | translate }}
+						</div>
+					</div>
+					<a class="more" href="#">
+						{{ 'LBLVIEWMORE' | translate }} <i class="m-icon-swapright m-icon-white"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" ng-click="onMenuClick('mnMaster')"
+				 check-display-main-menu="Master">
+				<div class="dashboard-stat blue-steel">
+					<div class="visual">
+						<i class="fa fa-align-justify"></i>
+					</div>
+					<div class="details">
+						<div class="number">
+						</div>
+						<div class="desc">
+							{{ 'MNUMASTER' | translate }}
+						</div>
+					</div>
+					<a class="more" href="#">
+						{{ 'LBLVIEWMORE' | translate }} <i class="m-icon-swapright m-icon-white"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" ng-click="onMenuClick('mnBasicSetting')"
+				 access="BasicSetting">
+				<div class="dashboard-stat grey-cascade">
+					<div class="visual">
+						<i class="fa fa-cog"></i>
+					</div>
+					<div class="details">
+						<div class="number">
+
+						</div>
+						<div class="desc">
+							{{ 'MNUBASICSETTING' | translate}}
+						</div>
+					</div>
+					<a class="more" href="#">
+						{{ 'LBLVIEWMORE' | translate }} <i class="m-icon-swapright m-icon-white"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<!--<div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" ng-click="onMenuClick('mnExpense')">
+				<div class="dashboard-stat yellow-crusta">
+					<div class="visual">
+						<i class="fa fa-dollar"></i>
+					</div>
+					<div class="details">
+						<div class="number">
+
+						</div>
+						<div class="desc">
+							{{ 'MNUEXPENSE' | translate }}
+						</div>
+					</div>
+					<a class="more" href="#">
+						{{ 'LBLVIEWMORE' | translate }} <i class="m-icon-swapright m-icon-white"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" ng-click="onMenuClick('mnTrucks')">
+				<div class="dashboard-stat purple-plum">
+					<div class="visual">
+						<i class="fa fa-truck"></i>
+					</div>
+					<div class="details">
+						<div class="number">
+
+						</div>
+						<div class="desc">
+							{{ 'LBLTRUCK' | translate }}
+						</div>
+					</div>
+					<a class="more" href="#">
+						{{ 'LBLVIEWMORE' | translate }} <i class="m-icon-swapright m-icon-white"></i>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" ng-click="onMenuClick('mnReport')">
+				<div class="dashboard-stat blue-chambray">
+					<div class="visual">
+						<i class="fa fa-pie-chart"></i>
+					</div>
+					<div class="details">
+						<div class="number">
+
+						</div>
+						<div class="desc">
+							{{ 'MNUREPORT' | translate }}
+						</div>
+					</div>
+					<a class="more" href="#">
+						{{ 'LBLVIEWMORE' | translate }} <i class="m-icon-swapright m-icon-white"></i>
+					</a>
+				</div>
+			</div>-->
+		</div>
+		<div class="row ">
+			<!--<div class="col-lg-4 col-md-3 col-sm-6 col-xs-12" ng-click="onMenuClick('mnBasicSetting')">
+				<div class="dashboard-stat grey-cascade">
+					<div class="visual">
+						<i class="fa fa-cog"></i>
+					</div>
+					<div class="details">
+						<div class="number">
+
+						</div>
+						<div class="desc">
+							{{ 'MNUBASICSETTING' | translate}}
+						</div>
+					</div>
+					<a class="more" href="#">
+						{{ 'LBLVIEWMORE' | translate }} <i class="m-icon-swapright m-icon-white"></i>
+					</a>
+				</div>
+			</div>-->
+		</div>
+		<div class="clearfix">
+		</div>
+
+	</div>
+</div>
+<!-- END CONTENT -->
+<script>
+	$(document).ready(function () {
+		Layout.init(); // init layout
+	});
+</script>

@@ -1,0 +1,102 @@
+﻿<div class="row">
+	<div class="col-md-6">
+		<ng-form name="userLoginForm" class="form-horizontal listing-add-form">
+			<div class="form-body">
+				<h3 class="form-section">Login to your account</h3>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group" ng-class="{'has-error': userLoginForm.UserName.$invalid && !userLoginForm.UserName.$pristine}">
+							<label class="control-label col-md-3">User Name<span class="required">*</span></label>
+							<div class="col-md-6">
+								<input type="text" name="UserName" ng-model="LoginData.UserName" required show-errors class="form-control" ng-enter="login()">
+								<span class="help-block" ng-show="userLoginForm.UserName.$invalid && !userLoginForm.UserName.$pristine">
+									This field is required
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group" ng-class="{'has-error': userLoginForm.Password.$invalid && !userLoginForm.Password.$pristine}">
+							<label class="control-label col-md-3">Password<span class="required">*</span></label>
+							<div class="col-md-6">
+								<input type="password" name="Password" ng-model="LoginData.Password" required show-errors class="form-control" ng-enter="login()">
+								<span class="help-block" ng-show="userLoginForm.Password.$invalid && !userLoginForm.Password.$pristine">
+									This field is required
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" ng-show="error">
+					<div class="col-md-12">
+						<div class="form-group has-error">
+							<label class="control-label col-md-3"></label>
+							<div class="col-md-6 ">
+								<span class="help-block" ng-bind="message">
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="col-md-offset-3 col-md-6">
+							<button type="button" class="btn btn-success" ng-click="login()">Login</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ng-form>
+	</div>
+	<div class="col-md-6">
+		<ng-form name="forgetPasswordForm" class="form-horizontal listing-add-form">
+			<div class="form-body forget-password">
+				<h3 class="form-section">Forgot Password ?</h3>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label class="help-block col-md-9">
+								Enter your e-mail address below to reset your password.
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 email">
+						<div class="form-group" ng-class="{'has-error': (forgetPasswordForm.Email.$invalid && !forgetPasswordForm.Email.$pristine && !forgetPasswordForm.Email.$focused) ||
+																		notExistEmail || wrongFormatEmail}">
+							<label class="control-label col-md-1">Email</label>
+							<div class="col-md-6">
+								<input type="email" name="Email" ng-model="ForgetPassword.Email" required class="form-control" placeholder="Ex: admin@besp.com">
+								<span class="help-block" ng-show="forgetPasswordForm.Email.$invalid && !forgetPasswordForm.Email.$pristine && !forgetPasswordForm.Email.$focused">
+									This field has error.
+								</span>
+								<span class="help-block" ng-show="notExistEmail">
+									This email doesn't exist
+								</span>
+								<span class="help-block" ng-show="wrongFormatEmail">
+									This email have wrong format
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="fluid">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="col-md-offset-1 col-md-6">
+							<button type="button" class="btn btn-success" ng-click="forgetPassword()">Submit</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ng-form>
+	</div>
+</div>
+

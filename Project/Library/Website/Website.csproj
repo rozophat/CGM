@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8182569A-7872-4A1B-BB52-03F73436A535}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Website</RootNamespace>
+    <AssemblyName>Website</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enum\CommonEnum.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Account\AccountBannerDatatable.cs" />
+    <Compile Include="ViewModels\Account\AccountCommentDatatable.cs" />
+    <Compile Include="ViewModels\Account\AccountCommentViewModel.cs" />
+    <Compile Include="ViewModels\Account\AccountContactDatatable.cs" />
+    <Compile Include="ViewModels\Account\AccountContactViewModel.cs" />
+    <Compile Include="ViewModels\Account\AccountDatatable.cs" />
+    <Compile Include="ViewModels\Account\AccountKeywordDatatable.cs" />
+    <Compile Include="ViewModels\Account\AccountKeywordViewModel.cs" />
+    <Compile Include="ViewModels\Account\AccountLikeDatatable.cs" />
+    <Compile Include="ViewModels\Account\AccountLikeViewModel.cs" />
+    <Compile Include="ViewModels\Account\AccountListingDatatable.cs" />
+    <Compile Include="ViewModels\Account\AccountViewModel.cs" />
+    <Compile Include="ViewModels\Banner\BannerDatatable.cs" />
+    <Compile Include="ViewModels\Banner\BannerImageDatatable.cs" />
+    <Compile Include="ViewModels\Banner\BannerImageTypeViewModel.cs" />
+    <Compile Include="ViewModels\Banner\BannerImageViewModel.cs" />
+    <Compile Include="ViewModels\Banner\BannerViewModel.cs" />
+    <Compile Include="ViewModels\Category\CategoryDatatable.cs" />
+    <Compile Include="ViewModels\Category\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\Comment\CommentViewModel.cs" />
+    <Compile Include="ViewModels\Common\ResponseStatus.cs" />
+    <Compile Include="ViewModels\Keyword\KeywordDatatable.cs" />
+    <Compile Include="ViewModels\Keyword\KeywordViewModel.cs" />
+    <Compile Include="ViewModels\Listing\ListingAddressDatatable.cs" />
+    <Compile Include="ViewModels\Listing\ListingAddressViewModel.cs" />
+    <Compile Include="ViewModels\Listing\ListingCommentDatatable.cs" />
+    <Compile Include="ViewModels\Listing\ListingCommentViewModel.cs" />
+    <Compile Include="ViewModels\Listing\ListingDatatable.cs" />
+    <Compile Include="ViewModels\Listing\ListingImageDatatable.cs" />
+    <Compile Include="ViewModels\Listing\ListingImageTypeViewModel.cs" />
+    <Compile Include="ViewModels\Listing\ListingImageViewModel.cs" />
+    <Compile Include="ViewModels\Listing\ListingKeywordDatatable.cs" />
+    <Compile Include="ViewModels\Listing\ListingKeywordViewModel.cs" />
+    <Compile Include="ViewModels\Listing\ListingLikeDatatable.cs" />
+    <Compile Include="ViewModels\Listing\ListingLikeViewModel.cs" />
+    <Compile Include="ViewModels\Listing\ListingViewModel.cs" />
+    <Compile Include="ViewModels\User\ForgotPasswordViewModel.cs" />
+    <Compile Include="ViewModels\User\ResetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\User\UserDatatables.cs" />
+    <Compile Include="ViewModels\User\UserViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Root\Root.csproj">
+      <Project>{44c6bfaf-7e7e-493d-9aa7-ff05c61f6fbe}</Project>
+      <Name>Root</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Utilities\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,210 @@
+﻿<style type="text/css">
+	.login-page .body {
+		position: fixed;
+		top: -170px;
+		width: 100%;
+		height: 130%;
+		background-image: url(dist/images/BG1.png);
+		background-size: cover;
+		-webkit-filter: blur(0px);
+		z-index: 0;
+	}
+
+	.login-page .header {
+		font-size: 46px;
+		color: darkcyan;
+		font-weight: bold;
+		font-family: fantasy;
+	}
+
+	.login-page .header div {
+		float: left;
+		color: #fff;
+		font-family: 'Exo', sans-serif;
+		font-size: 35px;
+		font-weight: 200;
+	}
+
+	.login-page .header div span {
+		color: #5379fa !important;
+	}
+
+	.login-page .login {
+		position: fixed;
+		top: calc(10%);
+		right: 0px;
+		height: 150px;
+		width: 370px;
+		padding: 8px;
+		text-align: center;
+		z-index: 2;
+	}
+
+	.login-page .login input[type=text] {
+		width: 250px;
+		height: 40px;
+		background: rgba(255, 255, 255, 0.2);
+		border: 2px solid darkcyan;
+		border-radius: 2px;
+		color: #8D90A3;
+		font-family: 'Exo', sans-serif;
+		font-size: 16px;
+		font-weight: 400;
+		padding: 10px;
+	}
+
+	.login-page .login input[type=password] {
+		width: 250px;
+		height: 40px;
+		background: transparent;
+		border: 2px solid darkcyan;
+		border-radius: 2px;
+		color: #8D90A3;
+		font-family: 'Exo', sans-serif;
+		font-size: 16px;
+		font-weight: 400;
+		padding: 10px;
+		margin-top: 10px;
+	}
+
+	.login-page .login input[type=button]:hover {
+		opacity: 0.8;
+	}
+
+	.login-page .login input[type=button]:active {
+		opacity: 0.6;
+	}
+
+	.login-page .login input[type=text]:focus {
+		outline: none;
+	}
+
+	.login-page .login input[type=password]:focus {
+		outline: none;
+	}
+
+	.login-page .login input[type=button]:focus {
+		outline: none;
+	}
+
+	.login-page ::-webkit-input-placeholder {
+		color: rgba(255,255,255,0.6);
+	}
+
+	.login-page ::-moz-input-placeholder {
+		color: rgba(255,255,255,0.6);
+	}
+
+	.login-page .alert.alert-danger {
+		text-align: left;
+		width: 250px;
+		display: inline-block;
+		padding: 5px 5px 5px 12px;
+		margin-bottom: 10px;
+	}
+
+	.login-page .alert.alert-danger {
+		text-align: left;
+		width: 250px;
+		display: inline-block;
+		padding: 5px 5px 5px 12px;
+		margin-bottom: 10px;
+	}
+
+	.login-page .alert.alert-danger button {
+		width: 10px;
+		margin-top: 0px;
+	}
+
+	.login-page .form-actions button {
+		width: 250px;
+		font-size: 16px;
+	}
+
+	.login-page button {
+		width: 250px;
+		font-size: 16px;
+		margin-top: 10px;
+		font-weight: bold;
+	}
+
+	.login-page .form-actions .rememberme {
+		margin-left: 8px;
+		margin-top: 10px;
+		font-size: 16px;
+	}
+
+	.login-page .form-actions .check {
+		color: #8290a3;
+	}
+
+	.login-page .check input[type=checkbox] {
+		float: left;
+		margin-right: 2px;
+	}
+
+	input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+		color: #8290A3 !important;
+	}
+
+	input:-moz-placeholder, textarea:-moz-placeholder {
+		color: #8290A3 !important;
+	}
+
+	input::-moz-placeholder, textarea::-moz-placeholder {
+		color: #8290A3 !important;
+	}
+
+	input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+		color: #8290A3 !important;
+	}
+
+</style>
+<div class="login-page">
+	<div class="body"></div>
+	<!--<div class="header">
+		BestGear
+	</div>-->
+	<br>
+	<ng-form name="loginForm">
+		<div class="login">
+			<div class="header">
+				<img border="0" alt="BestGear" src="dist/images/logo.png" style="width: 253px;">
+			</div>
+			<div class="alert alert-danger" ng-show="error">
+				<button class="close" data-close="alert"></button>
+				<span>
+					{{message}}
+				</span>
+			</div>
+			<input type="text"
+			       ng-class="{'error': loginForm.username.$invalid && loginForm.username.$dirty}"
+			       class="elem-index" auto-focus input-highlight form-key-focus
+			       ng-model="loginData.userName" required show-errors
+			       placeholder="{{ 'PLHUSERNAME' | translate }}" name="username"
+			       tooltip-html-unsafe="{{{true: tooltip.error.UsernameRequired, false:''}[loginForm.username.$dirty && loginForm.username.$error.required]}}" tooltip-placement="bottom-left" tooltip-infotype="tooltip-error"
+			       tooltip-trigger="{{{true: 'focus', false: 'never'}[loginForm.username.$dirty && loginForm.username.$error.required]}}">
+			<br>
+			<input type="password"
+			       class="elem-index" input-highlight form-key-focus
+			       ng-model="loginData.password" required show-errors
+			       placeholder="{{ 'PLHPASSWORD' | translate }}" name="password"
+			       ng-class="{'error': loginForm.password.$invalid && loginForm.password.$dirty}"
+			       tooltip-html-unsafe="{{{true: tooltip.error.PasswordRequired, false:''}[loginForm.password.$dirty && loginForm.password.$error.required]}}" tooltip-placement="bottom-left" tooltip-infotype="tooltip-error"
+			       tooltip-trigger="{{{true: 'focus', false: 'never'}[loginForm.password.$dirty && loginForm.password.$error.required]}}">
+			<br>
+			<!--<div class="form-actions">-->
+				<button name="Login" ng-disabled="isLoading" form-key-focus class="btn btn-success uppercase elem-index" ng-click="login()">
+					<span ng-show="isLoading"><i class="fa fa-refresh fa-spin"></i> Please wait...</span>
+					<span ng-show="!isLoading">{{ 'LBLLOGIN' | translate }}</span>
+				</button>
+				<!--<label class="rememberme check">
+					<div style="display: inline-block"><input type="checkbox" class="elem-index" form-key-focus name="remember" ng-model="loginData.useRefreshTokens">{{ 'LBLREMEMBER' | translate }}</div>
+				</label>-->
+				<!--<a ui-sref="forgetpassword" id="forget-password" class="forget-password">{{ 'LBLFORGOTPASSWORD' | translate }}</a>-->
+			<!--</div>-->
+		</div>
+	</ng-form>
+		
+</div>
+

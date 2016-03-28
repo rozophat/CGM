@@ -1,0 +1,388 @@
+﻿<style>
+	.my-drop-zone {
+		border: dotted 3px lightgray;
+	}
+
+	.nv-file-over {
+		border: dotted 3px red;
+	}
+	/* Default class applied to drop zones on over */
+	.another-file-over-class {
+		border: dotted 3px green;
+	}
+
+	html, body {
+		height: 100%;
+	}
+</style>
+<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+		<h3 class="page-title">Edit Account
+		</h3>
+		<ul class="page-breadcrumb breadcrumb">
+			<li>
+				<i class="fa fa-home"></i>
+				<a href="javascript:void()">Home</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a ui-sref="accounts">Accounts</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a ui-sref="account-view({id: Listing.AccountId, tab: 1, page: 1})">Account: {{Listing.AccountId}}</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<span>View Listing</span>
+			</li>
+			<li class="pull-right">
+				<div id="dashboard-report-range" class="dashboard-date-range tooltips" data-placement="top" data-original-title="Change dashboard date range">
+					<i class="fa fa-calendar"></i>
+					<span></span>
+					<i class="fa fa-angle-down"></i>
+				</div>
+			</li>
+		</ul>
+		<!-- END PAGE TITLE & BREADCRUMB-->
+	</div>
+</div>
+<!-- END PAGE HEADER-->
+<div class="row">
+	<div class="col-md-12">
+
+		<div class="tabbable tabbable-custom">
+			<ul class="nav nav-tabs">
+				<li ng-class="{active:isSet(1)}"><a href="javascript:;" ng-click="setTab(1)"><i class="fa fa-info-circle fa-fw"></i>Information</a></li>
+				<li ng-class="{active:isSet(2)}"><a href="javascript:;" ng-click="setTab(2)"><i class="fa fa-font fa-fw"></i>Keywords</a></li>
+				<li ng-class="{active:isSet(3)}"><a href="javascript:;" ng-click="setTab(3)"><i class="fa fa-upload fa-fw"></i>Uploader</a></li>
+				<li ng-class="{active:isSet(4)}"><a href="javascript:;" ng-click="setTab(4)"><i class="fa fa-file-image-o fa-fw"></i>Images</a></li>
+				<li ng-class="{active:isSet(5)}"><a href="javascript:;" ng-click="setTab(5)"><i class="fa fa-comment fa-fw"></i>Comments</a></li>
+				<li ng-class="{active:isSet(6)}"><a href="javascript:;" ng-click="setTab(6)"><i class="fa fa-thumbs-o-up fa-fw"></i>Likes ({{tableLLParams.total()}})</a></li>
+				<li ng-class="{active:isSet(7)}"><a href="javascript:;" ng-click="setTab(7)"><i class="fa fa-map-marker fa-fw"></i>Addresses</a></li>
+			</ul>
+
+			<div class="tab-content">
+				<div class="tab-pane" ng-class="{active:isSet(1)}" ng-show="isSet(1)">
+					<!-- BEGIN FORM-->
+					<ng-form name="listingEditForm" class="form-horizontal">
+						<div class="form-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group" ng-class="{'has-error': listingEditForm.Title.$invalid && !listingEditForm.Title.$pristine}">
+										<label class="control-label col-md-3">Title<span class="required">*</span></label>
+										<div class="col-md-9">
+											<input type="text" name="Title" ng-model="Listing.Title" required show-errors class="form-control">
+											<span class="help-block" ng-show="listingEditForm.Title.$invalid && !listingEditForm.Title.$pristine">
+												This field is required
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group" ng-class="{'has-error': listingEditForm.Description.$invalid && !listingEditForm.Description.$pristine}">
+										<label class="control-label col-md-3">Description<span class="required">*</span></label>
+										<div class="col-md-9">
+											<textarea name="Description" ng-model="Listing.Description" required show-errors class="form-control"></textarea>
+											<span class="help-block" ng-show="listingEditForm.Description.$invalid && !listingEditForm.Description.$pristine">
+												This field is required
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label col-md-3">Paid</label>
+										<div class="col-md-9">
+											<input type="text" name="Paid" ng-model="Listing.Paid" class="form-control" readonly>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label col-md-3">TransactionId</label>
+										<div class="col-md-9">
+											<input type="text" name="TransactionId" ng-model="Listing.TransactionId" class="form-control" readonly>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label col-md-3">Listing Type</label>
+										<div class="col-md-9">
+											<select class="form-control" name="ListingType" ng-model="Listing.ListingType">
+												<option value="B">Business</option>
+												<option value="E">Event</option>
+												<option value="P">Public Place</option>
+												<option value="S">Public Service</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label col-md-3">Category</label>
+										<div class="col-md-9">
+											<select class="form-control" name="CategoryId" ng-model="Listing.CategoryId" 
+												ng-options="a.Id as a.Name group by a.ParentCategoryName for a in Categories">
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label col-md-3">Active</label>
+										<div class="col-md-9">
+											<select class="form-control" name="Active" ng-model="Listing.Active">
+												<option value="1">Active</option>
+												<option value="0">Inactive</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="fluid">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="col-md-offset-3 col-md-9">
+										<button type="button" class="btn btn-success" ng-click="updateListing()">Update Information</button>
+										<button type="button" class="btn btn-default" ng-click="doTheBack()">Cancel</button>
+									</div>
+								</div>
+								<div class="col-md-6">
+								</div>
+							</div>
+						</div>
+					</ng-form>
+					<!-- END FORM-->
+
+				</div>
+
+				<div class="tab-pane" ng-class="{active:isSet(2)}" ng-show="isSet(2)">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="table-responsive">
+								<table ng-table="tableLKParams" class="table table-striped table-bordered table-hover">
+									<tr ng-repeat="row in $data">
+										<td style="width: 50px; text-align: center" data-title="'Id'" ng-bind="row.Id"></td>
+										<td style="text-align: left" data-title="'Keyword'" sortable="'KeywordName'" ng-bind="row.KeywordName"></td>
+										<td style="text-align: center" data-title="'Keyword Type'" sortable="'KeywordType'" ng-bind="getKeywordType(row.KeywordType)"></td>
+										<td style="width: 80px; text-align: center">
+											<button class="btn btn-danger btn-sm ng-scope" ng-click="showDeleteListingKeywordConfirmation(row.Id)"><span class="glyphicon glyphicon-trash"></span></button>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group form-horizontal ">
+								<label class="control-label col-md-5">Select Keyword:</label>
+								<div class="col-md-7">
+									<input type="text" ng-model="NewKeyword" class="form-control" ng-pattern-restrict="^.{0,10}?$"
+										typeahead="keyword for keyword in getASKeyword($viewValue)">
+								</div>
+							</div>
+						</div>
+						<button type="button" class="btn btn-success" ng-click="assignKeyword()">Assign Keyword</button>
+					</div>
+				</div>
+
+				<div class="tab-pane" ng-class="{active:isSet(3)}" ng-show="isSet(3)">
+					<div class="row" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
+						<div class="col-md-3">
+							<h3>Select files</h3>
+							<div ng-show="uploader.isHTML5">
+								<!-- 3. nv-file-over uploader="link" over-class="className" -->
+								<div class="well my-drop-zone" nv-file-over="" uploader="uploader">
+									Base drop zone
+								</div>
+								<!-- Example: nv-file-drop="" uploader="{Object}" options="{Object}" filters="{String}" -->
+								<!--<div nv-file-drop="" uploader="uploader" options="{ url: '/foo' }">
+									    <div nv-file-over="" uploader="uploader" over-class="another-file-over-class" class="well my-drop-zone">
+										    Another drop zone with its own settings
+									    </div>
+								    </div>-->
+							</div>
+							Multiple
+							<input type="file" nv-file-select="" uploader="uploader" multiple /><br />
+							<!--Single
+								<input type="file" nv-file-select="" uploader="uploader" />-->
+						</div>
+						<div class="col-md-9" style="margin-bottom: 40px">
+							<h3>Upload queue</h3>
+							<p>Queue length: {{ uploader.queue.length }}</p>
+							<table class="table">
+								<thead>
+									<tr>
+										<th width="50%">Name</th>
+										<th ng-show="uploader.isHTML5">Size</th>
+										<th ng-show="uploader.isHTML5">Progress</th>
+										<th>Status</th>
+										<th>Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="item in uploader.queue">
+										<td><strong>{{ item.file.name }}</strong></td>
+										<td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+										<td ng-show="uploader.isHTML5">
+											<div class="progress" style="margin-bottom: 0;">
+												<div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+											</div>
+										</td>
+										<td class="text-center">
+											<span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+											<span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+											<span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+										</td>
+										<td nowrap>
+											<button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+												<span class="glyphicon glyphicon-upload"></span>Upload
+											</button>
+											<button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+												<span class="glyphicon glyphicon-ban-circle"></span>Cancel
+											</button>
+											<button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+												<span class="glyphicon glyphicon-trash"></span>Clear
+											</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<div>
+								<div>
+									Queue progress:
+									<div class="progress" style="">
+										<div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+									</div>
+								</div>
+								<button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+									<span class="glyphicon glyphicon-upload"></span>Upload all
+								</button>
+								<button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+									<span class="glyphicon glyphicon-ban-circle"></span>Cancel all
+								</button>
+								<button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+									<span class="glyphicon glyphicon-trash"></span>Clear all
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" ng-class="{active:isSet(4)}" ng-show="isSet(4)">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="table-responsive">
+								<table ng-table="tableLIParams" class="table table-striped table-bordered table-hover">
+									<tr ng-repeat="row in $data" ng-form="rowForm">
+										<td class="center" style="width: 50px" data-title="'#'" ng-bind="(tableLIParams.page() - 1) * tableLIParams.count() + ($index + 1)"></td>
+										<td class="center" data-title="'Image'">
+											<img src="{{webapiUrl}}{{row.PictureDestination}}" width="100px" height="100px" />
+										</td>
+										<td style="text-align: center; vertical-align: middle" data-title="'Image Type'" sortable="'ImageType'" ng-switch="row.isEditing" ng-class="type.$dirty ? 'bg-warning' : ''" ng-form="type">
+											<span ng-switch-default class="editable-text" ng-bind="getImageTypeName(row.ImageType)"></span>
+											<div class="controls" ng-switch-when="true">
+												<select class="editable-input form-control input-sm" name="type" ng-model="row.ImageType">
+													<option ng-repeat="option in ListingImageTypes" ng-selected ="{{row.ImageType == option.Id}}" value="{{option.Id}}">{{option.Name}}</option>
+												</select>
+											</div>
+										</td>
+										<td class="center" style="width: 150px">
+											<button class="btn btn-primary btn-sm" ng-click="save(row, rowForm)" ng-if="row.isEditing" ng-disabled="rowForm.$pristine || rowForm.$invalid"><span class="glyphicon glyphicon-ok"></span></button>
+											<button class="btn btn-default btn-sm" ng-click="cancel(row, rowForm)" ng-if="row.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
+											<button class="btn btn-default btn-sm" ng-click="row.isEditing = true" ng-if="!row.isEditing"><span class="glyphicon glyphicon-pencil"></span></button>
+											<button class="btn btn-danger btn-sm ng-scope" ng-click="showDeleteLIConfirmation(row.ListingId, row.Id)"><span class="glyphicon glyphicon-trash"></span></button>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" ng-class="{active:isSet(5)}" ng-show="isSet(5)">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table ng-table="tableLCParams" class="table table-striped table-bordered table-hover">
+									<tr ng-repeat="listingComment in $data">
+										<td style="width: 50px; text-align: center" data-title="'Id'" ng-bind="listingComment.Id"></td>
+										<td style="text-align: left; font-weight: bold" data-title="'Contact Name'">
+											<a href="#/account/view/{{listingComment.ByAccountId}}/1/1">{{listingComment.ByAccountName}}</a>
+										</td>
+										<td style="text-align: left" data-title="'Title'" ng-bind="listingComment.Title"></td>
+										<td style="text-align: left" data-title="'Description'" ng-bind="listingComment.Description"></td>
+										<td style="width: 100px; text-align: center" data-title="'Rating'" sortable="'Rating'" ng-bind="listingComment.Rating"></td>
+										<!--<td style="width: 80px; text-align: center">
+                    <button class="btn btn-danger btn-sm ng-scope" ng-click="showDeleteAccountCommentConfirmation(listingComment.Id)"><span class="glyphicon glyphicon-trash"></span></button>
+                </td>-->
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" ng-class="{active:isSet(6)}" ng-show="isSet(6)">
+					<div class="row">
+						<div class="col-md-5">
+							<div class="table-responsive">
+								<table ng-table="tableLLParams" class="table table-striped table-bordered table-hover">
+									<tr ng-repeat="listingLike in $data">
+										<td style="width: 50px; text-align: center" data-title="'Id'" ng-bind="listingLike.ByAccountId"></td>
+										<td style="text-align: left; font-weight: bold" data-title="'Account Name'" sortable="'ByAccountName'">
+											<a href="#/account/view/{{listingLike.ByAccountId}}/1/1">{{listingLike.ByAccountName}}</a>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" ng-class="{active:isSet(7)}" ng-show="isSet(7)">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="table-toolbar">
+								<div class="btn-group">
+									<a href="#/listing/address/add/{{id}}" class="btn btn-success">Add New Address <i class="fa fa-plus"></i>
+									</a>
+								</div>
+							</div>
+							<div class="table-responsive">
+								<table ng-table="tableLAParams" class="table table-striped table-bordered table-hover">
+									<tr ng-repeat="address in $data">
+										<td style="width: 50px; text-align: center" data-title="'Id'">
+											<a href="#/listing/address/view/{{address.Id}}">{{address.Id}}</a>
+										</td>
+										<td style="text-align: left" data-title="'AddressLine 1'" sortable="'Title'" ng-bind="address.AddressLine1"></td>
+										<td style="text-align: left" data-title="'AddressLine 2'" sortable="'Description'" ng-bind="address.AddressLine2"></td>
+										<td style="text-align: center" data-title="'City'" sortable="'DestinationType'" ng-bind="address.City"></td>
+										<td style="text-align: left" data-title="'Province State'" sortable="'Destination'" ng-bind="address.ProvinceState"></td>
+
+										<td style="text-align: center" data-title="'Country'" sortable="'StartDateTime'" ng-bind="address.Country"></td>
+										<td style="text-align: center" data-title="'Postal Zip'" sortable="'EndDateTime'" ng-bind="address.PostalZip"></td>
+										<td style="text-align: center" data-title="'GPS Location'">({{address.GPSLatitude}}; {{address.GPSLongitude}})
+										</td>
+										<td style="width: 80px; text-align: center">
+											<a href="#/listing/address/view/{{address.Id}}" class="btn btn-default btn-sm ng-scope"><span class="glyphicon glyphicon-pencil"></span></a>
+										</td>
+										<td style="width: 80px; text-align: center">
+											<button href="#" class="btn btn-danger btn-sm ng-scope" ng-click="showDeleteLAConfirmation(address.Id)"><span class="glyphicon glyphicon-trash"></span></button>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

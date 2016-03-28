@@ -1,0 +1,173 @@
+﻿<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+		<h3 class="page-title">Add New Banner
+		</h3>
+		<ul class="page-breadcrumb breadcrumb">
+			<li>
+				<i class="fa fa-home"></i>
+				<a href="javascript:void()">Home</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a ui-sref="accounts">Accounts</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a ui-sref="account-view({id: accountId, tab: 1, page: 1})">Account: {{accountId}}</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a href="javascript:void()">Add New Banner</a>
+			</li>
+			<li class="pull-right">
+				<div id="dashboard-report-range" class="dashboard-date-range tooltips" data-placement="top" data-original-title="Change dashboard date range">
+					<i class="fa fa-calendar"></i>
+					<span></span>
+					<i class="fa fa-angle-down"></i>
+				</div>
+			</li>
+		</ul>
+		<!-- END PAGE TITLE & BREADCRUMB-->
+	</div>
+</div>
+<!-- END PAGE HEADER-->
+<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN FORM-->
+		<ng-form name="bannerAddForm" class="form-horizontal">
+			<div class="form-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group" ng-class="{'has-error': bannerAddForm.Title.$invalid && !bannerAddForm.Title.$pristine}">
+							<label class="control-label col-md-3">Title<span class="required">*</span></label>
+							<div class="col-md-9">
+								<input type="text" name="Title" ng-model="Banner.Title" required show-errors class="form-control">
+								<span class="help-block" ng-show="bannerAddForm.Title.$invalid && !bannerAddForm.Title.$pristine">
+									This field is required
+								</span>
+							</div>
+						</div>
+					</div>
+					<!--/span-->
+					<div class="col-md-6">
+						<div class="form-group" ng-class="{'has-error': bannerAddForm.Description.$invalid && !bannerAddForm.Description.$pristine}">
+							<label class="control-label col-md-3">Description<span class="required">*</span></label>
+							<div class="col-md-9">
+								<textarea type="text" name="Description" ng-model="Banner.Description" required show-errors class="form-control"></textarea>
+								<span class="help-block" ng-show="bannerAddForm.Description.$invalid && !bannerAddForm.Description.$pristine">
+									This field is required
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Destination Type</label>
+							<div class="col-md-9">
+								<select class="form-control" ng-model="Banner.DestinationType">
+									<option value="L">Listing</option>
+									<option value="U">Url</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Destination</label>
+							<div class="col-md-9">
+								<input type="text" name="Destination" ng-model="Banner.Destination" class="form-control">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Start DateTime</label>
+							<div class="col-md-9">
+								<input type="text" name="StartDateTime" class="form-control date"  ng-model="Banner.StartDateTime" bs-datepicker
+								       bs-show="showStartDatePicker" ng-blur="showStartDatePicker = false" ng-click="showStartDatePicker = true">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">End DateTime</label>
+							<div class="col-md-9">
+								<input type="text" name="EndDateTime" class="form-control date"  ng-model="Banner.EndDateTime" bs-datepicker
+								       bs-show="showEndDatePicker" ng-blur="showEndDatePicker = false" ng-click="showEndDatePicker = true">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">City</label>
+							<div class="col-md-9">
+								<input type="text" name="City" class="form-control" ng-model="Banner.City">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Province State</label>
+							<div class="col-md-9">
+								<input type="text" name="ProvinceState" class="form-control" ng-model="Banner.ProvinceState">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Country</label>
+							<div class="col-md-9">
+								<input type="text" name="Country" class="form-control" ng-model="Banner.Country">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Category</label>
+							<div class="col-md-9">
+								<select class="form-control" name="CategoryId" ng-model="Banner.CategoryId" 
+								        ng-options="a.Id as a.Name group by a.ParentCategoryName for a in Categories">
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">Active</label>
+							<div class="col-md-9">
+								<select class="form-control" ng-model="Banner.Active">
+									<option value="1">Yes</option>
+									<option value="0">No</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="fluid">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="col-md-offset-3 col-md-9">
+							<button type="button" class="btn btn-success" ng-click="createBanner()">Create Banner</button>
+							<button type="button" class="btn btn-default" ng-click="doTheBack()">Cancel</button>
+						</div>
+					</div>
+					<div class="col-md-6">
+					</div>
+				</div>
+			</div>
+		</ng-form>
+		<!-- END FORM-->
+	</div>
+</div>

@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DelConfig>
+	<Customer_M>
+		<Customer_M value="ERRORCUSTOMERDELETE">InvoiceMainC = @1 AND InvoiceSubC = @2 AND (CustomerMainC != @1 OR CustomerSubC != @2)</Customer_M>
+		<Order_H value="ERRORCUSTOMERORDERDELELTE">CustomerMainC = @1 AND CustomerSubC = @2</Order_H>
+		<DriverAllowance_M value="ERRORCUSTOMERDIRIVERALLOWANCEDELETE">CustomerMainC = @1 AND CustomerSubC = @2</DriverAllowance_M>
+		<OrderPattern_M value="ERRORCUSTOMERORDERPARTTERNDELETE">CustomerMainC = @1 AND CustomerSubC = @2</OrderPattern_M>
+		<ContractTariffPattern_M value="ERRORCUSTOMERCONTRACTTARIFFPARTTERNDELETE">CustomerMainC = @1 AND CustomerSubC = @2</ContractTariffPattern_M>
+	</Customer_M>
+	<Location_M>
+		<Order_H value="ERRORLOCATIONORDERDELETE">LoadingPlaceC = @1 OR StopoverPlaceC = @1 OR DischargePlaceC = @1</Order_H>
+		<Dispatch_D value="ERRORLOCATIONDISPATCHDELETE">Location1C = @1 OR Location2C = @1 OR Location3C = @1</Dispatch_D>
+		<OrderPattern_M value="ERRORLOCATIONORDERPARTTERNDELETE">LoadingPlaceC = @1 OR StopoverPlaceC	 = @1 OR DischargePlaceC = @1</OrderPattern_M>
+		<DriverAllowance_M	value="ERRORLOCATIONDRIVERALLOWANCEDELETE">DepartureC = @1 OR DestinationC = @1</DriverAllowance_M>
+		<ContractTariffPattern_M value="ERRORLOCATIONCONTRACTTARIFFDELETE">DepartureC = @1 OR DestinationC = @1</ContractTariffPattern_M>
+		<PartnerContractTariffPattern_M value="ERRORLOCATIONPARTNERCONTRACTDELETE">DepartureC = @1  OR DestinationC = @1</PartnerContractTariffPattern_M>		
+	</Location_M>
+	<OrderPattern_M>
+		<Order_H value="ERRORORDERPARTTERNORDERDELETE">OrderPatternC = @1</Order_H>
+	</OrderPattern_M>
+	<Shipper_M>
+		<Order_H value="ERRORSHIPPERORDERDELETE">ShipperC = @1</Order_H>
+		<OrderPattern_M value="ERRORSHIPPERORDERPARTERNDELETE">ShipperC = @1</OrderPattern_M>
+	</Shipper_M>
+	<Department_M>
+		<Dispatch_D value="ERRORDEPDISPATHDELETE">TransportDepC = @1</Dispatch_D>
+		<Driver_M value="ERRORDEPDRIVERDELETE">DepC = @1</Driver_M>
+		<Employee_M value="ERRORDEPEMPLEYEEDELETE">DepC = @1</Employee_M>
+		<FixedExpense_D value="ERRORDEPFISEDEXPENSEDELETE">DepC = @1</FixedExpense_D>
+		<Order_H value="ERRORDEPORDERDELETE">OrderDepC = @1</Order_H>
+		<Truck_M value="ERRORDEPTRUCKDELETE">DepC = @1</Truck_M>
+	</Department_M>
+	<ShippingCompany_M>
+		<Order_H value="ERRORSHIPPINGCOMPANYORDERDELETE">ShippingCompanyC = @1</Order_H>
+		<OrderPattern_M value="ERRORSHIPPINGCOMPANYORDERPARTERNDELETE">ShippingCompanyC = @1</OrderPattern_M>
+		<Vessel_M	value="ERRORSHIPPINGCOMPANYVESSELDELETE">ShippingCompanyC = @1</Vessel_M>
+	</ShippingCompany_M>
+	<Employee_M>
+		<Expense_D value="ERROREMPLOYEEEXPENSEDELETE">EntryClerkC = @1</Expense_D>
+		<FixedExpense_D value="ERROREMPLOYEEFIXEDEXPENSEDELETE">EntryClerkC = @1</FixedExpense_D>
+		<Order_H value="ERROREMPLOYEEORDERDELETE">EntryCleckC = @1</Order_H>
+	</Employee_M>
+	<ExpenseCategory_M>
+		<Expense_M value="ERROREXPENSECATEGORYEXPENSEDELETE">CategoryC = @1</Expense_M>
+		<Basic_S value="ERROREXPENSECATEGORYBASICDELETE">
+			FuelExpense1 = @1 OR FuelExpense2 = @1 OR FuelExpense3 = @1 OR FuelExpense4 = @1 OR FuelExpense5 = @1 OR
+			FuelExpense6 = @1 OR FuelExpense7 = @1 OR FuelExpense8 = @1 OR FuelExpense9 = @1 OR FuelExpense10 = @1
+		</Basic_S>
+	</ExpenseCategory_M>
+	<Vessel_M>
+		<Order_H value="ERRORVESSELORDERDELETE">VesselC = @1</Order_H>
+		<OrderPattern_M value="ERRORVESSELORDERPARTERNDELETE">VesselC = @1</OrderPattern_M>
+	</Vessel_M>
+	<Driver_M>
+		<Dispatch_D value="ERRORDRIVERDISPATCHDELETE">DriverC = @1</Dispatch_D>
+		<Trailer_M value="ERRORDRIVERTRAILERDELETE">DriverC = @1</Trailer_M>
+		<Truck_M value="ERRORDRIVERTRUCKDELETE">DriverC = @1</Truck_M>
+		<TruckExpense_D value="ERRORDRIVERTRUCKEXPENSEDELETE">DriverC = @1</TruckExpense_D>
+	</Driver_M>
+	<Expense_M>
+		<Expense_D value="ERROREXPENSEEXPENSEDELETE">ExpenseC = @1</Expense_D>
+		<FixedExpense_D value="ERROREXPENSEFIXEDEXPENSEDELETE">ExpenseC = @1</FixedExpense_D>
+		<TruckExpense_D value="ERROREXPENSETRUCKEXPENSEDELETE">ExpenseC = @1</TruckExpense_D>
+		<Allowance_D value="ERROREXPENSEALLOWANCEDELETE">AllowanceC = @1</Allowance_D>
+		<Surcharge_D value="ERROREXPENSESURCHARGEDELETE">SurchargeC = @1</Surcharge_D>
+		<Basic_S value="ERROREXPENSEBASICDELETE">
+			Expense1 = @1 OR Expense2 = @1 OR Expense3 = @1 OR Expense4 = @1 OR Expense5 = @1 OR
+			Expense6 = @1 OR Expense7 = @1 OR Expense8 = @1 OR Expense9 = @1 OR Expense10 = @1 OR
+			Allowance1 = @1 OR Allowance2 = @1 OR Allowance3 = @1 OR Allowance4 = @1 OR Allowance5 = @1 OR
+			Allowance6 = @1 OR Allowance7 = @1 OR Allowance8 = @1 OR Allowance9 = @1 OR Allowance10 = @1 OR
+			Surcharge1 = @1 OR Surcharge2 = @1 OR Surcharge3 = @1 OR Surcharge4 = @1 OR Surcharge5 = @1 OR
+			Surcharge6 = @1 OR Surcharge7 = @1 OR Surcharge8 = @1 OR Surcharge9 = @1 OR Surcharge10 = @1 OR
+			PartnerSurcharge1 = @1 OR PartnerSurcharge2 = @1 OR PartnerSurcharge3 = @1 OR PartnerSurcharge4 = @1 OR
+			PartnerSurcharge5 = @1 OR PartnerSurcharge6 = @1 OR PartnerSurcharge7 = @1 OR PartnerSurcharge8 = @1 OR
+			PartnerSurcharge9 = @1 OR PartnerSurcharge10 = @1 OR 
+			PartnerCost1 = @1 OR PartnerCost2 = @1 OR PartnerCost3 = @1 OR PartnerCost4 = @1 OR
+			PartnerCost5 = @1 OR PartnerCost6 = @1 OR PartnerCost7 = @1 OR PartnerCost8 = @1 OR
+			PartnerCost9 = @1 OR PartnerCost10 = @1
+		</Basic_S>
+	</Expense_M>
+	<Supplier_M>
+		<Supplier_M value="ERRORSUPPLIERDELETE">InvoiceMainC = @1 AND InvoiceSubC = @2 AND (SupplierMainC != @1 OR SupplierSubC != @2)</Supplier_M>
+		<Expense_D value="ERRORSUPPLIEREXPENSEDELETE">SupplierMainC = @1 AND SupplierSubC = @2</Expense_D>
+		<TruckExpense_D value="ERRORSUPPLIERTRUCKEXPENSEDELETE">SupplierMainC = @1 AND SupplierSubC = @2</TruckExpense_D>
+	</Supplier_M>
+	<Truck_M>
+		<Dispatch_D value="ERRORTRUCKDISPATCHDELETE">TruckC = @1</Dispatch_D>
+		<FixedExpense_D value="ERRORTRUCKFIXESPENSEDELETE">TruckC = @1</FixedExpense_D>
+		<TruckExpense_D value="ERRORTRUCKTRUCKEXPENSEDELETE">TruckC = @1</TruckExpense_D>
+		<Inspection_D value="ERRORTRUCKINSPECTIONDELETE">ObjectI = 0 AND Code = @1</Inspection_D>
+		<Maintenance_D value="ERRORTRUCKMAINTENANCEDELETE">ObjectI = 0 AND Code = @1</Maintenance_D>
+	</Truck_M>
+	<ContainerType_M>
+		<ContractTariffPattern_M value="ERRORCONTACTTYPECONTRACTTARIFFPARTTERNDELETE">ContainerTypeC = @1</ContractTariffPattern_M>
+		<DriverAllowance_M value="ERRORCONTACTTYPEDRIVERALLOWANCEDELETE">ContainerTypeC = @1</DriverAllowance_M>
+		<Order_D value="ERRORCONTACTTYPEORDERDELETE">ContainerTypeC = @1</Order_D>
+		<PartnerContractTariffPattern_M value="ERRORCONTACTTYPEPARTNERCONTRACTTAFFIFPARTERNDELETE">ContainerTypeC = @1</PartnerContractTariffPattern_M>
+	</ContainerType_M>
+	<Partner_M>
+		<Partner_M value="ERRORPARTNERDELETE">InvoiceMainC = @1 AND InvoiceSubC = @2 AND (PartnerMainC != @1 OR PartnerSubC != @2)</Partner_M>
+		<Dispatch_D value="ERRORPARTNERDISPATCHDELETE">PartnerMainC = @1 AND PartnerSubC = @2</Dispatch_D>
+		<PartnerContractTariffPattern_M value="ERRORPARTNERCONTRACTTAFIFFDELETE">PartnerMainC = @1 AND PartnerSubC = @2</PartnerContractTariffPattern_M>
+		<Truck_M value="ERRORPARTNERTRUCKDELETE">PartnerMainC = @1 AND PartnerSubC = @2</Truck_M>
+	</Partner_M>
+	<Trailer_M>
+		<Order_D value="ERRORTRAILERORDERDELETE">TrailerC = @1</Order_D>
+		<Inspection_D value="ERRORTRAILERINSPECTIONDELETE">ObjectI = 1 AND Code = @1</Inspection_D>
+		<Maintenance_D value="ERRORTRAILERMAINTENANCEDELETE">ObjectI = 1 AND Code = @1</Maintenance_D>
+	</Trailer_M>
+	<Commodity_M>
+		<Order_D value="ERRORCOMMODITYORDERDELETE">CommodityC = @1</Order_D>
+	</Commodity_M>
+	<Inspection_M>
+		<Inspection_D value="ERRORINSPECTIONINSPECTIONDELETE">InspectionC = @1</Inspection_D>
+		<InspectionPlan_D value="ERRORINSPECTIONINSPECTIONPLANDELETE">InspectionC = @1</InspectionPlan_D>
+		<Maintenance_D value="ERRORINSPECTIONMAINTENANCEDELETE">InspectionC = @1</Maintenance_D>
+	</Inspection_M>
+	<License_M>
+		<DriverLicense_M value="ERRORLICENSEDRIVERLICENSEDELETE">LicenseC = @1</DriverLicense_M>
+		<DriverLicenseUpdate_D value="ERRORLICENSEDRIVERLICENSEUPDATEDELETE">LicenseC = @1</DriverLicenseUpdate_D>
+	</License_M>
+	<Model_M>
+		<Trailer_M value="ERRORMODELTRAILERDELETE">ModelC = @1 AND @2 ='1'</Trailer_M>
+		<Truck_M value="ERRORMODELTRUCKDELETE">ModelC = @1 AND @2 ='0'</Truck_M>
+	</Model_M>
+	<MaintenanceItem_M>
+		<MaintenanceItem_D value="ERRORMAINTENANCEITEMDETAILDELETE">MaintenanceItemC = @1</MaintenanceItem_D>
+		<MaintenancePlan_D value="ERRORMAINTENANCEITEMPLANDELETE">MaintenanceItemC = @1</MaintenancePlan_D>
+		<Maintenance_D value="ERRORMAINTENANCEITEMAINDETAILDELETE">MaintenanceItemC = @1</Maintenance_D>
+	</MaintenanceItem_M>
+	<Route_H>
+		<Route_D value="ERRORROUTEDETAILDELETE">RouteId = @1</Route_D>
+	</Route_H>
+</DelConfig>

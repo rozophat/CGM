@@ -5,7 +5,6 @@ using Root.Data.Infrastructure;
 using Root.Data.Repository;
 using Service.Mappers;
 using Service.Services;
-using WebAPI.Photo;
 
 namespace WebAPI.App_Start
 {
@@ -23,15 +22,15 @@ namespace WebAPI.App_Start
 			builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 			builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerRequest();
 			builder.RegisterType<DatabaseFactory>().As<IDatabaseFactory>().InstancePerRequest();
-			builder.RegisterAssemblyTypes(typeof(AccountRepository).Assembly)
+			builder.RegisterAssemblyTypes(typeof(UserRepository).Assembly)
 			.Where(t => t.Name.EndsWith("Repository"))
 			.AsImplementedInterfaces().InstancePerRequest();
-			builder.RegisterAssemblyTypes(typeof(AccountService).Assembly)
+			builder.RegisterAssemblyTypes(typeof(UserService).Assembly)
 			.Where(t => t.Name.EndsWith("Service"))
 			.AsImplementedInterfaces().InstancePerRequest();
-			builder.RegisterAssemblyTypes(typeof(LocalPhotoManager).Assembly)
-			.Where(t => t.Name.EndsWith("Manager"))
-			.AsImplementedInterfaces().InstancePerRequest();
+			//builder.RegisterAssemblyTypes(typeof(LocalPhotoManager).Assembly)
+			//.Where(t => t.Name.EndsWith("Manager"))
+			//.AsImplementedInterfaces().InstancePerRequest();
 
 			var container = builder.Build();
 			return container;

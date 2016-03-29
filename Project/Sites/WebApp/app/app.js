@@ -1,6 +1,6 @@
 ﻿var app = angular.module('app',
     ['ngAnimate', 'ngSanitize', 'ui.router', 'ui.router.stateHelper', 'LocalStorageModule', 'angular-loading-bar', 'toaster', 'ui.bootstrap',
-        'ngPatternRestrict', 'ngTable', 'mgcrea.ngStrap.datepicker', 'mgcrea.ngStrap.popover', 'angularFileUpload', "customTemplates"
+        'ngPatternRestrict', 'ngTable', 'mgcrea.ngStrap.datepicker', 'mgcrea.ngStrap.popover', 'angularFileUpload'
     ]);
 
 var urlApiAccount = config.buildUrl("Account");

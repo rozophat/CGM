@@ -18,6 +18,6 @@ namespace Root.Models.Mapping
 		public string Type { get; set; }
 		public int PriceInStar { get; set; }
 		public decimal Price { get; set; }
-		public string Active { get; set; }
+		public bool Active { get; set; }
 	}
 }

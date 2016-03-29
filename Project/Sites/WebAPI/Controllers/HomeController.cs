@@ -11,16 +11,17 @@ namespace WebAPI.Controllers
 {
 	public class HomeController : Controller
 	{
-		public IAccountService _accountService;
-
+		public IUserService _userService;
 		public HomeController(){}
-		public HomeController(IAccountService accountService)
-		{
-			this._accountService = accountService;
-		}
 
+		public HomeController(IUserService userService)
+		{
+			this._userService = userService;
+		}
 		public ActionResult Index()
 		{
+			var user = new UserRepository(new DatabaseFactory());
+			var a = user.GetAll();
 			ViewBag.Title = "Home Page";
 			return View();
 		}

@@ -16,49 +16,35 @@ namespace Root.Data
 			//Database.SetInitializer(new MigrateDatabaseToLatestVersion<CGMContext, Configuration>());
 		}
 
-        public DbSet<Account> Account { get; set; }
-		public DbSet<AccountContact> AccountContact { get; set; }
-		public DbSet<AccountKeyword> AccountKeyword { get; set; }
-		public DbSet<AccountLike> AccountLike { get; set; }
-		public DbSet<Banner> Banner { get; set; }
-		public DbSet<BannerImage> BannerImage { get; set; }
-		public DbSet<BannerImageType> BannerImageType { get; set; }
-		public DbSet<Comment> Comment { get; set; }
-		public DbSet<Keyword> Keyword { get; set; }
-		public DbSet<Listing> Listing { get; set; }
-		public DbSet<ListingKeyword> ListingKeyword { get; set; }
-		public DbSet<ListingAddress> ListingAddress { get; set; }
-		public DbSet<ListingImage> ListingImage { get; set; }
-		public DbSet<ListingLike> ListingLike { get; set; }
-		public DbSet<ListingImageType> ListingImageType { get; set; }
-		public DbSet<Category> Category { get; set; }
+		public DbSet<Asset> Asset { get; set; }
+		public DbSet<Card> Card { get; set; }
+		public DbSet<CardGroup> CardGroup { get; set; }
+		public DbSet<Level> Level { get; set; }
+		public DbSet<PlayerAsset> PlayerAsset { get; set; }
+		public DbSet<Player> Player { get; set; }
+		public DbSet<PlayerCardGroup> PlayerCardGroup { get; set; }
+		public DbSet<PlayerLog> PlayerLog { get; set; }
+		public DbSet<PlayerStar> PlayerStar { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
-            modelBuilder.Configurations.Add(new AccountMap());
-			modelBuilder.Configurations.Add(new AccountContactMap());
-			modelBuilder.Configurations.Add(new AccountKeywordMap());
-			modelBuilder.Configurations.Add(new AccountLikeMap());
-			modelBuilder.Configurations.Add(new BannerMap());
-			modelBuilder.Configurations.Add(new BannerImageMap());
-			modelBuilder.Configurations.Add(new BannerImageTypeMap());
-			modelBuilder.Configurations.Add(new CommentMap());
-			modelBuilder.Configurations.Add(new KeywordMap());
-			modelBuilder.Configurations.Add(new ListingMap());
-			modelBuilder.Configurations.Add(new ListingKeywordMap());
-			modelBuilder.Configurations.Add(new ListingAddressMap());
-			modelBuilder.Configurations.Add(new ListingImageMap());
-			modelBuilder.Configurations.Add(new ListingLikeMap());
-			modelBuilder.Configurations.Add(new ListingImageTypeMap());
-			modelBuilder.Configurations.Add(new CategoryMap());
+			modelBuilder.Configurations.Add(new AssetMap());
+			modelBuilder.Configurations.Add(new CardMap());
+			modelBuilder.Configurations.Add(new CardGroupMap());
+			modelBuilder.Configurations.Add(new LevelMap());
+			modelBuilder.Configurations.Add(new PlayerAssetMap());
+			modelBuilder.Configurations.Add(new PlayerMap());
+			modelBuilder.Configurations.Add(new PlayerCardGroupMap());
+			modelBuilder.Configurations.Add(new PlayerLogMap());
+			modelBuilder.Configurations.Add(new PlayerStarMap());
 
 			base.OnModelCreating(modelBuilder); // This needs to go before the other rules!
 			//authentication db
-			modelBuilder.Entity<User>().ToTable("Users", schemaName);
-			modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles", schemaName);
-			modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins", schemaName);
-			modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims", schemaName);
-			modelBuilder.Entity<IdentityRole>().ToTable("Roles", schemaName);
+			modelBuilder.Entity<User>().ToTable("Users");
+			modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
+			modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
+			modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");
+			modelBuilder.Entity<IdentityRole>().ToTable("Roles");
 		}
 
 		public virtual void Commit()

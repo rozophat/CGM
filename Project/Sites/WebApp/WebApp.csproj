@@ -198,6 +198,7 @@
     <Content Include="app\scripts\libs\angularjs\angular-strap_customized.js" />
     <Content Include="app\scripts\libs\angularjs\angular-touch.js" />
     <Content Include="app\scripts\libs\angularjs\angular-translate-loader-partial_customized.js" />
+    <Content Include="app\scripts\libs\angularjs\angular-translate.js" />
     <Content Include="app\scripts\libs\angularjs\angular-translate_customized.js" />
     <Content Include="app\scripts\libs\angularjs\angular-ui-router.js" />
     <Content Include="app\scripts\libs\angularjs\angular-ui-statehelper.js" />
@@ -482,6 +483,7 @@
     <Content Include="app\scripts\libs\angularjs\i18n\angular-locale_zh.js" />
     <Content Include="app\scripts\libs\angularjs\i18n\angular-locale_zu-za.js" />
     <Content Include="app\scripts\libs\angularjs\i18n\angular-locale_zu.js" />
+    <Content Include="app\scripts\libs\angularjs\loader-partial.js" />
     <Content Include="app\scripts\libs\angularjs\mask_customized.js" />
     <Content Include="app\scripts\libs\angularjs\ng-grid-flexible-height.js" />
     <Content Include="app\scripts\libs\angularjs\ng-grid_customized.js" />
@@ -496,6 +498,12 @@
     <Content Include="app\scripts\libs\bootstrap\dataTables.bootstrap.js" />
     <Content Include="app\scripts\libs\calendar\angular-bootstrap-calendar-tpls.js" />
     <Content Include="app\scripts\libs\jquery\jquery-1.11.1.js" />
+    <Content Include="app\assets\translations\en-AU\card.json" />
+    <Content Include="app\assets\translations\en-AU\common.json" />
+    <Content Include="app\assets\translations\en-AU\player.json" />
+    <Content Include="app\assets\translations\fr-FR\card.json" />
+    <Content Include="app\assets\translations\fr-FR\common.json" />
+    <Content Include="app\assets\translations\fr-FR\player.json" />
     <None Include="app\scripts\libs\jquery\jquery-2.1.1.intellisense.js" />
     <Content Include="app\scripts\libs\jquery\jquery-2.1.1.js" />
     <Content Include="app\scripts\libs\jquery\jquery-migrate-1.2.1.js" />
@@ -575,7 +583,6 @@
     <Content Include="app\views\authentication\reset-password-confirmation.tpl.html" />
     <Content Include="app\views\authentication\lock.tpl.html" />
     <Content Include="app\views\authentication\login.tpl.html" />
-    <Content Include="app\views\authentication\login1.tpl.html" />
     <Content Include="app\views\authentication\not-authorized.tpl.html" />
     <Content Include="app\views\authentication\register.tpl.html" />
     <Content Include="app\views\authentication\reset-password.tpl.html" />

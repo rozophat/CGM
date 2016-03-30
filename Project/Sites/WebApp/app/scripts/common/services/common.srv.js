@@ -1,4 +1,4 @@
-﻿app.service("commonService", function ($rootScope, $http, $q, $filter, Enum, $timeout, $location,
+﻿app.service("commonService", function ($rootScope, $http, $q, $filter, Enum, $timeout, $location, $translate,
 							$anchorScroll) {
 	this.request = function (url, data) {
 		var deferred = $q.defer();
@@ -371,5 +371,18 @@
 		var month = datetime.getMonth();
 		var date = datetime.getDate();
 		return new Date(year, month, date);
+	};
+	
+	this.setLanguage = function (keyLang) {
+		$rootScope.language = keyLang;
+		$translate.use(keyLang);
+		if (keyLang == "en-AU") {
+			angular.element('#currImgLang').attr("src", "dist/images/flags/us.png");
+			angular.element('#currLangName').html("US");
+		}
+		else if (keyLang == "fr-FR") {
+			angular.element('#currImgLang').attr("src", "dist/images/flags/fr.png");
+			angular.element('#currLangName').html("FR");
+		}
 	};
 });

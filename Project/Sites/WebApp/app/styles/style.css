@@ -383,7 +383,7 @@ Header and header elements.
 
 .header .navbar-nav > li.dropdown.user .dropdown-toggle {
   margin: 0 !important;
-  padding: 8px 4px 8px 9px;
+  padding: 11px 4px 5px 9px;
 }
 
 .header .navbar-nav > li.dropdown.user .dropdown-toggle:hover {
@@ -414,6 +414,10 @@ Header and header elements.
 }
 
 /* language bar */
+
+.header .navbar-nav > li.dropdown .langname {
+	color: white;
+}
 
 .header .navbar-nav > li.dropdown.language {
   padding-left: 0;

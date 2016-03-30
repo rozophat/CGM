@@ -124,15 +124,20 @@ gulp.task('clean', function () {
 
 // Views task
 gulp.task('views', function () {
-	util.log(util.colors.yellow('[FONTS] Copy all font files to /dist/views/'));
+	util.log(util.colors.yellow('[FONTS] Copy all font files to /dist/'));
 	gulp.src('./app/fonts/**/*.*')
 		 .pipe(size({ title: "Total font file size: ", showFiles: false }))
 		 .pipe(gulp.dest('dist/fonts/'));
 
-	util.log(util.colors.yellow('[IMAGES] Copy all images files to /dist/views/'));
+	util.log(util.colors.yellow('[IMAGES] Copy all images files to /dist/'));
 	gulp.src('./app/images/**/*.*')
 		 .pipe(size({ title: "Total images file size: ", showFiles: false }))
 		 .pipe(gulp.dest('dist/images/'));
+
+	util.log(util.colors.yellow('[ASSETS] Copy all asset files to /dist/'));
+	gulp.src('./app/assets/**/*.*')
+		 .pipe(size({ title: "Total assets file size: ", showFiles: false }))
+		 .pipe(gulp.dest('dist/assets/'));
 
 	util.log(util.colors.yellow('[VIEWS] Copy all html files to /dist/views/'));
 	// Any other view files from app/views

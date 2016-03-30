@@ -2,15 +2,15 @@
 	<div class="col-md-6">
 		<ng-form name="userLoginForm" class="form-horizontal listing-add-form">
 			<div class="form-body">
-				<h3 class="form-section">Login to your account</h3>
+				<h3 class="form-section">{{ 'LOGIN_HEADER' | translate }}</h3>
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group" ng-class="{'has-error': userLoginForm.UserName.$invalid && !userLoginForm.UserName.$pristine}">
-							<label class="control-label col-md-3">User Name<span class="required">*</span></label>
+							<label class="control-label col-md-3">{{ 'LOGIN_USERNAME' | translate }}<span class="required">*</span></label>
 							<div class="col-md-6">
 								<input type="text" name="UserName" ng-model="LoginData.UserName" required show-errors class="form-control" ng-enter="login()">
 								<span class="help-block" ng-show="userLoginForm.UserName.$invalid && !userLoginForm.UserName.$pristine">
-									This field is required
+									{{ 'LOGIN_INP_REQUIRED' | translate }}
 								</span>
 							</div>
 						</div>
@@ -19,11 +19,11 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group" ng-class="{'has-error': userLoginForm.Password.$invalid && !userLoginForm.Password.$pristine}">
-							<label class="control-label col-md-3">Password<span class="required">*</span></label>
+							<label class="control-label col-md-3">{{ 'LOGIN_PASSWORD' | translate }}<span class="required">*</span></label>
 							<div class="col-md-6">
 								<input type="password" name="Password" ng-model="LoginData.Password" required show-errors class="form-control" ng-enter="login()">
 								<span class="help-block" ng-show="userLoginForm.Password.$invalid && !userLoginForm.Password.$pristine">
-									This field is required
+									{{ 'LOGIN_INP_REQUIRED' | translate }}
 								</span>
 							</div>
 						</div>
@@ -45,7 +45,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="col-md-offset-3 col-md-6">
-							<button type="button" class="btn btn-success" ng-click="login()">Login</button>
+							<button type="button" class="btn btn-success" ng-click="login()">{{ 'LOGIN_BTN_LOGIN' | translate }}</button>
 						</div>
 					</div>
 				</div>
@@ -55,13 +55,13 @@
 	<div class="col-md-6">
 		<ng-form name="forgetPasswordForm" class="form-horizontal listing-add-form">
 			<div class="form-body forget-password">
-				<h3 class="form-section">Forgot Password ?</h3>
+				<h3 class="form-section">{{ 'FORGOT_PASSWORD_HEADER1' | translate }}</h3>
 
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group">
 							<label class="help-block col-md-9">
-								Enter your e-mail address below to reset your password.
+								{{ 'FORGOT_PASSWORD_HEADER2' | translate }}
 							</label>
 						</div>
 					</div>
@@ -70,17 +70,17 @@
 					<div class="col-md-12 email">
 						<div class="form-group" ng-class="{'has-error': (forgetPasswordForm.Email.$invalid && !forgetPasswordForm.Email.$pristine && !forgetPasswordForm.Email.$focused) ||
 																		notExistEmail || wrongFormatEmail}">
-							<label class="control-label col-md-1">Email</label>
+							<label class="control-label col-md-1">{{ 'FORGOT_PASSWORD_EMAIL' | translate }}</label>
 							<div class="col-md-6">
 								<input type="email" name="Email" ng-model="ForgetPassword.Email" required class="form-control" placeholder="Ex: admin@besp.com">
 								<span class="help-block" ng-show="forgetPasswordForm.Email.$invalid && !forgetPasswordForm.Email.$pristine && !forgetPasswordForm.Email.$focused">
-									This field has error.
+									{{ 'FORGOT_PASSWORD_INP_ERROR' | translate }}
 								</span>
 								<span class="help-block" ng-show="notExistEmail">
-									This email doesn't exist
+									{{ 'FORGOT_PASSWORD_EMAIL_NOT_EXIST' | translate }}
 								</span>
 								<span class="help-block" ng-show="wrongFormatEmail">
-									This email have wrong format
+									{{ 'FORGOT_PASSWORD_EMAIL_WRONG_FORMAT' | translate }}
 								</span>
 							</div>
 						</div>
@@ -91,7 +91,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="col-md-offset-1 col-md-6">
-							<button type="button" class="btn btn-success" ng-click="forgetPassword()">Submit</button>
+							<button type="button" class="btn btn-success" ng-click="forgetPassword()">{{ 'FORGOT_PASSWORD_BTN_SUBMIT' | translate }}</button>
 						</div>
 					</div>
 				</div>

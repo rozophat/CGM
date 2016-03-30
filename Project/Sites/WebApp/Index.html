@@ -33,215 +33,241 @@
 	<link rel="shortcut icon" href="favicon.html" />
 </head>
 <body class="page-header-fixed page-sidebar-fixed" ng-controller="MainController">
-    <!-- BEGIN HEADER -->
-    <div class="header navbar navbar-inverse navbar-fixed-top">
-        <!-- BEGIN TOP NAVIGATION BAR -->
-        <div class="header-inner">
-            <!-- BEGIN LOGO -->
-            <a class="navbar-brand" href="#">
-                <table style="border:0px">
-                    <tr>
-                        <td>
-                            <img src="dist/images/logo.png" alt="logo" style="height:15px;" class="img-responsive" />
-                        </td>
-                        <td>
-                            &nbsp;<font style="color:white">Leepsi</font>
-                        </td>
-                    </tr>
-                </table>
-            </a>
-            <!-- END LOGO -->
-            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-            <a ng-show="authentication.isAuth" href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <img src="dist/images/menu-toggler.png" alt="" />
-            </a>
-            <!-- END RESPONSIVE MENU TOGGLER -->
-            <!-- BEGIN TOP NAVIGATION MENU -->
-            <ul ng-show="authentication.isAuth" class="nav navbar-nav pull-right">
-                <li class="devider">
-                    &nbsp;
-                </li>
-                <!-- BEGIN USER LOGIN DROPDOWN -->
-                <li class="dropdown user">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <img alt="" src="dist/images/avatar.PNG" width="28px" />
-                        <span class="username" ng-bind="authentication.userName">
-                        </span>
-                        <i class="fa fa-angle-down"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <!--<li>
-                            <a href="extra_profile.html"><i class="fa fa-user"></i>My Profile</a>
-                        </li>-->
-                        <!--<li class="divider"></li>-->
-                        <li>
-                            <a href="#" ng-click="logOut()"><i class="fa fa-key"></i>Log Out</a>
-                        </li>
-                    </ul>
+	<!-- BEGIN HEADER -->
+	<div class="header navbar navbar-inverse navbar-fixed-top">
+		<!-- BEGIN TOP NAVIGATION BAR -->
+		<div class="header-inner">
+			<!-- BEGIN LOGO -->
+			<a class="navbar-brand" href="#">
+				<table style="border:0px">
+					<tr>
+						<td>
+							<img src="dist/images/logo.png" alt="logo" style="height:15px;" class="img-responsive" />
+						</td>
+						<td>
+							&nbsp;<font style="color:white">Leepsi</font>
+						</td>
+					</tr>
+				</table>
+			</a>
+			<!-- END LOGO -->
+			<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+			<a ng-show="authentication.isAuth" href="javascript:;" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<img src="dist/images/menu-toggler.png" alt="" />
+			</a>
+			<!-- END RESPONSIVE MENU TOGGLER -->
+			<!-- BEGIN TOP NAVIGATION MENU -->
+			<ul class="nav navbar-nav pull-right">
+				<li class="dropdown dropdown-language menu-language">
+					<a data-hover="dropdown" data-close-others="true" href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+						<img id="currImgLang" alt="" src="dist/images/flags/us.png">
+						<span id="currLangName" class="langname">
+							US
+						</span>
+						<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="javascript:void()" ng-click="changeLang('en-AU')">
+								<img alt="" src="dist/images/flags/us.png"> English
+							</a>
+						</li>
+						<li>
+							<a href="javascript:void()" ng-click="changeLang('fr-FR')">
+								<img alt="" src="dist/images/flags/fr.png"> French
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<ul ng-show="authentication.isAuth" class="nav navbar-nav pull-right">
+				<li class="devider">
+					&nbsp;
+				</li>
+				<!-- BEGIN USER LOGIN DROPDOWN -->
+				<li class="dropdown user">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+						<img alt="" src="dist/images/avatar.PNG" width="28px" />
+						<span class="username" ng-bind="authentication.userName">
+						</span>
+						<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu">
+						<!--<li>
+							<a href="extra_profile.html"><i class="fa fa-user"></i>My Profile</a>
+						</li>-->
+						<!--<li class="divider"></li>-->
+						<li>
+							<a href="#" ng-click="logOut()"><i class="fa fa-key"></i>Log Out</a>
+						</li>
+					</ul>
 
-                </li>
-            </ul>
-            <!-- END USER LOGIN DROPDOWN -->
-            <!-- END TOP NAVIGATION MENU -->
-        </div>
-        <!-- END TOP NAVIGATION BAR -->
-    </div>
-    <!-- END HEADER -->
+				</li>
+			</ul>
+			<!-- END USER LOGIN DROPDOWN -->
+			<!-- END TOP NAVIGATION MENU -->
+		</div>
+		<!-- END TOP NAVIGATION BAR -->
+	</div>
+	<!-- END HEADER -->
 
-    <div class="clearfix">
-    </div>
+	<div class="clearfix">
+	</div>
 
-    <div class="page-container">
-        <!-- BEGIN SIDEBAR -->
-        <div ng-if="authentication.isAuth && !authentication.isRootAdmin"
-             ng-include="'dist/views/user/admin-user-menu.tpl.html'">
-        </div>
-        <div ng-if="authentication.isAuth && authentication.isRootAdmin"
-             ng-include="'dist/views/user/root-admin-user-menu.tpl.html'">
-        </div>
-        <!-- END SIDEBAR -->
-        <!-- BEGIN CONTENT -->
-        <div class="page-content-wrapper">
-            <div class="page-content-wrapper">
-                <div class="page-content">
-                    <!-- BEGIN STYLE CUSTOMIZER -->
-                    <div class="theme-panel hidden-xs hidden-sm">
-                        <div class="toggler hidden">
-                            <i class="fa fa-gear"></i>
-                        </div>
-                        <div class="theme-options">
-                            <div class="theme-option theme-colors clearfix">
-                                <span>
-                                    Theme Color
-                                </span>
-                                <ul>
-                                    <li class="color-black current color-default tooltips" data-style="default" data-original-title="Default"></li>
-                                    <li class="color-grey tooltips" data-style="grey" data-original-title="Grey"></li>
-                                    <li class="color-blue tooltips" data-style="blue" data-original-title="Blue"></li>
-                                    <li class="color-red tooltips" data-style="red" data-original-title="Red"></li>
-                                    <li class="color-light tooltips" data-style="light" data-original-title="Light"></li>
-                                </ul>
-                            </div>
-                            <div class="theme-option">
-                                <span>
-                                    Layout
-                                </span>
-                                <select class="layout-option form-control input-small">
-                                    <option value="fluid" selected="selected">Fluid</option>
-                                    <option value="boxed">Boxed</option>
-                                </select>
-                            </div>
-                            <div class="theme-option">
-                                <span>
-                                    Header
-                                </span>
-                                <select class="header-option form-control input-small">
-                                    <option value="fixed" selected="selected">Fixed</option>
-                                    <option value="default">Default</option>
-                                </select>
-                            </div>
-                            <div class="theme-option">
-                                <span>
-                                    Sidebar
-                                </span>
-                                <select class="sidebar-option form-control input-small">
-                                    <option value="fixed">Fixed</option>
-                                    <option value="default" selected="selected">Default</option>
-                                </select>
-                            </div>
-                            <div class="theme-option">
-                                <span>
-                                    Sidebar Position
-                                </span>
-                                <select class="sidebar-pos-option form-control input-small">
-                                    <option value="left" selected="selected">Left</option>
-                                    <option value="right">Right</option>
-                                </select>
-                            </div>
-                            <div class="theme-option">
-                                <span>
-                                    Footer
-                                </span>
-                                <select class="footer-option form-control input-small">
-                                    <option value="fixed">Fixed</option>
-                                    <option value="default" selected="selected">Default</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END BEGIN STYLE CUSTOMIZER -->
-                    <!-- BEGIN PAGE HEADER-->
-                    <toaster-container></toaster-container>
-                    <div ui-view style="padding-top: 60px;"></div>
-                </div>
-            </div>
-        </div>
-        <!-- END CONTENT -->
-        <!--<div ui-view style="padding-top: 50px;"></div>-->
-    </div>
+	<div class="page-container">
+		<!-- BEGIN SIDEBAR -->
+		<div ng-if="authentication.isAuth && !authentication.isRootAdmin"
+			 ng-include="'dist/views/user/admin-user-menu.tpl.html'">
+		</div>
+		<div ng-if="authentication.isAuth && authentication.isRootAdmin"
+			 ng-include="'dist/views/user/root-admin-user-menu.tpl.html'">
+		</div>
+		<!-- END SIDEBAR -->
+		<!-- BEGIN CONTENT -->
+		<div class="page-content-wrapper">
+			<div class="page-content-wrapper">
+				<div class="page-content">
+					<!-- BEGIN STYLE CUSTOMIZER -->
+					<div class="theme-panel hidden-xs hidden-sm">
+						<div class="toggler hidden">
+							<i class="fa fa-gear"></i>
+						</div>
+						<div class="theme-options">
+							<div class="theme-option theme-colors clearfix">
+								<span>
+									Theme Color
+								</span>
+								<ul>
+									<li class="color-black current color-default tooltips" data-style="default" data-original-title="Default"></li>
+									<li class="color-grey tooltips" data-style="grey" data-original-title="Grey"></li>
+									<li class="color-blue tooltips" data-style="blue" data-original-title="Blue"></li>
+									<li class="color-red tooltips" data-style="red" data-original-title="Red"></li>
+									<li class="color-light tooltips" data-style="light" data-original-title="Light"></li>
+								</ul>
+							</div>
+							<div class="theme-option">
+								<span>
+									Layout
+								</span>
+								<select class="layout-option form-control input-small">
+									<option value="fluid" selected="selected">Fluid</option>
+									<option value="boxed">Boxed</option>
+								</select>
+							</div>
+							<div class="theme-option">
+								<span>
+									Header
+								</span>
+								<select class="header-option form-control input-small">
+									<option value="fixed" selected="selected">Fixed</option>
+									<option value="default">Default</option>
+								</select>
+							</div>
+							<div class="theme-option">
+								<span>
+									Sidebar
+								</span>
+								<select class="sidebar-option form-control input-small">
+									<option value="fixed">Fixed</option>
+									<option value="default" selected="selected">Default</option>
+								</select>
+							</div>
+							<div class="theme-option">
+								<span>
+									Sidebar Position
+								</span>
+								<select class="sidebar-pos-option form-control input-small">
+									<option value="left" selected="selected">Left</option>
+									<option value="right">Right</option>
+								</select>
+							</div>
+							<div class="theme-option">
+								<span>
+									Footer
+								</span>
+								<select class="footer-option form-control input-small">
+									<option value="fixed">Fixed</option>
+									<option value="default" selected="selected">Default</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<!-- END BEGIN STYLE CUSTOMIZER -->
+					<!-- BEGIN PAGE HEADER-->
+					<toaster-container></toaster-container>
+					<div ui-view style="padding-top: 60px;"></div>
+				</div>
+			</div>
+		</div>
+		<!-- END CONTENT -->
+		<!--<div ui-view style="padding-top: 50px;"></div>-->
+	</div>
 
 
-    <!--<div ui-view></div>-->
-    <!-- BEGIN FOOTER -->
-    <div class="footer">
-        <div class="footer-inner">
-            2016 &copy; Leepsi
-        </div>
-        <div class="footer-tools">
-            <span class="go-top">
-                <i class="fa fa-angle-up"></i>
-            </span>
-        </div>
-    </div>
-    <!-- END FOOTER -->
-    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-    <!-- BEGIN CORE PLUGINS -->
-    <script src="dist/libs/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
-    <script src="dist/libs/jquery/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
-    <script src="dist/libs/jquery/jquery-ui.min.js"></script>
-    <script src="dist/libs/jquery/jquery.uniform.min.js"></script>
-    <script src="dist/libs/jquery/jquery.cookie.min.js"></script>
-    <script src="dist/libs/jquery/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <script src="http://nervgh.github.io/js/es5-shim.min.js"></script>
-    <script src="http://nervgh.github.io/js/es5-sham.min.js"></script>
-    <script src="dist/libs/angularjs/angular.min.js"></script>
-    <script src="dist/libs/angularjs/angular-local-storage.min.js"></script>
-    <!-- END CORE PLUGINS -->
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script src="dist/libs/bootstrap/bootstrap.min.js" type="text/javascript"></script>
-    <script src="dist/libs/bootstrap/bootstrap-hover-dropdown.min.js"></script>
-    <script src="dist/libs/moment/moment.min.js"></script>
-    <script src="dist/libs/others/select2.min.js"></script>
-    <script type="text/javascript" src="dist/libs/jquery/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="dist/libs/bootstrap/dataTables.bootstrap.min.js"></script>
-    <script src="dist/libs/others/table-advanced.min.js"></script>
-    <script src="dist/libs/angularjs/ng-table.min.js"></script>
-    <!--<script src="dist/libs/others/ui-bootstrap-tpls-0.14.3.min.js"></script>-->
-    <script src="dist/libs/others/ui-bootstrap-tpls_customized.min.js"></script>
-    <script src="dist/libs/others/ui-bootstrap-tpls-instruction_customized.min.js"></script>
-    <script src="dist/libs/angularjs/angular-strap_customized.min.js"></script>
-    <script src="dist/libs/angularjs/angular-strap.tpl.min.js"></script>
-    <script src="dist/libs/angularjs/angular-file-upload.min.js"></script>
-    <script src="dist/libs/angularjs/angular-loading-bar.min.js"></script>
-    <script src="dist/libs/angularjs/angular-sanitize.min.js"></script>
-    <script src="dist/libs/angularjs/angular-animate.min.js"></script>
-    <script src="dist/libs/angularjs/toaster.min.js"></script>
-    <script src="dist/libs/angularjs/angular-ui-router.min.js"></script>
-    <script src="dist/libs/angularjs/angular-ui-statehelper.min.js"></script>
-    <script src="dist/libs/angularjs/ng-pattern-restrict.min.js"></script>
-    <script src="dist/libs/others/underscore.min.js"></script>
-    <!-- END PAGE LEVEL PLUGINS -->
+	<!--<div ui-view></div>-->
+	<!-- BEGIN FOOTER -->
+	<div class="footer">
+		<div class="footer-inner">
+			2016 &copy; Leepsi
+		</div>
+		<div class="footer-tools">
+			<span class="go-top">
+				<i class="fa fa-angle-up"></i>
+			</span>
+		</div>
+	</div>
+	<!-- END FOOTER -->
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+	<!-- BEGIN CORE PLUGINS -->
+	<script src="dist/libs/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+	<script src="dist/libs/jquery/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+	<script src="dist/libs/jquery/jquery-ui.min.js"></script>
+	<script src="dist/libs/jquery/jquery.uniform.min.js"></script>
+	<script src="dist/libs/jquery/jquery.cookie.min.js"></script>
+	<script src="dist/libs/jquery/jquery.slimscroll.min.js" type="text/javascript"></script>
+	<script src="http://nervgh.github.io/js/es5-shim.min.js"></script>
+	<script src="http://nervgh.github.io/js/es5-sham.min.js"></script>
+	<script src="dist/libs/angularjs/angular.min.js"></script>
+	<script src="dist/libs/angularjs/angular-local-storage.min.js"></script>
+	<!-- END CORE PLUGINS -->
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+	<script src="dist/libs/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+	<script src="dist/libs/bootstrap/bootstrap-hover-dropdown.min.js"></script>
+	<script src="dist/libs/moment/moment.min.js"></script>
+	<script src="dist/libs/others/select2.min.js"></script>
+	<script type="text/javascript" src="dist/libs/jquery/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="dist/libs/bootstrap/dataTables.bootstrap.min.js"></script>
+	<script src="dist/libs/others/table-advanced.min.js"></script>
+	<script src="dist/libs/angularjs/ng-table.min.js"></script>
+	<!--<script src="dist/libs/others/ui-bootstrap-tpls-0.14.3.min.js"></script>-->
+	<script src="dist/libs/others/ui-bootstrap-tpls_customized.min.js"></script>
+	<script src="dist/libs/others/ui-bootstrap-tpls-instruction_customized.min.js"></script>
+	<script src="dist/libs/angularjs/angular-strap_customized.min.js"></script>
+	<script src="dist/libs/angularjs/angular-strap.tpl.min.js"></script>
+	<script src="dist/libs/angularjs/angular-translate.min.js"></script>
+	<script src="dist/libs/angularjs/loader-partial.min.js"></script>
+	<!--<script src="dist/libs/angularjs/angular-translate_customized.min.js"></script>
+	<script src="dist/libs/angularjs/angular-translate-loader-partial_customized.min.js"></script>-->
+	<script src="dist/libs/angularjs/angular-file-upload.min.js"></script>
+	<script src="dist/libs/angularjs/angular-loading-bar.min.js"></script>
+	<script src="dist/libs/angularjs/angular-sanitize.min.js"></script>
+	<script src="dist/libs/angularjs/angular-animate.min.js"></script>
+	<script src="dist/libs/angularjs/toaster.min.js"></script>
+	<script src="dist/libs/angularjs/angular-ui-router.min.js"></script>
+	<script src="dist/libs/angularjs/angular-ui-statehelper.min.js"></script>
+	<script src="dist/libs/angularjs/ng-pattern-restrict.min.js"></script>
+	<script src="dist/libs/others/underscore.min.js"></script>
+	<!-- END PAGE LEVEL PLUGINS -->
+	<!-- BEGIN PAGE LEVEL SCRIPTS - HERE ADD Version# to js url-->
+	<script src="dist/libs/others/conquer.min.js?v=0.1.1"></script>
+	<script src="dist/config.js?v=0.1.1" type="text/javascript"></script>
+	<script src="dist/app.min.js?v=0.1.1" type="text/javascript"></script>
+	<!-- END PAGE LEVEL SCRIPTS -->
 
-    <!-- BEGIN PAGE LEVEL SCRIPTS - HERE ADD Version# to js url-->
-    <script src="dist/libs/others/conquer.min.js?v=0.1.1"></script>
-    <script src="dist/config.js?v=0.1.1" type="text/javascript"></script>
-    <script src="dist/app.min.js?v=0.1.1" type="text/javascript"></script>
-    <!-- END PAGE LEVEL SCRIPTS -->
-
-    <script>
-        jQuery(document).ready(function () {
-            App.init(); // initlayout and core plugins
-        });
-    </script>
+	<script>
+		jQuery(document).ready(function () {
+			App.init(); // initlayout and core plugins
+		});
+	</script>
 </body>
 </html>

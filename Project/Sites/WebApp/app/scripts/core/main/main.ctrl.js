@@ -1,4 +1,13 @@
-﻿app.controller('MainController', function ($rootScope, $scope, $location, authService) {
+﻿app.controller('MainController', function ($rootScope, $scope, $location, authService, $translate, $translatePartialLoader, commonService) {
+	$translatePartialLoader.addPart('common');
+	$translate.refresh();
+
+	$scope.changeLang = function (keyLang) {
+		commonService.setLanguage(keyLang);
+		$translate.use(keyLang);
+		//commonService.setElementFocus(null);
+	};
+
 	$scope.logOut = function () {
 		authService.logOut();
 		$location.path('/login');

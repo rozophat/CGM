@@ -1,4 +1,6 @@
-﻿app.controller('LoginController', function ($rootScope, $state, $scope, $location, commonService, authService, notifyService) {
+﻿app.controller('LoginController', function ($rootScope, $state, $scope, $location, commonService, authService, notifyService, $translate, $translatePartialLoader) {
+	//$translatePartialLoader.addPart('common');
+
 	$scope.login = function () {
 		$scope.isLoading = true;
 		$scope.$broadcast('show-errors-check-validity');

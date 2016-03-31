@@ -189,6 +189,8 @@ app.config(['$httpProvider', '$stateProvider', '$locationProvider', '$urlRouterP
    	});
 
    	//language loader
+   	$translatePartialLoaderProvider.addPart('common');
+
    	$translateProvider.useLoader('$translatePartialLoader', {
    		urlTemplate: '/dist/assets/translations/{lang}/{part}.json'
    	});

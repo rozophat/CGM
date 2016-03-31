@@ -18,7 +18,7 @@
 		},
 		 function (err) {
 		 	if (err.error == "invalid_grant") {
-		 		$scope.message = err.error_description;
+		 		//$scope.message = err.error_description;
 		 		$scope.error = true;
 		 	}
 		 })

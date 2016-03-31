@@ -4,6 +4,7 @@
 	"LOGIN_PASSWORD": "Password",
 	"LOGIN_INP_REQUIRED": "This field is required",
 	"LOGIN_BTN_LOGIN": "Login",
+	"LOGIN_ERROR_INFO": "The user name or password is incorrect.",
 	"FORGOT_PASSWORD_HEADER1": "Forgot Password ?",
 	"FORGOT_PASSWORD_HEADER2": "Enter your e-mail address below to reset your password.",
 	"FORGOT_PASSWORD_EMAIL": "Email",

@@ -3,13 +3,13 @@
         'ngPatternRestrict', 'ngTable', 'pascalprecht.translate', 'mgcrea.ngStrap.datepicker', 'mgcrea.ngStrap.popover', 'angularFileUpload'
     ]);
 
-var urlApiAccount = config.buildUrl("Account");
-var urlApiKeyword = config.buildUrl("Keyword");
-var urlApiList = config.buildUrl("List");
-var urlApiCategory = config.buildUrl("Category");
+var urlApiCardGroup = config.buildUrl("CardGroup");
+//var urlApiKeyword = config.buildUrl("Keyword");
+//var urlApiList = config.buildUrl("List");
+//var urlApiCategory = config.buildUrl("Category");
 var urlApiUser = config.buildUrl("User");
 
-var verNo = '?v=0.1.1';
+var verNo = '?v=0.0.1';
 
 app.config(['$httpProvider', '$stateProvider', '$locationProvider', '$urlRouterProvider', 'stateHelperProvider', 'cfpLoadingBarProvider', '$datepickerProvider', '$translateProvider', '$translatePartialLoaderProvider',
    function ($httpProvider, $stateProvider, $locationProvider, $urlRouterProvider, stateHelperProvider, cfpLoadingBarProvider, $datepickerProvider, $translateProvider, $translatePartialLoaderProvider) {
@@ -25,32 +25,32 @@ app.config(['$httpProvider', '$stateProvider', '$locationProvider', '$urlRouterP
    	$urlRouterProvider.otherwise('/login');
 
    	$stateProvider
-   		//.state('accounts', {
-   		//	url: "/accounts/:page/:searchValue",
-   		//	templateUrl: viewUrl + 'account/accounts.tpl.html' + verNo,
-   		//	controller: 'AccountsController',
-   		//	access: {
-   		//		loginRequired: true,
-   		//	}
-   		//})
+   		.state('card-groups', {
+   		    url: "/card-groups/:page/:searchValue",
+   			templateUrl: viewUrl + 'card-group/card-groups.tpl.html' + verNo,
+   			controller: 'CardGroupsController',
+   			access: {
+   				loginRequired: true
+   			}
+   		})
 
-		//.state('account-view', {
-		//	url: "/account/view/:id/:tab/:page",
-		//	templateUrl: viewUrl + 'account/account-view.tpl.html' + verNo,
-		//	controller: 'AccountViewController',
-		//	access: {
-		//		loginRequired: true,
-		//	}
-		//})
+		.state('card-group-view', {
+		    url: "/card-group/view/:id",
+		    templateUrl: viewUrl + 'card-group/card-group-view.tpl.html' + verNo,
+		    controller: 'CardGroupViewController',
+			access: {
+				loginRequired: true
+			}
+		})
 
-		//.state('account-add', {
-		//	url: "/account/add",
-		//	templateUrl: viewUrl + 'account/account-add.tpl.html' + verNo,
-		//	controller: 'AccountAddController',
-		//	access: {
-		//		loginRequired: true,
-		//	}
-		//})
+		.state('card-group-add', {
+		    url: "/card-group/add",
+		    templateUrl: viewUrl + 'card-group/card-group-add.tpl.html' + verNo,
+		    controller: 'CardGroupAddController',
+			access: {
+				loginRequired: true
+			}
+		})
 
 		//.state('listings', {
 		//	url: "/listings/:page/:searchValue",

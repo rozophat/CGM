@@ -178,6 +178,10 @@
     <Content Include="app\scripts\core\authentication\authorization.srv.js" />
     <Content Include="app\scripts\core\authentication\login.ctrl.js" />
     <Content Include="app\scripts\core\authentication\reset-password.ctrl.js" />
+    <Content Include="app\scripts\core\card-group\card-group-add.ctrl.js" />
+    <Content Include="app\scripts\core\card-group\card-group-view.ctrl.js" />
+    <Content Include="app\scripts\core\card-group\card-groups.ctrl.js" />
+    <Content Include="app\scripts\core\card-group\card-group.srv.js" />
     <Content Include="app\scripts\core\main\main.ctrl.js" />
     <Content Include="app\scripts\core\user\user.srv.js" />
     <Content Include="app\scripts\libs\angularjs\angular-animate.js" />
@@ -504,6 +508,8 @@
     <Content Include="app\assets\translations\fr-FR\card.json" />
     <Content Include="app\assets\translations\fr-FR\common.json" />
     <Content Include="app\assets\translations\fr-FR\player.json" />
+    <Content Include="app\assets\translations\en-AU\card-group.json" />
+    <Content Include="app\assets\translations\fr-FR\card-group.json" />
     <None Include="app\scripts\libs\jquery\jquery-2.1.1.intellisense.js" />
     <Content Include="app\scripts\libs\jquery\jquery-2.1.1.js" />
     <Content Include="app\scripts\libs\jquery\jquery-migrate-1.2.1.js" />
@@ -586,7 +592,9 @@
     <Content Include="app\views\authentication\not-authorized.tpl.html" />
     <Content Include="app\views\authentication\register.tpl.html" />
     <Content Include="app\views\authentication\reset-password.tpl.html" />
-    <Content Include="app\views\home\home.tpl.html" />
+    <Content Include="app\views\card-group\card-group-add.tpl.html" />
+    <Content Include="app\views\card-group\card-group-view.tpl.html" />
+    <Content Include="app\views\card-group\card-groups.tpl.html" />
     <Content Include="app\views\modal\create-new-keyword-confirmation-modal.tpl.html" />
     <Content Include="app\views\modal\delete-confirmation-modal.tpl.html" />
     <Content Include="app\views\user\admin-user-menu.tpl.html" />

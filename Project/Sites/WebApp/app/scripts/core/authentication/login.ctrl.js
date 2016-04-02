@@ -13,7 +13,7 @@
 			if (response.userName == "rootadmin") {
 				$location.path('/users');
 			} else {
-				$state.go('accounts');
+				$state.go('card-groups');
 			}
 		},
 		 function (err) {

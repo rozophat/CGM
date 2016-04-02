@@ -223,6 +223,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\CardController.cs" />
+    <Compile Include="Controllers\CardGroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -279,7 +280,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\NewFolder1\" />
     <Folder Include="Views\BasicSetting\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,166 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+        <h3 class="page-title">
+            {{ 'CARD_GROUP_TITLE_EDIT' | translate }}
+        </h3>
+        <ul class="page-breadcrumb breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="javascript:void()">{{ 'HOME_TITLE' | translate }}</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="CardGroups">{{ 'CARD_GROUP_TITLE' | translate }}</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="javascript:void()">View Card Group</a>
+            </li>
+            <li class="pull-right">
+                <div id="dashboard-report-range" class="dashboard-date-range tooltips" data-placement="top" data-original-title="Change dashboard date range">
+                    <i class="fa fa-calendar"></i>
+                    <span></span>
+                    <i class="fa fa-angle-down"></i>
+                </div>
+            </li>
+        </ul>
+        <!-- END PAGE TITLE & BREADCRUMB-->
+    </div>
+</div>
+<!-- END PAGE HEADER-->
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN FORM-->
+        <ng-form name="cardGroupEditForm" class="form-horizontal">
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" ng-class="{'has-error': cardGroupEditForm.Name.$invalid && !cardGroupEditForm.Name.$pristine}">
+                            <label class="control-label col-md-3">{{ 'CARD_GROUP_LABEL_NAME' | translate }}<span class="required">*</span></label>
+                            <div class="col-md-9">
+                                <input type="text" name="Name" ng-model="CardGroup.Name" required show-errors class="form-control">
+                                <span class="help-block" ng-show="cardGroupEditForm.Name.$invalid && !cardGroupEditForm.Name.$pristine">
+                                    This field is required
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{ 'CARD_GROUP_LABEL_DESCRIPTION' | translate }}</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Description" ng-model="CardGroup.Description" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" ng-class="{'has-error': cardGroupEditForm.CreatedDate.$invalid && !cardGroupEditForm.CreatedDate.$pristine}">
+                            <label class="control-label col-md-3">{{ 'CARD_GROUP_LABEL_CREATEDDATE' | translate }}</label>
+                            <div class="col-md-9">
+                                <input type="text" name="CreatedDate" class="form-control" ng-model="CardGroup.CreatedDate" bs-datepicker
+                                       bs-show="showCreatedDatePicker" ng-blur="showCreatedDatePicker = false" ng-click="showCreatedDatePicker = true"
+                                       ng-class="{'error': (cardGroupEditForm.CreatedDate.$error.date && !cardGroupEditForm.CreatedDate.$pristine)}" show-errors>
+                                <span class="help-block" ng-show="cardGroupEditForm.CreatedDate.$error.date && !cardGroupEditForm.CreatedDate.$pristine">
+                                    {{ 'INPUT_WRONG_FORMAT' | translate }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" ng-class="{'has-error': cardGroupEditForm.UpdatedDate.$invalid && !cardGroupEditForm.UpdatedDate.$pristine}">
+                            <label class="control-label col-md-3">{{ 'CARD_GROUP_LABEL_UPDATEDDATE' | translate }}</label>
+                            <div class="col-md-9">
+                                <input type="text" name="UpdatedDate" class="form-control" ng-model="CardGroup.UpdatedDate" bs-datepicker
+                                       bs-show="showUpdatedDatePicker" ng-blur="showUpdatedDatePicker = false" ng-click="showUpdatedDatePicker = true"
+                                       ng-class="{'error': (cardGroupEditForm.UpdatedDate.$error.date && !cardGroupEditForm.UpdatedDate.$pristine)}" show-errors>
+                                <span class="help-block" ng-show="cardGroupEditForm.UpdatedDate.$error.date && !cardGroupEditForm.UpdatedDate.$pristine">
+                                    {{ 'INPUT_WRONG_FORMAT' | translate }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{ 'CARD_GROUP_TABLE_HEADER_APPLEPRODUCTCODE' | translate }}</label>
+                            <div class="col-md-9">
+                                <input type="text" name="AppleProductCode" class="form-control" ng-model="CardGroup.AppleProductCode">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{ 'CARD_GROUP_TABLE_HEADER_GOOGLEPRODUCTCODE' | translate }}</label>
+                            <div class="col-md-9">
+                                <input type="text" name="GoogleProductCode " class="form-control" ng-model="CardGroup.GoogleProductCode ">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{ 'CARD_GROUP_LABEL_TYPE' | translate }}</label>
+                            <div class="col-md-9">
+                                <select class="form-control" ng-model="CardGroup.Type">
+                                    <option value="W">{{ 'CARD_GROUP_TYPE_FREE' | translate }}</option>
+                                    <option value="X">{{ 'CARD_GROUP_TYPE_STARS' | translate }}</option>
+                                    <option value="P">{{ 'CARD_GROUP_TYPE_PURCHASE' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{ 'CARD_GROUP_LABEL_PRICEINSTARS' | translate }}</label>
+                            <div class="col-md-9">
+                                <input type="text" name="PriceInStars" class="form-control" ng-model="CardGroup.PriceInStars"
+                                       ng-pattern-restrict="^\d{0,10}(\.\d{0,2})?$">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{ 'CARD_GROUP_LABEL_PRICE' | translate }}</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Price" class="form-control" ng-model="CardGroup.Price"
+                                       ng-pattern-restrict="^\d{0,10}(\.\d{0,2})?$">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">{{ 'CARD_GROUP_LABEL_ACTIVE' | translate }}</label>
+                            <div class="col-md-9">
+                                <select class="form-control" ng-model="CardGroup.Active">
+                                    <option value="0">{{ 'CARD_GROUP_STATUS_ACTIVE' | translate }}</option>
+                                    <option value="1">{{ 'CARD_GROUP_STATUS_DEACTIVE' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button type="button" class="btn btn-success" ng-click="updateCardGroup()">{{ 'BUTTON_UPDATE_INFORMATION' | translate }}</button>
+                            <button type="button" class="btn btn-default" ng-click="doTheBack()">{{ 'BUTTON_CANCEL' | translate }}</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </div>
+        </ng-form>
+        <!-- END FORM-->
+    </div>
+</div>

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Root.Models;
+using Website.ViewModels.CardGroup;
 
 namespace Service.Mappers
 {
@@ -16,11 +17,12 @@ namespace Service.Mappers
 
 		protected override void Configure()
 		{
-			//Mapper.CreateMap<ResourceActivity,ResourceActivityViewModel>()
-			//    .ForMember(vm => vm.ActivityDateString, dm=> dm.MapFrom(dModel => dModel.ActivityDate.ToLongDateString()));
+            //Mapper.CreateMap<ResourceActivity,ResourceActivityViewModel>()
+            //    .ForMember(vm => vm.ActivityDateString, dm=> dm.MapFrom(dModel => dModel.ActivityDate.ToLongDateString()));
 
-			//Mapper.CreateMap<Department_M, EmployeeViewModel>()
-			//    .ForMember(src => src.DepC, dest => dest.MapFrom(s => s.DepC));
-		}
+            //Mapper.CreateMap<Department_M, EmployeeViewModel>()
+            //    .ForMember(src => src.DepC, dest => dest.MapFrom(s => s.DepC));
+            Mapper.CreateMap<CardGroup, CardGroupViewModel>();
+        }
 	}
 }

@@ -1,9 +1,9 @@
-﻿<div class="modal-header">Confirmation
+﻿<div class="modal-header">{{ 'MODAL_DELETE_CONFIRMATION_TITLE' | translate }}
 </div>
 <div class="modal-body">
-	Are you sure you want to delete this ?
+	{{ 'MODAL_DELETE_CONFIRMATION_MESSAGE' | translate }}
 </div>
 <div class="modal-footer">
-	<input class="btn btn-default btn-primary" ng-click="Ok()" value="Yes" />
-	<input class="btn btn-default btn-warning" ng-click="Cancel()" value="Cancel" />
+	<input class="btn btn-default btn-primary" ng-click="Ok()" value="{{ 'MODAL_BUTTON_OK' | translate }}" />
+	<input class="btn btn-default btn-warning" ng-click="Cancel()" value="{{ 'MODAL_BUTTON_CANCEL' | translate }}" />
 </div>

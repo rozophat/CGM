@@ -10,45 +10,26 @@
 				</div>
 				<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 			</li>
-			<li class="start" ng-class="{active: $state.includes('accounts') || $state.includes('account-view') ||
-													$state.includes('account-add') || $state.includes('listing-view') ||
-													$state.includes('banner-add') || $state.includes('banner-view') ||
-													$state.includes('address-add') || $state.includes('address-view')}">
-				<a ui-sref="accounts">
+			<li class="start" ng-class="{active: $state.includes('card-groups') || $state.includes('card-group-view') ||
+													$state.includes('card-group-add')}">
+				<a ui-sref="card-groups">
 					<i class="fa fa-user"></i>
-					<span class="title">Accounts
+					<span class="title">Card Groups
 					</span>
 					<span class="selected"></span>
 				</a>
 			</li>
-			<li ng-class="{active: $state.includes('listings')}">
-				<a ui-sref="listings">
+			<li ng-class="{active: $state.includes('Cards')}">
+				<a ui-sref="cards">
 					<i class="fa fa-list"></i>
-					<span class="title">Listings
+					<span class="title">Cards
 					</span>
 				</a>
 			</li>
-			<li ng-class="{active: $state.includes('banners')}">
-				<a ui-sref="banners">
+			<li ng-class="{active: $state.includes('Players')}">
+				<a ui-sref="players">
 					<i class="fa fa-flag-o"></i>
-					<span class="title">Banners
-					</span>
-					<span class=""></span>
-				</a>
-			</li>
-			<li ng-class="{active: $state.includes('keywords')}">
-				<a ui-sref="keywords">
-					<i class="fa fa-font"></i>
-					<span class="title">Keywords
-					</span>
-					<span class=""></span>
-				</a>
-			</li>
-			<li ng-class="{active: $state.includes('categories') || $state.includes('category-view') || $state.includes('category-add') }">
-				<a ui-sref="categories">
-					<i class="fa fa-tags"></i>
-					<span class="title">
-						Categories
+					<span class="title">Players
 					</span>
 					<span class=""></span>
 				</a>

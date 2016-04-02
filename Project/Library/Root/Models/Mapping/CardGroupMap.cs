@@ -25,7 +25,7 @@ namespace Root.Models.Mapping
 				.IsUnicode(false)
 				.HasMaxLength(50);
 
-			this.Property(t => t.Decription)
+			this.Property(t => t.Description)
 				.IsUnicode(true);
 
 			this.Property(t => t.AppleProductCode)
@@ -44,8 +44,13 @@ namespace Root.Models.Mapping
 			this.Property(t => t.Price)
 				.HasPrecision(12,0);
 
-			// Table & Column Mappings
-			this.ToTable("CardGroup");
+            this.Property(t => t.Active)
+                .IsUnicode(false)
+               .IsFixedLength()
+               .HasMaxLength(1);
+
+            // Table & Column Mappings
+            this.ToTable("CardGroup");
 		}
 	}
 }

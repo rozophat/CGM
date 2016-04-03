@@ -10,10 +10,10 @@ namespace Root.Models
 	{
 		public string Id { get; set; }
 		public string GroupId { get; set; }
-		public DateTime CreateDate { get; set; }
-		public DateTime UpdatedDate { get; set; }
+		public DateTime? CreatedDate { get; set; }
+		public DateTime? UpdatedDate { get; set; }
 		public string Type { get; set; }
-		public int Difficulty { get; set; }
+		public string Difficulty { get; set; }
 		public string Question1 { get; set; }
 		public string Question2 { get; set; }
 		public string Question3 { get; set; }

@@ -1,13 +1,13 @@
-﻿app.controller('CardGroupAddController', function ($scope, $state, commonService, notifyService, cardGroupService, $translate, $translatePartialLoader) {
-    $translatePartialLoader.addPart('card-group');
+﻿app.controller('CardAddController', function ($scope, $state, commonService, notifyService, cardService, $translate, $translatePartialLoader) {
+    $translatePartialLoader.addPart('card');
 
-    $scope.createCardGroup = function () {
+    $scope.createCard = function () {
         $scope.$broadcast('show-errors-check-validity');
-        if (!$scope.cardGroupAddForm.$valid) {
+        if (!$scope.cardAddForm.$valid) {
             return;
         }
 
-        cardGroupService.createCardGroup(function () {
+        cardService.createCard(function () {
             //reset form field
             //reset();
 
@@ -15,11 +15,11 @@
             notifyService.popCreateSuccessful();
 
             $state.go("cards");
-        }, $scope.CardGroup);
+        }, $scope.Card);
     };
 
     function reset() {
-        $scope.CardGroup = {};
+        $scope.Card = {};
         $scope.$broadcast('show-errors-reset');
     }
 

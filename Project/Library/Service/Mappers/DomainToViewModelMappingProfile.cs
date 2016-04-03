@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Root.Models;
+using Website.ViewModels.Card;
 using Website.ViewModels.CardGroup;
 
 namespace Service.Mappers
@@ -23,6 +24,7 @@ namespace Service.Mappers
             //Mapper.CreateMap<Department_M, EmployeeViewModel>()
             //    .ForMember(src => src.DepC, dest => dest.MapFrom(s => s.DepC));
             Mapper.CreateMap<CardGroup, CardGroupViewModel>();
+            Mapper.CreateMap<Card, CardViewModel>();
         }
 	}
 }

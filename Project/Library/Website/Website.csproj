@@ -54,6 +54,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CardGroup\CardGroupDatatable.cs" />
     <Compile Include="ViewModels\CardGroup\CardGroupViewModel.cs" />
+    <Compile Include="ViewModels\Card\CardDatatable.cs" />
+    <Compile Include="ViewModels\Card\CardViewModel.cs" />
     <Compile Include="ViewModels\Common\ResponseStatus.cs" />
     <Compile Include="ViewModels\User\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\User\ResetPasswordViewModel.cs" />

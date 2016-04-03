@@ -4,9 +4,7 @@
     ]);
 
 var urlApiCardGroup = config.buildUrl("CardGroup");
-//var urlApiKeyword = config.buildUrl("Keyword");
-//var urlApiList = config.buildUrl("List");
-//var urlApiCategory = config.buildUrl("Category");
+var urlApiCard = config.buildUrl("Card");
 var urlApiUser = config.buildUrl("User");
 
 var verNo = '?v=0.0.1';
@@ -35,7 +33,7 @@ app.config(['$httpProvider', '$stateProvider', '$locationProvider', '$urlRouterP
    		})
 
 		.state('card-group-view', {
-		    url: "/card-group/view/:id",
+		    url: "/card-group/view/:id/:tab/:page",
 		    templateUrl: viewUrl + 'card-group/card-group-view.tpl.html' + verNo,
 		    controller: 'CardGroupViewController',
 			access: {
@@ -52,6 +50,32 @@ app.config(['$httpProvider', '$stateProvider', '$locationProvider', '$urlRouterP
 			}
 		})
 
+        .state('cards', {
+            url: "/cards/:page/:searchValue",
+            templateUrl: viewUrl + 'card/cards.tpl.html' + verNo,
+            controller: 'CardsController',
+            access: {
+                loginRequired: true
+            }
+        })
+
+         .state('card-add', {
+             url: "/card/add",
+             templateUrl: viewUrl + 'card/card-add.tpl.html' + verNo,
+             controller: 'CardAddController',
+             access: {
+                 loginRequired: true
+             }
+         })
+
+        .state('card-view', {
+            url: "/card/view/:id",
+            templateUrl: viewUrl + 'card/card-view.tpl.html' + verNo,
+            controller: 'CardViewController',
+            access: {
+                loginRequired: true
+            }
+        })
 		//.state('listings', {
 		//	url: "/listings/:page/:searchValue",
 		//	templateUrl: viewUrl + 'listing/listings.tpl.html' + verNo,

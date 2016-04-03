@@ -19,7 +19,8 @@
 					<span class="selected"></span>
 				</a>
 			</li>
-			<li ng-class="{active: $state.includes('Cards')}">
+			<li ng-class="{active: $state.includes('cards') || $state.includes('card-view') ||
+													$state.includes('card-add')}">
 				<a ui-sref="cards">
 					<i class="fa fa-list"></i>
 					<span class="title">Cards

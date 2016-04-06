@@ -26,10 +26,12 @@ namespace Service.Services
 	{
 		private readonly IUnitOfWork _unitOfWork;
         private readonly ICardRepository _cardRepository;
+        private readonly ICardGroupRepository _cardGroupRepository;
 
-        public CardService(IUnitOfWork unitOfWork, ICardRepository cardRepository)
+        public CardService(IUnitOfWork unitOfWork, ICardRepository cardRepository, ICardGroupRepository cardGroupRepository)
         {
             this._cardRepository = cardRepository;
+            this._cardGroupRepository = cardGroupRepository;
             this._unitOfWork = unitOfWork;
         }
 
@@ -38,7 +40,12 @@ namespace Service.Services
             var card = _cardRepository.Query(p => p.Id == id).FirstOrDefault();
             if (card != null)
             {
+                var cardGroup = _cardGroupRepository.Query(p => p.Id == card.GroupId).FirstOrDefault();
                 var vmCard = Mapper.Map<Card, CardViewModel>(card);
+                if (cardGroup != null)
+                {
+                    vmCard.GroupName = cardGroup.Name;
+                }
                 return vmCard;
             }
             return null;
@@ -46,7 +53,21 @@ namespace Service.Services
 
         public CardDatatable GetCardDatatable(int page, int itemsPerPage, string sortBy, bool reverse, string searchValue)
         {
-            var cards = _cardRepository.GetAllQueryable();
+            //var cards = _cardRepository.GetAllQueryable();
+            var cards = from p in _cardRepository.GetAllQueryable()
+                join q in _cardGroupRepository.GetAllQueryable() on p.GroupId equals q.Id into pq
+                from q in pq.DefaultIfEmpty()
+                select new CardViewModel()
+                {
+                    Id = p.Id,
+                    GroupId = p.GroupId,
+                    GroupName = q.Name,
+                    CreatedDate = p.CreatedDate,
+                    UpdatedDate = p.UpdatedDate,
+                    Type = p.Type,
+                    Difficulty = p.Difficulty
+                };
+
             // searching
             if (!string.IsNullOrWhiteSpace(searchValue))
             {
@@ -60,10 +81,10 @@ namespace Service.Services
             // paging
             var cardsPaged = cardsOrdered.Skip((page - 1) * itemsPerPage).Take(itemsPerPage).ToList();
 
-            var destination = Mapper.Map<List<Card>, List<CardViewModel>>(cardsPaged);
+            //var destination = Mapper.Map<List<Card>, List<CardViewModel>>(cardsPaged);
             var cardDatatable = new CardDatatable()
             {
-                Data = destination,
+                Data = cardsPaged,
                 Total = cards.Count()
             };
             return cardDatatable;

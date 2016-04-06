@@ -35,7 +35,8 @@
         <div class="table-responsive">
             <table ng-table="tableParams" class="table table-striped table-bordered table-hover">
                 <tr ng-repeat="item in $data">
-                    <td style="width: 50px; text-align: center; font-weight:bold" data-title="translateHeaderTables['GroupName']" sortable="'GroupName'">
+                    <td style="width: 50px; text-align: center" data-title="'#'" ng-bind="(tableParams.page() - 1) * tableParams.count() + ($index + 1)"></td>
+                    <td style="width: 20%; text-align: center; font-weight: bold" data-title="translateHeaderTables['GroupName']" sortable="'GroupName'">
                         <a href="#/card-group/view/{{item.GroupId}}/1/1">{{item.GroupName}}</a>
                     </td>
                     <td style="text-align: center" data-title="translateHeaderTables['CreatedDate']" sortable="'CreatedDate'">

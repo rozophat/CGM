@@ -14,7 +14,7 @@
             //display notification
             notifyService.popCreateSuccessful();
 
-            $state.go("cards");
+            $state.go("card-groups");
         }, $scope.CardGroup);
     };
 

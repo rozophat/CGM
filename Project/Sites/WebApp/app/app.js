@@ -1,6 +1,6 @@
 ﻿var app = angular.module('app',
     ['ngAnimate', 'ngSanitize', 'ui.router', 'ui.router.stateHelper', 'LocalStorageModule', 'angular-loading-bar', 'toaster', 'ui.bootstrap',
-        'ngPatternRestrict', 'ngTable', 'pascalprecht.translate', 'mgcrea.ngStrap.datepicker', 'mgcrea.ngStrap.popover', 'angularFileUpload'
+        'ngPatternRestrict', 'ngTable', 'pascalprecht.translate', 'mgcrea.ngStrap.datepicker', 'mgcrea.ngStrap.popover', 'angularFileUpload', 'customTemplates'
     ]);
 
 var urlApiCardGroup = config.buildUrl("CardGroup");

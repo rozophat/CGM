@@ -170,6 +170,7 @@
     <Content Include="app\scripts\common\directives\time-auto-suggest.drv.js" />
     <Content Include="app\scripts\common\directives\validate-date-after-blur.drv.js" />
     <Content Include="app\scripts\common\directives\validation-after-blur.drv.js" />
+    <Content Include="app\scripts\common\module\typeaheads.mdl.js" />
     <Content Include="app\scripts\common\services\common.srv.js" />
     <Content Include="app\scripts\common\services\enum.cnst.js" />
     <Content Include="app\scripts\common\services\notify.srv.js" />
@@ -655,7 +656,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\scripts\common\module\" />
     <Folder Include="dist\" />
   </ItemGroup>
   <PropertyGroup>

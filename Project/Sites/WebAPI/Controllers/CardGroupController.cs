@@ -31,6 +31,12 @@ namespace WebAPI.Controllers
             return Ok(vmCardGroup);
         }
 
+        [Route("api/CardGroup/GetAutoSuggestCardGroup")]
+        public IEnumerable<CardGroupViewModel> GetAutoSuggestCardGroup(string value)
+        {
+            return _cardGroupService.GetAutoSuggestCardGroup(value);
+        }
+
         [Route("api/CardGroup/Datatable")]
         public IHttpActionResult Get(
                   int page = 1,

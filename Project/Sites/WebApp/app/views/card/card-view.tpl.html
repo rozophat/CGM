@@ -39,7 +39,8 @@
                         <div class="form-group">
                             <label class="control-label col-md-3">{{ 'CARD_LABEL_GROUPNAME' | translate }}</label>
                             <div class="col-md-9">
-                                <input type="text" name="GroupName" ng-model="Card.GroupName" class="form-control">
+                                <input type="text" name="GroupName" ng-model="Card.GroupName" class="form-control"
+                                       typeahead="item for item in getASCardGroup($viewValue)" typeahead-template-url="template/typeahead/typeahead-card-group-match.html" typeahead-on-select="onCardGroupSelect($item)">
                             </div>
                         </div>
                     </div>

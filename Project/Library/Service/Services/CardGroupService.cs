@@ -16,6 +16,7 @@ namespace Service.Services
     {
         CardGroupViewModel GetCardGroupInfo(string id);
         CardGroupDatatable GetCardGroupDatatable(int page, int itemsPerPage, string sortBy, bool reverse, string searchValue);
+        IEnumerable<CardGroupViewModel> GetAutoSuggestCardGroup(string value);
         void CreateCardGroup(CardGroupViewModel cardGroup);
         void UpdateCardGroup(CardGroupViewModel cardGroup);
         void DeleteCardGroup(string id);
@@ -70,6 +71,17 @@ namespace Service.Services
                 Total = cardGroups.Count()
             };
             return cardGroupDatatable;
+        }
+
+        public IEnumerable<CardGroupViewModel> GetAutoSuggestCardGroup(string value)
+        {
+            var cardGroups = _cardGroupRepository.Query(p => p.Name.Contains(value));
+            if (cardGroups != null)
+            {
+                var destination = Mapper.Map<IEnumerable<CardGroup>, IEnumerable<CardGroupViewModel>>(cardGroups);
+                return destination;
+            }
+            return null;
         }
 
         public void CreateCardGroup(CardGroupViewModel vmCardGroup)

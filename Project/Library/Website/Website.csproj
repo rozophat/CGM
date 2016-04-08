@@ -57,6 +57,14 @@
     <Compile Include="ViewModels\Card\CardDatatable.cs" />
     <Compile Include="ViewModels\Card\CardViewModel.cs" />
     <Compile Include="ViewModels\Common\ResponseStatus.cs" />
+    <Compile Include="ViewModels\Player\PlayerAssetDatatable.cs" />
+    <Compile Include="ViewModels\Player\PlayerAssetViewModel.cs" />
+    <Compile Include="ViewModels\Player\PlayerCardGroupDatatable.cs" />
+    <Compile Include="ViewModels\Player\PlayerCardGroupViewModel.cs" />
+    <Compile Include="ViewModels\Player\PlayerDatatable.cs" />
+    <Compile Include="ViewModels\Player\PlayerStarDatatable.cs" />
+    <Compile Include="ViewModels\Player\PlayerStarViewModel.cs" />
+    <Compile Include="ViewModels\Player\PlayerViewModel.cs" />
     <Compile Include="ViewModels\User\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\User\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\User\UserDatatables.cs" />

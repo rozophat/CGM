@@ -2,6 +2,7 @@
 using Root.Models;
 using Website.ViewModels.Card;
 using Website.ViewModels.CardGroup;
+using Website.ViewModels.Player;
 
 namespace Service.Mappers
 {
@@ -25,6 +26,7 @@ namespace Service.Mappers
             //    .ForMember(src => src.DepC, dest => dest.MapFrom(s => s.DepC));
             Mapper.CreateMap<CardGroup, CardGroupViewModel>();
             Mapper.CreateMap<Card, CardViewModel>();
+			Mapper.CreateMap<Player, PlayerViewModel>();
         }
 	}
 }

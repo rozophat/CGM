@@ -192,6 +192,7 @@
     <Content Include="app\scripts\core\player\player-card-group\player-card-group-view.ctrl.js" />
     <Content Include="app\scripts\core\player\player-star\player-star-view.ctrl.js" />
     <Content Include="app\scripts\core\player\player-view.ctrl.js" />
+    <Content Include="app\scripts\core\player\player.srv.js" />
     <Content Include="app\scripts\core\player\players.ctrl.js" />
     <Content Include="app\scripts\core\user\user.srv.js" />
     <Content Include="app\scripts\libs\angularjs\angular-animate.js" />

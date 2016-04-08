@@ -6,6 +6,7 @@
 var urlApiCardGroup = config.buildUrl("CardGroup");
 var urlApiCard = config.buildUrl("Card");
 var urlApiUser = config.buildUrl("User");
+var urlApiPlayer = config.buildUrl("Player");
 
 var verNo = '?v=0.0.1';
 

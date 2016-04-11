@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Root.Models;
 using Service.Services;
 using Website.ViewModels.Player;
 
@@ -22,7 +23,43 @@ namespace WebAPI.Controllers
 
 		public IHttpActionResult Get(string id)
 		{
-			var vmPlayer = _playerService.GetCardInfo(id);
+			var vmPlayer = _playerService.GetPlayerInfo(id);
+			if (vmPlayer == null)
+			{
+				return NotFound();
+			}
+			return Ok(vmPlayer);
+		}
+
+		[HttpGet]
+		[Route("api/Player/GetPlayerCardGroupInfo")]
+		public IHttpActionResult GetPlayerCardGroup(string id)
+		{
+			var vmPlayerCardGroup = _playerService.GetPlayerCardGroupInfo(id);
+			if (vmPlayerCardGroup == null)
+			{
+				return NotFound();
+			}
+			return Ok(vmPlayerCardGroup);
+		}
+
+		[HttpGet]
+		[Route("api/Player/GetPlayerStarInfo")]
+		public IHttpActionResult GetPlayerStarInfo(string id)
+		{
+			var vmPlayer = _playerService.GetPlayerInfo(id);
+			if (vmPlayer == null)
+			{
+				return NotFound();
+			}
+			return Ok(vmPlayer);
+		}
+
+		[HttpGet]
+		[Route("api/Player/GetPlayerAssetInfo")]
+		public IHttpActionResult GetPlayerAssetInfo(string id)
+		{
+			var vmPlayer = _playerService.GetPlayerInfo(id);
 			if (vmPlayer == null)
 			{
 				return NotFound();
@@ -38,14 +75,15 @@ namespace WebAPI.Controllers
 				  bool reverse = false,
 				  string search = null)
 		{
-			var cardTable = _playerService.GetCardDatatable(page, itemsPerPage, sortBy, reverse, search);
-			if (cardTable == null)
+			var playerTable = _playerService.GetPlayerDatatable(page, itemsPerPage, sortBy, reverse, search);
+			if (playerTable == null)
 			{
 				return NotFound();
 			}
-			return Ok(cardTable);
+			return Ok(playerTable);
 		}
 
+		[HttpGet]
 		[Route("api/Player/PlayerCardGroupDatatable")]
 		public IHttpActionResult PlayerCardGroupDatatable(
 				  int page = 1,
@@ -63,6 +101,7 @@ namespace WebAPI.Controllers
 			return Ok(cardGroupTable);
 		}
 
+		[HttpGet]
 		[Route("api/Player/PlayerStarDatatable")]
 		public IHttpActionResult PlayerStarDatatable(
 				  int page = 1,
@@ -80,6 +119,7 @@ namespace WebAPI.Controllers
 			return Ok(starTable);
 		}
 
+		[HttpGet]
 		[Route("api/Player/PlayerAssetDatatable")]
 		public IHttpActionResult PlayerAssetDatatable(
 				  int page = 1,
@@ -97,14 +137,56 @@ namespace WebAPI.Controllers
 			return Ok(assetTable);
 		}
 
-		public void Put(PlayerViewModel vmcard)
+		public void Put(PlayerViewModel vmPlayer)
 		{
-			_playerService.UpdateCard(vmcard);
+			_playerService.UpdatePlayer(vmPlayer);
+		}
+
+		[HttpPut]
+		[Route("api/Player/UpdatePlayerCardGroup")]
+		public void UpdatePlayerCardGroup(PlayerCardGroupViewModel vmPlayerCardGroup)
+		{
+			_playerService.UpdatePlayerCardGroup(vmPlayerCardGroup);
+		}
+
+		[HttpPut]
+		[Route("api/Player/UpdatePlayerStar")]
+		public void UpdatePlayerStar(PlayerStarViewModel vmPlayerStar)
+		{
+			_playerService.UpdatePlayerStar(vmPlayerStar);
+		}
+
+		[HttpPut]
+		[Route("api/Player/UpdatePlayerAsset")]
+		public void UpdatePlayerAsset(PlayerAssetViewModel vmPlayerAsset)
+		{
+			_playerService.UpdatePlayerAsset(vmPlayerAsset);
 		}
 
 		public void Delete(string id)
 		{
-			_playerService.DeleteCard(id);
+			_playerService.DeletePlayer(id);
+		}
+
+		[HttpDelete]
+		[Route("api/Profile/DeletePlayerCardGroup/{id}")]
+		public void DeletePlayerCardGroup(string id)
+		{
+			_playerService.DeletePlayerCardGroup(id);
+		}
+
+		[HttpDelete]
+		[Route("api/Profile/DeletePlayerStar/{id}")]
+		public void DeletePlayerStar(string id)
+		{
+			_playerService.DeletePlayerStar(id);
+		}
+
+		[HttpDelete]
+		[Route("api/Profile/DeleteAssetStar/{id}")]
+		public void DeleteAssetStar(string id)
+		{
+			_playerService.DeletePlayerAsset(id);
 		}
 	}
 }

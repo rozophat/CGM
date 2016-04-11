@@ -9,5 +9,7 @@ namespace Website.ViewModels.Player
 {
 	public class PlayerCardGroupViewModel: PlayerCardGroup
 	{
+		public string PlayerFullName { get; set; }
+		public string GroupName { get; set; }
 	}
 }

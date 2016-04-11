@@ -77,14 +77,15 @@ app.config(['$httpProvider', '$stateProvider', '$locationProvider', '$urlRouterP
                 loginRequired: true
             }
         })
-		//.state('listings', {
-		//	url: "/listings/:page/:searchValue",
-		//	templateUrl: viewUrl + 'listing/listings.tpl.html' + verNo,
-		//	controller: 'ListingsController',
-		//	access: {
-		//		loginRequired: true,
-		//	}
-		//})
+	   
+		.state('players', {
+			url: "/players/:page/:searchValue",
+			templateUrl: viewUrl + 'player/players.tpl.html' + verNo,
+			controller: 'PlayersController',
+			access: {
+				loginRequired: true,
+			}
+		})
 
 		//.state('listing-view', {
 		//	url: "/listing/view/:id/:tab/:page",

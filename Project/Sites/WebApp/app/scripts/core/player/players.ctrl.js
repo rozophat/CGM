@@ -13,11 +13,11 @@
 	translateHeaderTable();
 	function translateHeaderTable() {
 		$scope.translateHeaderTables = {
-			'FullName': $translate.instant('PLAYER_TABLE_HEADER_GROUPNAME'),
-			'NickName': $translate.instant('PLAYER_TABLE_HEADER_CREATEDDATE'),
-			'City': $translate.instant('PLAYER_TABLE_HEADER_UPDATEDDATE'),
-			'Points': $translate.instant('PLAYER_TABLE_HEADER_TYPE'),
-			'PointsToWinStar': $translate.instant('PLAYER_TABLE_HEADER_DIFFICULTY')
+			'FullName': $translate.instant('PLAYER_TABLE_HEADER_FULLNAME'),
+			'NickName': $translate.instant('PLAYER_TABLE_HEADER_NICKNAME'),
+			'Address': $translate.instant('PLAYER_TABLE_HEADER_ADDRESS'),
+			'Points': $translate.instant('PLAYER_TABLE_HEADER_POINTS'),
+			'PointsToWinStar': $translate.instant('PLAYER_TABLE_HEADER_POINTSTOWINSTAR')
 		};
 	}
 
@@ -30,7 +30,7 @@
 	}, {
 		total: 0, // length of data
 		getData: function ($defer, params) {
-			$state.transitionTo('cards', { page: params.page(), searchValue: $scope.SearchValue }, { location: "replace", reload: false, notify: false });
+			$state.transitionTo('players', { page: params.page(), searchValue: $scope.SearchValue }, { location: "replace", reload: false, notify: false });
 			var sortInfo = params.orderBy()[0];
 			var pagingInfo = {
 				params: {

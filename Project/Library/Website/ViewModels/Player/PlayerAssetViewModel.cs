@@ -9,5 +9,7 @@ namespace Website.ViewModels.Player
 {
 	public class PlayerAssetViewModel: PlayerAsset
 	{
+		public string PlayerFullName { get; set; }
+		public string AssetName { get; set; }
 	}
 }

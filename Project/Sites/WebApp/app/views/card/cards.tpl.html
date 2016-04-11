@@ -39,11 +39,10 @@
                     <td style="width: 20%; text-align: center; font-weight: bold" data-title="translateHeaderTables['GroupName']" sortable="'GroupName'">
                         <a href="#/card-group/view/{{item.GroupId}}/1/1">{{item.GroupName}}</a>
                     </td>
-                    <td style="text-align: center" data-title="translateHeaderTables['CreatedDate']" sortable="'CreatedDate'">
-                        {{item.CreatedDate | date:'dd/MM/yyyy'}}
-                    </td>
-                    <td style="text-align: center" data-title="translateHeaderTables['UpdatedDate']" sortable="'UpdatedDate'">
-                        {{item.UpdatedDate | date:'dd/MM/yyyy'}}
+                    <td style="text-align: left" data-title="translateHeaderTables['Question']" data-title="'Question'">
+                        {{ item.Question1 }} <br>
+                        {{ item.Question2 }} <br>
+                        {{ item.Question3 }}
                     </td>
                     <td style="text-align: center" data-title="translateHeaderTables['Type']" sortable="'Type'" ng-bind="item.Type"></td>
                     <td style="text-align: center" data-title="translateHeaderTables['Difficulty']">
@@ -59,6 +58,12 @@
                         <span ng-show="item.Difficulty == '4'">
                             {{ 'CARD_DIFFICULTY_EXPERT' | translate }}
                         </span>
+                    </td>
+                    <td style="text-align: center" data-title="translateHeaderTables['CreatedDate']" sortable="'CreatedDate'">
+                        {{item.CreatedDate | date:'dd/MM/yyyy'}}
+                    </td>
+                    <td style="text-align: center" data-title="translateHeaderTables['UpdatedDate']" sortable="'UpdatedDate'">
+                        {{item.UpdatedDate | date:'dd/MM/yyyy'}}
                     </td>
                     <td style="width: 80px; text-align: center">
                         <a href="#/card/view/{{item.Id}}" class="btn btn-default btn-sm ng-scope"><span class="glyphicon glyphicon-pencil"></span></a>

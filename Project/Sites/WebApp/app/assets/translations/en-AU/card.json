@@ -3,6 +3,7 @@
   "CARD_TITLE_ADD": "Add New Card",
   "CARD_TITLE_EDIT": "Edit Card",
   "CARD_TABLE_HEADER_GROUPNAME": "Group Name",
+  "CARD_TABLE_HEADER_QUESTION": "Questions",
   "CARD_TABLE_HEADER_DIFFICULTY": "Difficulty", 
   "CARD_TABLE_HEADER_CREATEDDATE": "Created Date",
   "CARD_TABLE_HEADER_UPDATEDDATE": "Updated Date",

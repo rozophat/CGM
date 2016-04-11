@@ -17,7 +17,8 @@
             'CreatedDate': $translate.instant('CARD_TABLE_HEADER_CREATEDDATE'),
             'UpdatedDate': $translate.instant('CARD_TABLE_HEADER_UPDATEDDATE'),
             'Type': $translate.instant('CARD_TABLE_HEADER_TYPE'),
-            'Difficulty': $translate.instant('CARD_TABLE_HEADER_DIFFICULTY')
+            'Difficulty': $translate.instant('CARD_TABLE_HEADER_DIFFICULTY'),
+            'Question': $translate.instant('CARD_TABLE_HEADER_QUESTION')
         };
     }
 

@@ -53,6 +53,26 @@ namespace WebAPI.Controllers
             return Ok(cardGroupTable);
         }
 
+        [HttpGet]
+        [Route("api/CardGroup/CardDatatable")]
+        public IHttpActionResult CardDatatable(
+                  int page = 1,
+                  int itemsPerPage = 10,
+                  string sortBy = "CreatedDate",
+                  bool reverse = false,
+                  string id = "",
+                  string type = "",
+                  string difficulty = "",
+                  string search = null)
+        {
+            var cardTable = _cardGroupService.GetCardDatatable(page, itemsPerPage, sortBy, reverse, id, type, difficulty, search);
+            if (cardTable == null)
+            {
+                return NotFound();
+            }
+            return Ok(cardTable);
+        }
+
         public void Post(CardGroupViewModel cardGroup)
         {
             _cardGroupService.CreateCardGroup(cardGroup);

@@ -1,10 +1,282 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-	<meta charset="utf-8" />
-</head>
-<body>
+﻿<div class="row">
+	<div class="col-md-12">
+		<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+		<h3 class="page-title">
+			{{ 'PLAYER_TITLE_EDIT' | translate }}
+		</h3>
+		<ul class="page-breadcrumb breadcrumb">
+			<li>
+				<i class="fa fa-home"></i>
+				<a href="javascript:void()">{{ 'HOME_TITLE' | translate }}</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a href="Players">{{ 'PLAYER_TITLE' | translate }}</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a href="javascript:void()">View Player</a>
+			</li>
+			<li class="pull-right">
+				<div id="dashboard-report-range" class="dashboard-date-range tooltips" data-placement="top" data-original-title="Change dashboard date range">
+					<i class="fa fa-calendar"></i>
+					<span></span>
+					<i class="fa fa-angle-down"></i>
+				</div>
+			</li>
+		</ul>
+		<!-- END PAGE TITLE & BREADCRUMB-->
+	</div>
+</div>
+<!-- END PAGE HEADER-->
+<div class="row">
+	<div class="col-md-12">
 
-</body>
-</html>
+		<div class="tabbable tabbable-custom">
+			<ul class="nav nav-tabs">
+				<li ng-class="{active:isSet(1)}"><a href="javascript:;" ng-click="setTab(1)"><i class="fa fa-info-circle fa-fw"></i>Information</a></li>
+				<li ng-class="{active:isSet(2)}"><a href="javascript:;" ng-click="setTab(2)"><i class="fa fa-upload fa-fw"></i>Card Groups</a></li>
+				<li ng-class="{active:isSet(3)}"><a href="javascript:;" ng-click="setTab(3)"><i class="fa fa-upload fa-fw"></i>Stars</a></li>
+				<li ng-class="{active:isSet(4)}"><a href="javascript:;" ng-click="setTab(4)"><i class="fa fa-upload fa-fw"></i>Assets</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane" ng-class="{active:isSet(1)}" ng-show="isSet(1)">
+					<!-- BEGIN FORM-->
+					<ng-form name="playerEditForm" class="form-horizontal">
+						<div class="form-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group" ng-class="{'has-error': playerEditForm.FirstName.$invalid && !playerEditForm.FirstName.$pristine}">
+										<label class="control-label col-md-3">{{ 'PLAYER_LABEL_FIRSTNAME' | translate }}<span class="required">*</span></label>
+										<div class="col-md-9">
+											<input type="text" name="FirstName" ng-model="Player.FirstName" required show-errors class="form-control">
+											<span class="help-block" ng-show="playerEditForm.FirstName.$invalid && !playerEditForm.FirstName.$pristine">
+												This field is required
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group" ng-class="{'has-error': playerEditForm.LastName.$invalid && !playerEditForm.LastName.$pristine}">
+										<label class="control-label col-md-3">{{ 'PLAYER_LABEL_LASTNAME' | translate }}<span class="required">*</span></label>
+										<div class="col-md-9">
+											<input type="text" name="LastName" ng-model="Player.LastName" required show-errors class="form-control">
+											<span class="help-block" ng-show="playerEditForm.LastName.$invalid && !playerEditForm.LastName.$pristine">
+												This field is required
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label col-md-3">{{ 'PLAYER_LABEL_DEVICETOKEN' | translate }}</label>
+										<div class="col-md-9">
+											<input type="text" name="DeviceToken" ng-model="Player.DeviceToken" class="form-control">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label col-md-3">{{ 'PLAYER_LABEL_FACEBOOKID' | translate }}</label>
+										<div class="col-md-9">
+											<input type="text" name="FacebookId" ng-model="Player.FacebookId" class="form-control">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label col-md-3">{{ 'PLAYER_LABEL_NICKNAME' | translate }}</label>
+										<div class="col-md-9">
+											<input type="text" name="NickName" ng-model="Player.NickName" class="form-control">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label col-md-3">{{ 'PLAYER_LABEL_EMAIL' | translate }}</label>
+										<div class="col-md-9">
+											<input type="text" name="Email" ng-model="Player.Email" class="form-control">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label col-md-3">{{ 'PLAYER_LABEL_PASSWORD' | translate }}</label>
+										<div class="col-md-9">
+											<input type="text" name="Password" ng-model="Player.Password" class="form-control">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label col-md-3">{{ 'PLAYER_LABEL_CITY' | translate }}</label>
+										<div class="col-md-9">
+											<input type="text" name="City" ng-model="Player.City" class="form-control">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label col-md-3">{{ 'PLAYER_LABEL_STATE' | translate }}</label>
+										<div class="col-md-9">
+											<input type="text" name="ProvinceState" ng-model="Player.ProvinceState" class="form-control">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label col-md-3">{{ 'PLAYER_LABEL_COUNTRY' | translate }}</label>
+										<div class="col-md-9">
+											<input type="text" name="Country" ng-model="Player.Country" class="form-control">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group" ng-class="{'has-error': playerEditForm.DOB.$invalid && !playerEditForm.DOB.$pristine}">
+                                        <label class="control-label col-md-3">DOB</label>
+                                        <div class="col-md-9">
+                                            <input type="text" name="DOB" class="form-control" ng-model="Player.DOB" bs-datepicker
+                                                   bs-show="showDOBDatePicker" ng-blur="showDOBDatePicker = false" ng-click="showDOBDatePicker = true"
+                                                   ng-class="{'error': (playerEditForm.DOB.$error.date && !playerEditForm.DOB.$pristine)}" show-errors>
+                                            <span class="help-block" ng-show="playerEditForm.DOB.$error.date && !playerEditForm.DOB.$pristine">
+                                                {{ 'INPUT_WRONG_FORMAT' | translate }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label col-md-3">{{ 'PLAYER_LABEL_POINT' | translate }}</label>
+										<div class="col-md-9">
+											<input type="text" name="Points " class="form-control" ng-model="Player.Points "
+											       ng-pattern-restrict="^\d{0,10}(\.\d{0,2})?$">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="control-label col-md-3">{{ 'PLAYER_LABEL_POINSTOWINSTAR' | translate }}</label>
+										<div class="col-md-9">
+											<input type="text" name="PointsToWinStar" class="form-control" ng-model="Player.PointsToWinStar"
+												   ng-pattern-restrict="^\d{0,10}(\.\d{0,2})?$">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="fluid">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="col-md-offset-3 col-md-9">
+										<button type="button" class="btn btn-success" ng-click="updatePlayer()">{{ 'BUTTON_UPDATE_INFORMATION' | translate }}</button>
+										<button type="button" class="btn btn-default" ng-click="doTheBack()">{{ 'BUTTON_CANCEL' | translate }}</button>
+									</div>
+								</div>
+								<div class="col-md-6">
+								</div>
+							</div>
+						</div>
+					</ng-form>
+					<!-- END FORM-->
+				</div>
+				<div class="tab-pane" ng-class="{active:isSet(2)}" ng-show="isSet(2)">
+					<div class="row">
+						<div class="col-md-3">
+							<table ng-table="tableCGParams" class="table table-striped table-bordered table-hover">
+								<tr ng-repeat="item in $data">
+									<td class="center" style="width: 50px" data-title="'#'" ng-bind="(tableCGParams.page() - 1) * tableCGParams.count() + ($index + 1)"></td>
+									<td style="width: 10%; text-align: center; font-weight: bold" data-title="translateHeaderTables['PlayerFullName']" sortable="'PlayerFullName'">
+										<a href="#/player/view/{{item.PlayerId}}/1/1">{{item.PlayerFullName}}</a>
+									</td>
+									<td style="width: 10%; text-align: center; font-weight: bold" data-title="translateHeaderTables['GroupName']" sortable="'GroupName'">
+										<a href="#/card-group/view/{{item.GroupId}}/1/1">{{item.GroupName}}</a>
+									</td>
+									<td style="text-align: center" data-title="translateHeaderTables['PurchasedDate']" sortable="'PurchasedDate'">
+										{{item.PurchasedDate | date:'dd/MM/yyyy'}}
+									</td>
+									<td style="text-align: center" data-title="translateHeaderTables['PurchaseSource']" sortable="'PurchaseSource'" ng-bind="item.PurchaseSource"></td>
+									<td style="text-align: center" data-title="translateHeaderTables['TransactionId']" sortable="'TransactionId'" ng-bind="item.TransactionId"></td>
+									<td style="text-align: center" data-title="translateHeaderTables['StoreCost']" sortable="'StoreCost '" ng-bind="item.StoreCost "></td>
+									<td style="text-align: center" data-title="translateHeaderTables['StarsCost']" sortable="'StarsCost '" ng-bind="item.StarsCost "></td>
+									<td class="center" style="width: 50px">
+										<button class="btn btn-danger btn-sm ng-scope" ng-click="showDeleteCGConfirmation(item.Id)"><span class="glyphicon glyphicon-trash"></span></button>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" ng-class="{active:isSet(3)}" playerfullname ng-show="isSet(3)">
+					<div class="row">
+						<div class="col-md-3">
+							<table ng-table="tableStarParams" class="table table-striped table-bordered table-hover">
+								<tr ng-repeat="item in $data">
+									<td class="center" style="width: 50px" data-title="'#'" ng-bind="(tableStarParams.page() - 1) * tableCGParams.count() + ($index + 1)"></td>
+									<td style="width: 10%; text-align: center; font-weight: bold" data-title="translateHeaderTables['PlayerFullName']" sortable="'PlayerFullName'">
+										<a href="#/player/view/{{item.PlayerId}}/1/1">{{item.PlayerFullName}}</a>
+									</td>
+									<td style="width: 10%; text-align: center; font-weight: bold" data-title="translateHeaderTables['GroupName']" sortable="'GroupName'">
+										<a href="#/card-group/view/{{item.GroupId}}/1/1">{{item.GroupName}}</a>
+									</td>
+									<td style="text-align: center" data-title="translateHeaderTables['CreatedDate']" sortable="'CreatedDate'">
+										{{item.CreatedDate | date:'dd/MM/yyyy'}}
+									</td>
+									<td style="text-align: center" data-title="translateHeaderTables['Used']" sortable="'Used'" ng-bind="item.Used"></td>
+									<td style="text-align: center" data-title="translateHeaderTables['IsPurchased']" sortable="'IsPurchased'" ng-bind="item.IsPurchased"></td>
+									<td style="text-align: center" data-title="translateHeaderTables['PurchaseTransactionId']" sortable="'PurchaseTransactionId'" ng-bind="item.PurchaseTransactionId"></td>
+									<td class="center" style="width: 50px">
+										<button class="btn btn-danger btn-sm ng-scope" ng-click="showDeleteStarConfirmation(item.Id)"><span class="glyphicon glyphicon-trash"></span></button>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" ng-class="{active:isSet(4)}" ng-show="isSet(4)">
+					<div class="row">
+						<div class="col-md-3">
+							<table ng-table="tableAssetParams" class="table table-striped table-bordered table-hover">
+								<tr ng-repeat="item in $data">
+									<td class="center" style="width: 50px" data-title="'#'" ng-bind="(tableAssetParams.page() - 1) * tableAssetParams.count() + ($index + 1)"></td>
+									<td style="width: 10%; text-align: center; font-weight: bold" data-title="translateHeaderTables['PlayerFullName']" sortable="'PlayerFullName'">
+										<a href="#/player/view/{{item.PlayerId}}/1/1">{{item.PlayerFullName}}</a>
+									</td>
+									<td style="width: 10%; text-align: center; font-weight: bold" data-title="translateHeaderTables['AssetName']" sortable="'AssetName'">
+										{{item.AssetName}}
+									</td>
+									<td style="text-align: center" data-title="translateHeaderTables['CreatedDate']" sortable="'CreatedDate'">
+										{{item.CreatedDate | date:'dd/MM/yyyy'}}
+									</td>
+									<td style="text-align: center" data-title="translateHeaderTables['Used']" sortable="'Used'" ng-bind="item.Used"></td>
+								    <td style="text-align: center" data-title="translateHeaderTables['UsedDate']" sortable="'UsedDate '">
+								        {{item.UsedDate | date:'dd/MM/yyyy'}}
+								    </td>
+                                    <td style="width: 80px; text-align: center">
+                                        <a href="#/player/asset/view/{{item.PlayerId}}/{{item.Id}}" class="btn btn-default btn-sm ng-scope"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    </td>
+									<td class="center" style="width: 50px">
+										<button class="btn btn-danger btn-sm ng-scope" ng-click="showDeleteAssetConfirmation(item.Id)"><span class="glyphicon glyphicon-trash"></span></button>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</div>

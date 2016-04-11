@@ -27,12 +27,12 @@
 					</span>
 				</a>
 			</li>
-			<li ng-class="{active: $state.includes('Players')}">
+		    <li ng-class="{active: $state.includes('players') || $state.includes('player-view') || $state.includes('player-card-group-view') ||
+                                $state.includes('player-asset-view') || $state.includes('player-star-view')}">
 				<a ui-sref="players">
 					<i class="fa fa-flag-o"></i>
 					<span class="title">Players
 					</span>
-					<span class=""></span>
 				</a>
 			</li>
 		</ul>

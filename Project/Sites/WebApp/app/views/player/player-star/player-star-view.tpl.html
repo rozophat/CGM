@@ -1,10 +1,112 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-	<meta charset="utf-8" />
-</head>
-<body>
-
-</body>
-</html>
+﻿<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+        <h3 class="page-title">
+            {{ 'CARD_TITLE_EDIT' | translate }}
+        </h3>
+        <ul class="page-breadcrumb breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="javascript:void()">{{ 'HOME_TITLE' | translate }}</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="players">{{ 'CARD_TITLE' | translate }}</a>
+                <i class="fa fa-angle-right"></i>
+            </li>
+            <li>
+                <a href="javascript:void()">{{ 'CARD_TITLE_EDIT' | translate }}</a>
+            </li>
+            <li class="pull-right">
+                <div id="dashboard-report-range" class="dashboard-date-range tooltips" data-placement="top" data-original-title="Change dashboard date range">
+                    <i class="fa fa-calendar"></i>
+                    <span></span>
+                    <i class="fa fa-angle-down"></i>
+                </div>
+            </li>
+        </ul>
+        <!-- END PAGE TITLE & BREADCRUMB-->
+    </div>
+</div>
+<!-- END PAGE HEADER-->
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN FORM-->
+        <ng-form name="playerStarEditForm" class="form-horizontal">
+            <div class="form-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group" ng-class="{'has-error': playerStarEditForm.CreatedDate.$invalid && !playerStarEditForm.CreatedDate.$pristine}">
+                            <label class="control-label col-md-3">Created Date</label>
+                            <div class="col-md-9">
+                                <input type="text" name="CreatedDate" class="form-control" ng-model="PlayerStar.CreatedDate" bs-datepicker
+                                       bs-show="showCreatedDatePicker" ng-blur="showCreatedDatePicker = false" ng-click="showCreatedDatePicker = true"
+                                       ng-class="{'error': (playerStarEditForm.CreatedDate.$error.date && !playerStarEditForm.CreatedDate.$pristine)}" show-errors>
+                                <span class="help-block" ng-show="playerStarEditForm.CreatedDate.$error.date && !playerStarEditForm.CreatedDate.$pristine">
+                                    {{ 'INPUT_WRONG_FORMAT' | translate }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Used</label>
+                            <div class="col-md-9">
+                                <select class="form-control" ng-model="PlayerStar.Used">
+                                    <option value="0">No Use</option>
+                                    <option value="1">Used</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Player - Card Group</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control"
+                                       typeahead="item for item in getASPlayerCardGroup($viewValue)" typeahead-template-url="template/typeahead/typeahead-player-cardgroup-match.html" typeahead-on-select="onPlayerCardGroupSelect($item)">
+                                <span>{{PlayerFullName}}</span> - <span>{{GroupName}}</span><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Purchase Source</label>
+                            <div class="col-md-9">
+                                <select class="form-control" ng-model="PlayerStar.PurchaseSource">
+                                    <option value="0">No Use</option>
+                                    <option value="1">Used</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Transaction Id</label>
+                        <div class="col-md-9">
+                            <input type="text" name="TransactionId" class="form-control" ng-model="PlayerStar.TransactionId">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-offset-3 col-md-9">
+                            <button type="button" class="btn btn-success" ng-click="updatePlayerStar()">{{ 'BUTTON_UPDATE_INFORMATION' | translate }}</button>
+                            <button type="button" class="btn btn-default" ng-click="doTheBack()">{{ 'BUTTON_CANCEL' | translate }}</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+            </div>
+        </ng-form>
+        <!-- END FORM-->
+    </div>
+</div>

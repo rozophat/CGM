@@ -91,7 +91,7 @@
 
     $scope.Search = function() {
         $scope.tableCGParams.reload();
-    }
+    };
 
     //TAB Handler
     $scope.defaultTab = function (tabId) {

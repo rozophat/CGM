@@ -8,3 +8,13 @@ angular.module("template/typeahead/typeahead-card-group-match.html", []).run(["$
 		"</a>"
 	);
 }]);
+
+angular.module("template/typeahead/typeahead-card-match.html", []).run(["$templateCache", function ($templateCache) {
+	$templateCache.put("template/typeahead/typeahead-card-match.html",
+		"<a tabindex=\"-1\">" +
+			"<span bind-html-unsafe=\"match.label.Question1 | typeaheadHighlight:query\"></span><br>" +
+			"<span bind-html-unsafe=\"match.label.Question2 | typeaheadHighlight:query\"></span><br>" +
+			"<span bind-html-unsafe=\"match.label.Question3 | typeaheadHighlight:query\"></span><br>" +
+		"</a>"
+	);
+}]);

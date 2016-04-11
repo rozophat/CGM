@@ -12,7 +12,15 @@
 		if ($scope.currTab == 2) {
 		    $scope.tableCGParams.$params.page = $scope.currPage;
 		}
+		if ($scope.currTab == 3) {
+			$scope.tableStarParams.$params.page = $scope.currPage;
+		}
+		if ($scope.currTab == 4) {
+			$scope.tableAssetParams.$params.page = $scope.currPage;
+		}
 	}
+
+	var dialogTemplatePath = "dist/views/modal/";
 
 	//UPDATE PLAYER INFORMATION
 	var sendData = { params: { id: $scope.id } };
@@ -23,13 +31,13 @@
 		}
 	});
 
-	$scope.updatePlayerGroup = function () {
+	$scope.updatePlayer = function () {
 		$scope.$broadcast('show-errors-check-validity');
-		if (!$scope.playerGroupEditForm.$valid) {
+		if (!$scope.playerEditForm.$valid) {
 			return;
 		}
 
-		playerService.updatePlayerGroup(function () {
+		playerService.updatePlayer(function () {
 			//display notification
 			notifyService.popUpdateSuccessful();
 
@@ -69,6 +77,29 @@
 		}
 	});
 	
+	$scope.showDeleteCGConfirmation = function (id) {
+		var modalInstance = $modal.open({
+			templateUrl: dialogTemplatePath + 'delete-confirmation-modal.tpl.html',
+			controller: 'ConfirmModalCtrl',
+			windowClass: "confirmation-modal",
+		});
+
+		modalInstance.result.then(function () {
+			deletePlayerCardGroup(id);
+		}, function () {
+		});
+	};
+
+	var deletePlayerCardGroup = function (id) {
+		playerService.deletePlayerCardGroup(function () {
+			//reload datatable
+			$scope.tableCGParams.reload();
+
+			//display notification
+			notifyService.popDeleteSuccessful();
+		}, id);
+	};
+
 	//STARS
 	$scope.tableStarParams = new ngTableParams({
 		page: 1,            // show first page
@@ -101,6 +132,29 @@
 		}
 	});
 	
+	$scope.showDeleteStarConfirmation = function (id) {
+		var modalInstance = $modal.open({
+			templateUrl: dialogTemplatePath + 'delete-confirmation-modal.tpl.html',
+			controller: 'ConfirmModalCtrl',
+			windowClass: "confirmation-modal",
+		});
+
+		modalInstance.result.then(function () {
+			deletePlayerStar(id);
+		}, function () {
+		});
+	};
+
+	var deletePlayerStar = function (id) {
+		playerService.deletePlayerStar(function () {
+			//reload datatable
+			$scope.tableStarParams.reload();
+
+			//display notification
+			notifyService.popDeleteSuccessful();
+		}, id);
+	};
+
 	//ASSETS
 	$scope.tableAssetParams = new ngTableParams({
 		page: 1,            // show first page
@@ -133,6 +187,29 @@
 		}
 	});
 
+	$scope.showDeleteAssetConfirmation = function (id) {
+		var modalInstance = $modal.open({
+			templateUrl: dialogTemplatePath + 'delete-confirmation-modal.tpl.html',
+			controller: 'ConfirmModalCtrl',
+			windowClass: "confirmation-modal",
+		});
+
+		modalInstance.result.then(function () {
+			deletePlayerAsset(id);
+		}, function () {
+		});
+	};
+
+	var deletePlayerAsset = function (id) {
+		playerService.deletePlayerAsset(function () {
+			//reload datatable
+			$scope.tableAssetParams.reload();
+
+			//display notification
+			notifyService.popDeleteSuccessful();
+		}, id);
+	};
+
 	//TAB Handler
 	$scope.defaultTab = function (tabId) {
 		$scope.tab = tabId;
@@ -141,10 +218,16 @@
 	$scope.setTab = function (tabId) {
 		$scope.tab = tabId;
 		var page = 1;
-		//if (tabId == 4) {
-		//    page = $scope.tablePAParams.$params.page;
-		//}
-		$state.transitionTo('card-group-view', { id: $scope.id, tab: tabId, page: page }, { location: "replace", reload: false, notify: false });
+		if (tabId == 2) {
+			page = $scope.tableCGParams.$params.page;
+		}
+		if (tabId == 3) {
+			page = $scope.tableStarParams.$params.page;
+		}
+		if (tabId == 4) {
+			page = $scope.tableAssetParams.$params.page;
+		}
+		$state.transitionTo('player-view', { id: $scope.id, tab: tabId, page: page }, { location: "replace", reload: false, notify: false });
 		console.log('Show Tab');
 	};
 

@@ -23,6 +23,7 @@ namespace Service.Mappers
             Mapper.CreateMap<CardGroupViewModel, CardGroup>();
 			Mapper.CreateMap<CardViewModel, Card>();
 			Mapper.CreateMap<PlayerViewModel, Player>();
+			Mapper.CreateMap<PlayerAssetViewModel, PlayerAsset>();
         }
 	}
 }

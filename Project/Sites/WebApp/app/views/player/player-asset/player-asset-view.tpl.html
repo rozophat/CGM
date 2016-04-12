@@ -2,7 +2,7 @@
 	<div class="col-md-12">
 		<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 		<h3 class="page-title">
-			{{ 'CARD_TITLE_EDIT' | translate }}
+			{{ 'PLAYER_ASSET_TITLE_EDIT' | translate }}
 		</h3>
 		<ul class="page-breadcrumb breadcrumb">
 			<li>
@@ -11,11 +11,15 @@
 				<i class="fa fa-angle-right"></i>
 			</li>
 			<li>
-				<a href="players">{{ 'CARD_TITLE' | translate }}</a>
+				<a ui-sref="players">{{ 'PLAYER_TITLE' | translate }}</a>
 				<i class="fa fa-angle-right"></i>
 			</li>
 			<li>
-				<a href="javascript:void()">{{ 'CARD_TITLE_EDIT' | translate }}</a>
+				<a ui-sref="player-view({id: PlayerAsset.PlayerId})">{{PlayerAsset.PlayerId}}</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<span>{{ 'VIEW_DETAIL_TITLE' | translate }}</span>
 			</li>
 			<li class="pull-right">
 				<div id="dashboard-report-range" class="dashboard-date-range tooltips" data-placement="top" data-original-title="Change dashboard date range">
@@ -37,18 +41,16 @@
 				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group">
-							<label class="control-label col-md-3">Asset Name</label>
+							<label class="control-label col-md-3">{{ 'PLAYER_LABEL_ASSET_ASSETNAME' | translate }}</label>
 							<div class="col-md-9">
-                                <input type="text" name="AssetName" class="form-control" ng-model="PlayerAsset.AssetName"
-                                       typeahead="item for item in getASAsset($viewValue)" typeahead-template-url="template/typeahead/typeahead-asset-match.html" typeahead-on-select="onAssetSelect($item)">
+								<input type="text" name="AssetName" class="form-control" ng-model="PlayerAsset.AssetName"
+								       typeahead="item for item in getASAsset($viewValue)" typeahead-template-url="template/typeahead/typeahead-asset-match.html" typeahead-on-select="onAssetSelect($item)">
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group" ng-class="{'has-error': playerAssetEditForm.CreatedDate.$invalid && !playerAssetEditForm.CreatedDate.$pristine}">
-							<label class="control-label col-md-3">Create Date</label>
+							<label class="control-label col-md-3">{{ 'PLAYER_LABEL_ASSET_CREATEDDATE' | translate }}</label>
 							<div class="col-md-9">
 								<input type="text" name="CreatedDate" class="form-control" ng-model="PlayerAsset.CreatedDate" bs-datepicker
 									   bs-show="showCreatedDatePicker" ng-blur="showCreatedDatePicker = false" ng-click="showCreatedDatePicker = true"
@@ -59,9 +61,11 @@
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group" ng-class="{'has-error': playerAssetEditForm.UpdatedDate.$invalid && !playerAssetEditForm.UpdatedDate.$pristine}">
-							<label class="control-label col-md-3">Used</label>
+							<label class="control-label col-md-3">{{ 'PLAYER_LABEL_ASSET_USED' | translate }}</label>
 							<div class="col-md-9">
 								<select class="form-control" ng-model="PlayerAsset.Used">
 									<option value="0">Not Use</option>
@@ -70,11 +74,9 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group" ng-class="{'has-error': playerAssetEditForm.UsedDate.$invalid && !playerAssetEditForm.UsedDate.$pristine}">
-							<label class="control-label col-md-3">Used Date</label>
+							<label class="control-label col-md-3">{{ 'PLAYER_LABEL_ASSET_USEDDATE' | translate }}</label>
 							<div class="col-md-9">
 								<input type="text" name="UsedDate" class="form-control" ng-model="PlayerAsset.UsedDate" bs-datepicker
 									   bs-show="showUsedDatePicker" ng-blur="showUsedDatePicker = false" ng-click="showUsedDatePicker = true"
@@ -85,16 +87,17 @@
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group">
-							<label class="control-label col-md-3">{{ 'CARD_LABEL_GROUPNAME' | translate }}</label>
+							<label class="control-label col-md-3">{{ 'PLAYER_LABEL_ASSET_USEDCARD' | translate }}</label>
 							<div class="col-md-9">
-								<input type="text" class="form-control"
-									   typeahead="item for item in getASCard($viewValue)" typeahead-template-url="template/typeahead/typeahead-card-match.html" typeahead-on-select="onCardSelect($item)">
+								<input type="text" class="form-control" typeahead="item for item in getASCard($viewValue)" typeahead-template-url="template/typeahead/typeahead-card-match.html" typeahead-on-select="onCardSelect($item)">
 								<span>{{Question1}}</span><br>
 								<span>{{Question2}}</span><br>
 								<span>{{Question3}}</span><br>
-								<!--<span>Type: {{Type}}</span>--> - <span>Difficulty: {{Difficulty}}</span>
+								<!--<span>Type: {{Type}}</span>--> - <!--<span>Difficulty: {{Difficulty}}</span>-->
 							</div>
 						</div>
 					</div>

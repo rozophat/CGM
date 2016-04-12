@@ -1,6 +1,7 @@
 {
   "HOME_TITLE": "Home",
   "LABLE_SEARCH":  "Search",
+  "VIEW_DETAIL_TITLE": "View Detail",
   "LOGIN_HEADER": "Login to your account",
   "LOGIN_USERNAME": "Username",
   "LOGIN_PASSWORD": "Password",
@@ -13,6 +14,7 @@
   "FORGOT_PASSWORD_INP_ERROR": "This field has error.",
   "FORGOT_PASSWORD_EMAIL_NOT_EXIST": "This email doesn't exist",
   "FORGOT_PASSWORD_EMAIL_WRONG_FORMAT": "This email is wrong format",
+  "INPUT_REQUIRED": "This field is required",
   "INPUT_WRONG_FORMAT": "This field is wrong format",
   "FORGOT_PASSWORD_BTN_SUBMIT": "Submit",
   "BUTTON_CANCEL": "Cancel",

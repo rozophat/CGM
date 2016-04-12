@@ -108,7 +108,7 @@ app.config(['$httpProvider', '$stateProvider', '$locationProvider', '$urlRouterP
            })
 
           .state('player-asset-view', {
-              url: "/player/asset/view/:playerId/:id",
+              url: "/player/asset/view/:id",
               templateUrl: viewUrl + 'player/player-asset/player-asset-view.tpl.html' + verNo,
               controller: 'PlayerAssetViewController',
               access: {

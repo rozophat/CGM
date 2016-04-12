@@ -47,7 +47,7 @@ namespace WebAPI.Controllers
 		[Route("api/Player/GetPlayerStarInfo")]
 		public IHttpActionResult GetPlayerStarInfo(string id)
 		{
-			var vmPlayer = _playerService.GetPlayerInfo(id);
+			var vmPlayer = _playerService.GetPlayerStarInfo(id);
 			if (vmPlayer == null)
 			{
 				return NotFound();
@@ -59,7 +59,7 @@ namespace WebAPI.Controllers
 		[Route("api/Player/GetPlayerAssetInfo")]
 		public IHttpActionResult GetPlayerAssetInfo(string id)
 		{
-			var vmPlayer = _playerService.GetPlayerInfo(id);
+			var vmPlayer = _playerService.GetAssetInfo(id);
 			if (vmPlayer == null)
 			{
 				return NotFound();

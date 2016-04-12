@@ -27,21 +27,24 @@
 
 	translateHeaderTable();
 	function translateHeaderTable() {
-	    $scope.translateHeaderTables = {
-	        'PlayerFullName': $translate.instant('PLAYER_TABLE_HEADER_FULLNAME'),
-	        'GroupName': $translate.instant('PLAYER_TABLE_HEADER_NICKNAME'),
-	        'PurchasedDate': $translate.instant('PLAYER_TABLE_HEADER_ADDRESS'),
-	        'PurchaseSource': $translate.instant('PLAYER_TABLE_HEADER_POINTS'),
+		$scope.translateHeaderTables = {
+			'FullName': $translate.instant('PLAYER_TABLE_HEADER_FULLNAME'),
+			'PlayerFullName': $translate.instant('PLAYER_TABLE_HEADER_PLAYERFULLNAME'),
+			'GroupName': $translate.instant('PLAYER_TABLE_HEADER_GROUPNAME'),
+			'Address': $translate.instant('PLAYER_TABLE_HEADER_ADDRESS'),
+			'PurchasedDate': $translate.instant('PLAYER_CARDGROUP_TABLE_HEADER_PURCHASEDDATE'),
+			'PurchaseSource': $translate.instant('PLAYER_CARDGROUP_TABLE_HEADER_PURCHASESOURCE'),
+	        'Points': $translate.instant('PLAYER_TABLE_HEADER_POINTS'),
 	        'PointsToWinStar': $translate.instant('PLAYER_TABLE_HEADER_POINTSTOWINSTAR'),
-	        'TransactionId': $translate.instant('PLAYER_TABLE_HEADER_POINTSTOWINSTAR'),
-	        'StoreCost': $translate.instant('PLAYER_TABLE_HEADER_POINTSTOWINSTAR'),
-	        'StarsCost': $translate.instant('PLAYER_TABLE_HEADER_POINTSTOWINSTAR'),
-	        'CreatedDate': $translate.instant('PLAYER_TABLE_HEADER_POINTSTOWINSTAR'),
-	        'Used': $translate.instant('PLAYER_TABLE_HEADER_POINTSTOWINSTAR'),
-	        'IsPurchased': $translate.instant('PLAYER_TABLE_HEADER_POINTSTOWINSTAR'),
-	        'PurchaseTransactionId': $translate.instant('PLAYER_TABLE_HEADER_POINTSTOWINSTAR'),
-	        'AssetName': $translate.instant('PLAYER_TABLE_HEADER_POINTSTOWINSTAR'),
-	        'UsedDate': $translate.instant('PLAYER_TABLE_HEADER_POINTSTOWINSTAR')
+	        'TransactionId': $translate.instant('PLAYER_CARDGROUP_TABLE_HEADER_TRANSACTIONID'),
+	        'StoreCost': $translate.instant('PLAYER_CARDGROUP_TABLE_HEADER_STORECOST'),
+	        'StarsCost': $translate.instant('PLAYER_CARDGROUP_TABLE_HEADER_STARSCOST'),
+	        'CreatedDate': $translate.instant('PLAYER_TABLE_HEADER_CREATEDDATE'),
+	        'Used': $translate.instant('PLAYER_TABLE_HEADER_USED'),
+	        'IsPurchased': $translate.instant('PLAYER_STAR_TABLE_HEADER_ISPURCHASED'),
+	        'PurchaseTransactionId': $translate.instant('PLAYER_STAR_TABLE_HEADER_PURCHASETRANSACTIONID'),
+	        'AssetName': $translate.instant('PLAYER_ASSET_TABLE_HEADER_ASSETNAME'),
+	        'UsedDate': $translate.instant('PLAYER_ASSET_TABLE_HEADER_USEDDATE')
 	    };
 	}
 

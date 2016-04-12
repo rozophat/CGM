@@ -43,11 +43,12 @@ namespace Service.Services
 		private readonly IPlayerStarRepository _playerStarRepository;
 		private readonly IAssetRepository _assetRepository;
 		private readonly ICardGroupRepository _cardGroupRepository;
+		private readonly ICardRepository _cardRepository;
 
-		public PlayerService(IUnitOfWork unitOfWork, IPlayerRepository playerRepository, 
+		public PlayerService(IUnitOfWork unitOfWork, IPlayerRepository playerRepository,
 							IPlayerCardGroupRepository playerCardGroupRepository, ICardGroupRepository cardGroupRepository,
 							IPlayerAssetRepository playerAssetRepository, IPlayerStarRepository playerStarRepository,
-							IAssetRepository assetRepository)
+							IAssetRepository assetRepository, ICardRepository cardRepository)
 		{
 			this._playerRepository = playerRepository;
 			this._playerCardGroupRepository = playerCardGroupRepository;
@@ -55,6 +56,7 @@ namespace Service.Services
 			this._playerAssetRepository = playerAssetRepository;
 			this._playerStarRepository = playerStarRepository;
 			this._assetRepository = assetRepository;
+			this._cardRepository = cardRepository;
 			this._unitOfWork = unitOfWork;
 		}
 
@@ -93,13 +95,29 @@ namespace Service.Services
 
 		public PlayerAssetViewModel GetAssetInfo(string id)
 		{
-			var assetPlayer = _playerAssetRepository.Query(p => p.Id == id).FirstOrDefault();
-			if (assetPlayer != null)
-			{
-				var vmPlayerAsset = Mapper.Map<PlayerAsset, PlayerAssetViewModel>(assetPlayer);
-				return vmPlayerAsset;
-			}
-			return null;
+
+			var assetPlayer = (from p in _playerAssetRepository.GetAllQueryable()
+							  join a in _assetRepository.GetAllQueryable() on p.AssetId equals a.Id into pa
+							  from a in pa.DefaultIfEmpty()
+							  join q in _cardRepository.GetAllQueryable() on p.UsedCardId equals q.Id into paq
+							  from q in paq.DefaultIfEmpty()
+							  where p.Id == id
+							  select new PlayerAssetViewModel()
+							  {
+								  Id = p.Id,
+								  AssetId = p.AssetId,
+								  AssetName = a.Name,
+								  PlayerId = p.PlayerId,
+								  CreatedDate = p.CreatedDate,
+								  Used = p.Used,
+								  UsedDate = p.UsedDate,
+								  UsedCardId = p.UsedCardId,
+								  Question1 = q.Question1,
+								  Question2 = q.Question2,
+								  Question3 = q.Question3
+							  }).FirstOrDefault();
+
+			return assetPlayer;
 		}
 
 		public PlayerDatatable GetPlayerDatatable(int page, int itemsPerPage, string sortBy, bool reverse, string searchValue)
@@ -131,23 +149,23 @@ namespace Service.Services
 			string playerId, string searchValue)
 		{
 			var cgPlayers = from p in _playerCardGroupRepository.GetAllQueryable()
-						  join q in _playerRepository.GetAllQueryable() on p.PlayerId equals q.Id into pq
-						  from q in pq.DefaultIfEmpty()
-						  join c in _cardGroupRepository.GetAllQueryable() on p.CardGroupId equals c.Id into cpq
-						  from c in cpq.DefaultIfEmpty()
-						  where p.PlayerId == playerId
-						  select new PlayerCardGroupViewModel()
-						  {
-							  Id = p.Id,
-							  PlayerId = p.PlayerId,
-							  PlayerFullName = q.FullName,
-							  GroupName = c.Name,
-							  PurchaseSource = p.PurchaseSource,
-							  PurchasedDate = p.PurchasedDate,
-							  TransactionId = p.TransactionId,
-							  StoreCost = p.StoreCost,
-							  StarsCost = p.StarsCost
-						  };
+							join q in _playerRepository.GetAllQueryable() on p.PlayerId equals q.Id into pq
+							from q in pq.DefaultIfEmpty()
+							join c in _cardGroupRepository.GetAllQueryable() on p.CardGroupId equals c.Id into cpq
+							from c in cpq.DefaultIfEmpty()
+							where p.PlayerId == playerId
+							select new PlayerCardGroupViewModel()
+							{
+								Id = p.Id,
+								PlayerId = p.PlayerId,
+								PlayerFullName = q.FullName,
+								GroupName = c.Name,
+								PurchaseSource = p.PurchaseSource,
+								PurchasedDate = p.PurchasedDate,
+								TransactionId = p.TransactionId,
+								StoreCost = p.StoreCost,
+								StarsCost = p.StarsCost
+							};
 
 			// searching
 			if (!string.IsNullOrWhiteSpace(searchValue))
@@ -174,25 +192,25 @@ namespace Service.Services
 			string searchValue)
 		{
 			var starPlayers = from p in _playerStarRepository.GetAllQueryable()
-							join q in _playerRepository.GetAllQueryable() on p.PlayerId equals q.Id into pq
-							from q in pq.DefaultIfEmpty()
-							join c in _playerCardGroupRepository.GetAllQueryable() on p.PlayerCardGroupId equals c.Id into cpq
-							from c in cpq.DefaultIfEmpty()
-							join g in _cardGroupRepository.GetAllQueryable() on c.CardGroupId equals g.Id into cg
-							from g in cg.DefaultIfEmpty()
-							where p.PlayerId == playerId
-							select new PlayerStarViewModel()
-							{
-								Id = p.Id,
-								PlayerId = p.PlayerId,
-								PlayerFullName = q.FullName,
-								GroupName = g.Name,
-								PlayerCardGroupId = p.PlayerCardGroupId,
-								CreatedDate = p.CreatedDate,
-								Used = p.Used,
-								IsPurchased = p.IsPurchased,
-								PurchaseTransactionId = p.PurchaseTransactionId
-							};
+							  join q in _playerRepository.GetAllQueryable() on p.PlayerId equals q.Id into pq
+							  from q in pq.DefaultIfEmpty()
+							  join c in _playerCardGroupRepository.GetAllQueryable() on p.PlayerCardGroupId equals c.Id into cpq
+							  from c in cpq.DefaultIfEmpty()
+							  join g in _cardGroupRepository.GetAllQueryable() on c.CardGroupId equals g.Id into cg
+							  from g in cg.DefaultIfEmpty()
+							  where p.PlayerId == playerId
+							  select new PlayerStarViewModel()
+							  {
+								  Id = p.Id,
+								  PlayerId = p.PlayerId,
+								  PlayerFullName = q.FullName,
+								  GroupName = g.Name,
+								  PlayerCardGroupId = p.PlayerCardGroupId,
+								  CreatedDate = p.CreatedDate,
+								  Used = p.Used,
+								  IsPurchased = p.IsPurchased,
+								  PurchaseTransactionId = p.PurchaseTransactionId
+							  };
 
 			// searching
 			if (!string.IsNullOrWhiteSpace(searchValue))
@@ -219,31 +237,30 @@ namespace Service.Services
 			string searchValue)
 		{
 			var assetPlayers = from p in _playerAssetRepository.GetAllQueryable()
-							  join q in _playerRepository.GetAllQueryable() on p.PlayerId equals q.Id into pq
-							  from q in pq.DefaultIfEmpty()
-							  join c in _cardGroupRepository.GetAllQueryable() on p.UsedCardId equals c.Id into cpq
-							  from c in cpq.DefaultIfEmpty()
-							  join a in _assetRepository.GetAllQueryable() on p.AssetId equals a.Id into acpq
-							  from a in acpq.DefaultIfEmpty()
-							  where p.PlayerId == playerId
-							  select new PlayerAssetViewModel()
-							  {
-								  Id = p.Id,
-								  PlayerId = p.PlayerId,
-								  PlayerFullName = q.FullName,
-								  AssetId = p.AssetId,
-								  AssetName = a.Name,
-								  UsedCardId = p.UsedCardId,
-								  CreatedDate = p.CreatedDate,
-								  Used = p.Used,
-								  UsedDate = p.UsedDate
-							  };
+							   join q in _playerRepository.GetAllQueryable() on p.PlayerId equals q.Id into pq
+							   from q in pq.DefaultIfEmpty()
+							   join c in _cardGroupRepository.GetAllQueryable() on p.UsedCardId equals c.Id into cpq
+							   from c in cpq.DefaultIfEmpty()
+							   join a in _assetRepository.GetAllQueryable() on p.AssetId equals a.Id into acpq
+							   from a in acpq.DefaultIfEmpty()
+							   where p.PlayerId == playerId
+							   select new PlayerAssetViewModel()
+							   {
+								   Id = p.Id,
+								   PlayerId = p.PlayerId,
+								   AssetId = p.AssetId,
+								   AssetName = a.Name,
+								   UsedCardId = p.UsedCardId,
+								   CreatedDate = p.CreatedDate,
+								   Used = p.Used,
+								   UsedDate = p.UsedDate
+							   };
 
 			// searching
 			if (!string.IsNullOrWhiteSpace(searchValue))
 			{
 				searchValue = searchValue.ToLower();
-				assetPlayers = assetPlayers.Where(p => p.PlayerFullName.Contains(searchValue) || p.AssetName.Contains(searchValue));
+				assetPlayers = assetPlayers.Where(p => p.AssetName.Contains(searchValue));
 			}
 
 			// sorting (done with the System.Linq.Dynamic library available on NuGet)

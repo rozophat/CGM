@@ -30,8 +30,18 @@ namespace Root.Models.Mapping
 				.IsUnicode(false)
 				.HasMaxLength(50);
 
+			this.Property(t => t.Used)
+				.IsUnicode(false)
+				.IsFixedLength()
+				.HasMaxLength(1);
+
 			this.Property(t => t.PurchaseTransactionId)
 				.HasMaxLength(100);
+
+			this.Property(t => t.IsPurchased)
+				.IsUnicode(false)
+				.IsFixedLength()
+				.HasMaxLength(1);
 
 			// Table & Column Mappings
 			this.ToTable("PlayerStar");

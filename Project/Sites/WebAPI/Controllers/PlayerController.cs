@@ -44,15 +44,22 @@ namespace WebAPI.Controllers
 		}
 
 		[HttpGet]
+		[Route("api/Player/GetAutoSuggestPlayerCardGroup")]
+		public IEnumerable<PlayerCardGroupViewModel> GetAutoSuggestPlayerCardGroup(string value)
+		{
+			return _playerService.GetAutoSuggestPlayerCardGroup(value);
+		}
+
+		[HttpGet]
 		[Route("api/Player/GetPlayerStarInfo")]
 		public IHttpActionResult GetPlayerStarInfo(string id)
 		{
-			var vmPlayer = _playerService.GetPlayerStarInfo(id);
-			if (vmPlayer == null)
+			var vmStarPlayer = _playerService.GetPlayerStarInfo(id);
+			if (vmStarPlayer == null)
 			{
 				return NotFound();
 			}
-			return Ok(vmPlayer);
+			return Ok(vmStarPlayer);
 		}
 
 		[HttpGet]

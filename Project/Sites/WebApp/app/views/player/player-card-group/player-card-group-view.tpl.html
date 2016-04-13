@@ -35,17 +35,18 @@
         <ng-form name="playerCardGroupEditForm" class="form-horizontal">
             <div class="form-body">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Card Group Name</label>
+                            <label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_GROUPNAME' | translate }}</label>
                             <div class="col-md-9">
-                                <input type="text" name="CardGroupName" class="form-control" ng-model="PlayerCardGroup.PlayerFullName" disabled>
+								<input type="text" name="GroupName" class="form-control"
+									   typeahead="item for item in getASCardGroup($viewValue)" typeahead-template-url="template/typeahead/typeahead-card-group-match.html" typeahead-on-select="onCardGroupSelect($item)" ng-model="PlayerCardGroup.GroupName">
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group" ng-class="{'has-error': playerCardGroupEditForm.PurchasedDate.$invalid && !playerCardGroupEditForm.PurchasedDate.$pristine}">
-                            <label class="control-label col-md-3">Purchased Date</label>
+                            <label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_PURCHASEDDATE' | translate }}</label>
                             <div class="col-md-9">
                                 <input type="text" name="PurchasedDate" class="form-control" ng-model="PlayerCardGroup.PurchasedDate" bs-datepicker
                                        bs-show="showPurchasedDatePicker" ng-blur="showPurchasedDatePicker = false" ng-click="showPurchasedDatePicker = true"
@@ -58,22 +59,21 @@
                     </div>
                 </div>
                 <div class="row">
-
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Purchase Source</label>
+                            <label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_PURCHASESOURCE' | translate }}</label>
                             <div class="col-md-9">
                                 <select class="form-control" ng-model="PlayerCardGroup.PurchaseSource">
-                                    <option value="G">Google</option>
-                                    <option value="A">Apple</option>
-                                    <option value="S">Stars</option>
+                                    <option value="G">{{ 'PLAYER_CARDGROUP_SLC_PURCHASESOURCE_G' | translate }}</option>
+                                    <option value="A">{{ 'PLAYER_CARDGROUP_SLC_PURCHASESOURCE_A' | translate }}</option>
+                                    <option value="S">{{ 'PLAYER_CARDGROUP_SLC_PURCHASESOURCE_S' | translate }}</option>
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Transaction Id</label>
+                            <label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_TRANSACTIONID' | translate }}</label>
                             <div class="col-md-9">
                                 <input type="text" name="TransactionId" class="form-control" ng-model="PlayerCardGroup.TransactionId">
                             </div>
@@ -81,17 +81,17 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Store Cost</label>
+                            <label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_STORECOST' | translate }}</label>
                             <div class="col-md-9">
                                 <input type="text" name="StoreCost" class="form-control" ng-model="PlayerCardGroup.StoreCost">
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Stars Cost</label>
+                            <label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_STARSCOST' | translate }}</label>
                             <div class="col-md-9">
                                 <input type="text" name="StarsCost" class="form-control" ng-model="PlayerCardGroup.StarsCost">
                             </div>
@@ -106,8 +106,6 @@
                             <button type="button" class="btn btn-success" ng-click="updatePlayerCardGroup()">{{ 'BUTTON_UPDATE_INFORMATION' | translate }}</button>
                             <button type="button" class="btn btn-default" ng-click="doTheBack()">{{ 'BUTTON_CANCEL' | translate }}</button>
                         </div>
-                    </div>
-                    <div class="col-md-6">
                     </div>
                 </div>
             </div>

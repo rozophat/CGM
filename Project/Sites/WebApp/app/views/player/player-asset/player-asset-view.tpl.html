@@ -39,18 +39,18 @@
 		<ng-form name="playerAssetEditForm" class="form-horizontal">
 			<div class="form-body">
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<div class="form-group">
-							<label class="control-label col-md-3">{{ 'PLAYER_LABEL_ASSET_ASSETNAME' | translate }}</label>
+							<label class="control-label col-md-3">{{ 'PLAYER_ASSET_LABEL_ASSETNAME' | translate }}</label>
 							<div class="col-md-9">
-								<input type="text" name="AssetName" class="form-control" ng-model="PlayerAsset.AssetName" 
+								<input type="text" name="AssetName" class="form-control" ng-model="PlayerAsset.AssetName"
 								       typeahead="item for item in getASAsset($viewValue)" typeahead-template-url="template/typeahead/typeahead-asset-match.html" typeahead-on-select="onAssetSelect($item)">
 							</div>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<div class="form-group" ng-class="{'has-error': playerAssetEditForm.CreatedDate.$invalid && !playerAssetEditForm.CreatedDate.$pristine}">
-							<label class="control-label col-md-3">{{ 'PLAYER_LABEL_ASSET_CREATEDDATE' | translate }}</label>
+							<label class="control-label col-md-3">{{ 'PLAYER_ASSET_LABEL_CREATEDDATE' | translate }}</label>
 							<div class="col-md-9">
 								<input type="text" name="CreatedDate" class="form-control" ng-model="PlayerAsset.CreatedDate" bs-datepicker
 									   bs-show="showCreatedDatePicker" ng-blur="showCreatedDatePicker = false" ng-click="showCreatedDatePicker = true"
@@ -63,9 +63,9 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<div class="form-group" ng-class="{'has-error': playerAssetEditForm.UpdatedDate.$invalid && !playerAssetEditForm.UpdatedDate.$pristine}">
-							<label class="control-label col-md-3">{{ 'PLAYER_LABEL_ASSET_USED' | translate }}</label>
+							<label class="control-label col-md-3">{{ 'PLAYER_ASSET_LABEL_USED' | translate }}</label>
 							<div class="col-md-9">
 								<select class="form-control" ng-model="PlayerAsset.Used">
 									<option value="0">Not Use</option>
@@ -74,9 +74,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<div class="form-group" ng-class="{'has-error': playerAssetEditForm.UsedDate.$invalid && !playerAssetEditForm.UsedDate.$pristine}">
-							<label class="control-label col-md-3">{{ 'PLAYER_LABEL_ASSET_USEDDATE' | translate }}</label>
+							<label class="control-label col-md-3">{{ 'PLAYER_ASSET_LABEL_USEDDATE' | translate }}</label>
 							<div class="col-md-9">
 								<input type="text" name="UsedDate" class="form-control" ng-model="PlayerAsset.UsedDate" bs-datepicker
 									   bs-show="showUsedDatePicker" ng-blur="showUsedDatePicker = false" ng-click="showUsedDatePicker = true"
@@ -89,15 +89,15 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-4">
+					<div class="col-md-6">
 						<div class="form-group">
-							<label class="control-label col-md-3">{{ 'PLAYER_LABEL_ASSET_USEDCARD' | translate }}</label>
+							<label class="control-label col-md-3">{{ 'PLAYER_ASSET_LABEL_USEDCARD' | translate }}</label>
 							<div class="col-md-9">
-								<input type="text" class="form-control" typeahead="item for item in getASCard($viewValue)" typeahead-template-url="template/typeahead/typeahead-card-match.html" typeahead-on-select="onCardSelect($item)">
-								<span>{{Question1}}</span><br>
-								<span>{{Question2}}</span><br>
-								<span>{{Question3}}</span><br>
-								<!--<span>Type: {{Type}}</span>--> - <!--<span>Difficulty: {{Difficulty}}</span>-->
+								<input type="text" class="form-control" typeahead="item for item in getASCard($viewValue)" typeahead-template-url="template/typeahead/typeahead-card-match.html" typeahead-on-select="onCardSelect($item)" ng-model="CardValue">
+								<span ng-if="PlayerAsset.Question1">{{PlayerAsset.Question1}}</span><br>
+								<span ng-if="PlayerAsset.Question2">{{PlayerAsset.Question2}}</span><br>
+								<span ng-if="PlayerAsset.Question3">{{PlayerAsset.Question3}}</span><br>
+								<!--<span>Type: {{Type}}</span>--><!--<span>Difficulty: {{Difficulty}}</span>-->
 							</div>
 						</div>
 					</div>
@@ -110,8 +110,6 @@
 							<button type="button" class="btn btn-success" ng-click="updatePlayerAsset()">{{ 'BUTTON_UPDATE_INFORMATION' | translate }}</button>
 							<button type="button" class="btn btn-default" ng-click="doTheBack()">{{ 'BUTTON_CANCEL' | translate }}</button>
 						</div>
-					</div>
-					<div class="col-md-6">
 					</div>
 				</div>
 			</div>

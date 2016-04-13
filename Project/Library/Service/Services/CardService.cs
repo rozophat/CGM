@@ -15,6 +15,7 @@ namespace Service.Services
 	public interface ICardService
 	{
         CardViewModel GetCardInfo(string id);
+		IEnumerable<CardViewModel> GetAutoSuggestCard(string value);
         CardDatatable GetCardDatatable(int page, int itemsPerPage, string sortBy, bool reverse, string searchValue);
         void CreateCard(CardViewModel card);
         void UpdateCard(CardViewModel card);
@@ -51,7 +52,20 @@ namespace Service.Services
             return null;
         }
 
-        public CardDatatable GetCardDatatable(int page, int itemsPerPage, string sortBy, bool reverse, string searchValue)
+		public IEnumerable<CardViewModel> GetAutoSuggestCard(string value)
+		{
+			var cards = _cardRepository.Query(p => p.Question1.ToLower().Contains(value) ||
+													p.Question2.ToLower().Contains(value) ||
+													p.Question3.ToLower().Contains(value));
+			if (cards != null)
+			{
+				var destination = Mapper.Map<IEnumerable<Card>, IEnumerable<CardViewModel>>(cards);
+				return destination;
+			}
+			return null;
+		}
+
+		public CardDatatable GetCardDatatable(int page, int itemsPerPage, string sortBy, bool reverse, string searchValue)
         {
             //var cards = _cardRepository.GetAllQueryable();
             var cards = from p in _cardRepository.GetAllQueryable()

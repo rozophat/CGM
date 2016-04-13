@@ -9,7 +9,7 @@ namespace Website.ViewModels.Player
 {
 	public class PlayerStarViewModel: PlayerStar
 	{
-		public string PlayerFullName { get; set; }
-		public string GroupName { get; set; }
+		public string PCGPlayerFullName { get; set; }
+		public string PCGGroupName { get; set; }
 	}
 }

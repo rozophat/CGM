@@ -11,9 +11,9 @@ namespace Root.Models
 		public string Id { get; set; }
 		public string PlayerId { get; set; }
 		public DateTime CreatedDate { get; set; }
-		public bool Used { get; set; }
+		public string Used { get; set; }
 		public string PlayerCardGroupId { get; set; }
-		public bool IsPurchased { get; set; }
+		public string IsPurchased { get; set; }
 		public string PurchaseTransactionId { get; set; }
 	}
 }

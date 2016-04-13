@@ -74,10 +74,11 @@
 
 	$scope.onCardSelect = function (item) {
 		if (!commonService.isNullOrUndefined(item)) {
-			$scope.UsedCardId = item.Id;
-			$scope.Question1 = item.Question1;
-			$scope.Question2 = item.Question2;
-			$scope.Question3 = item.Question3;
+			$scope.CardValue = "";
+			$scope.PlayerAsset.UsedCardId = item.Id;
+			$scope.PlayerAsset.Question1 = item.Question1;
+			$scope.PlayerAsset.Question2 = item.Question2;
+			$scope.PlayerAsset.Question3 = item.Question3;
 		}
 	};
 

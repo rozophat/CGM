@@ -197,9 +197,9 @@
 							<table ng-table="tableCGParams" class="table table-striped table-bordered table-hover">
 								<tr ng-repeat="item in $data">
 									<td class="center" style="width: 50px" data-title="'#'" ng-bind="(tableCGParams.page() - 1) * tableCGParams.count() + ($index + 1)"></td>
-									<td style="width: 10%; text-align: center; font-weight: bold" data-title="translateHeaderTables['PlayerFullName']" sortable="'PlayerFullName'">
+									<!--<td style="width: 10%; text-align: center; font-weight: bold" data-title="translateHeaderTables['PlayerFullName']" sortable="'PlayerFullName'">
 										<a href="#/player/view/{{item.PlayerId}}/1/1">{{item.PlayerFullName}}</a>
-									</td>
+									</td>-->
 									<td style="width: 10%; text-align: center; font-weight: bold" data-title="translateHeaderTables['GroupName']" sortable="'GroupName'">
 										<a href="#/card-group/view/{{item.GroupId}}/1/1">{{item.GroupName}}</a>
 									</td>
@@ -211,7 +211,7 @@
 									<td style="text-align: center" data-title="translateHeaderTables['StoreCost']" sortable="'StoreCost '" ng-bind="item.StoreCost "></td>
 									<td style="text-align: center" data-title="translateHeaderTables['StarsCost']" sortable="'StarsCost '" ng-bind="item.StarsCost "></td>
 									<td style="width: 80px; text-align: center">
-										<a href="#/player/cardgroup/view/{{item.PlayerId}}/{{item.Id}}" class="btn btn-default btn-sm ng-scope"><span class="glyphicon glyphicon-pencil"></span></a>
+										<a href="#/player/cardgroup/view/{{item.Id}}" class="btn btn-default btn-sm ng-scope"><span class="glyphicon glyphicon-pencil"></span></a>
 									</td>
 									<td class="center" style="width: 50px">
 										<button class="btn btn-danger btn-sm ng-scope" ng-click="showDeleteCGConfirmation(item.Id)"><span class="glyphicon glyphicon-trash"></span></button>
@@ -227,11 +227,11 @@
 							<table ng-table="tableStarParams" class="table table-striped table-bordered table-hover">
 								<tr ng-repeat="item in $data">
 									<td class="center" style="width: 50px" data-title="'#'" ng-bind="(tableStarParams.page() - 1) * tableCGParams.count() + ($index + 1)"></td>
-									<td style="width: 10%; text-align: center; font-weight: bold" data-title="translateHeaderTables['PlayerFullName']" sortable="'PlayerFullName'">
+									<!--<td style="width: 10%; text-align: center; font-weight: bold" data-title="translateHeaderTables['PlayerFullName']" sortable="'PlayerFullName'">
 										<a href="#/player/view/{{item.PlayerId}}/1/1">{{item.PlayerFullName}}</a>
-									</td>
-									<td style="width: 10%; text-align: center; font-weight: bold" data-title="translateHeaderTables['GroupName']" sortable="'GroupName'">
-										<a href="#/card-group/view/{{item.GroupId}}/1/1">{{item.GroupName}}</a>
+									</td>-->
+									<td style="text-align: center; font-weight: bold" data-title="translateHeaderTables['GroupName']" sortable="'GroupName'">
+										<a href="#/card-group/view/{{item.PlayerCardGroupId}}">{{item.PCGPlayerFullName}} - {{item.PCGGroupName}}</a>
 									</td>
 									<td style="text-align: center" data-title="translateHeaderTables['CreatedDate']" sortable="'CreatedDate'">
 										{{item.CreatedDate | date:'dd/MM/yyyy'}}
@@ -240,7 +240,7 @@
 									<td style="text-align: center" data-title="translateHeaderTables['IsPurchased']" sortable="'IsPurchased'" ng-bind="item.IsPurchased"></td>
 									<td style="text-align: center" data-title="translateHeaderTables['PurchaseTransactionId']" sortable="'PurchaseTransactionId'" ng-bind="item.PurchaseTransactionId"></td>
 									<td style="width: 80px; text-align: center">
-										<a href="#/player/star/view/{{item.PlayerId}}/{{item.Id}}" class="btn btn-default btn-sm ng-scope"><span class="glyphicon glyphicon-pencil"></span></a>
+										<a href="#/player/star/view/{{item.Id}}" class="btn btn-default btn-sm ng-scope"><span class="glyphicon glyphicon-pencil"></span></a>
 									</td>
 									<td class="center" style="width: 50px">
 										<button class="btn btn-danger btn-sm ng-scope" ng-click="showDeleteStarConfirmation(item.Id)"><span class="glyphicon glyphicon-trash"></span></button>
@@ -256,9 +256,9 @@
 							<table ng-table="tableAssetParams" class="table table-striped table-bordered table-hover">
 								<tr ng-repeat="item in $data">
 									<td class="center" style="width: 50px" data-title="'#'" ng-bind="(tableAssetParams.page() - 1) * tableAssetParams.count() + ($index + 1)"></td>
-									<td style="width: 10%; text-align: center; font-weight: bold" data-title="translateHeaderTables['PlayerFullName']" sortable="'PlayerFullName'">
+									<!--<td style="width: 10%; text-align: center; font-weight: bold" data-title="translateHeaderTables['PlayerFullName']" sortable="'PlayerFullName'">
 										<a href="#/player/view/{{item.PlayerId}}/1/1">{{item.PlayerFullName}}</a>
-									</td>
+									</td>-->
 									<td style="width: 10%; text-align: center; font-weight: bold" data-title="translateHeaderTables['AssetName']" sortable="'AssetName'">
 										{{item.AssetName}}
 									</td>

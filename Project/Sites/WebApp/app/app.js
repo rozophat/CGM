@@ -99,7 +99,7 @@ app.config(['$httpProvider', '$stateProvider', '$locationProvider', '$urlRouterP
 
 
            .state('player-card-group-view', {
-               url: "/player/cardgroup/view/:playerId/:id",
+               url: "/player/cardgroup/view/:id",
                templateUrl: viewUrl + 'player/player-card-group/player-card-group-view.tpl.html' + verNo,
                controller: 'PlayerCardGroupViewController',
                access: {
@@ -117,7 +117,7 @@ app.config(['$httpProvider', '$stateProvider', '$locationProvider', '$urlRouterP
           })
 
             .state('player-star-view', {
-                url: "/player/star/view/:playerId/:id",
+                url: "/player/star/view/:id",
                 templateUrl: viewUrl + 'player/player-star/player-star-view.tpl.html' + verNo,
                 controller: 'PlayerStarViewController',
                 access: {

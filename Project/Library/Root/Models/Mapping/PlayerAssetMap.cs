@@ -30,6 +30,11 @@ namespace Root.Models.Mapping
 				.IsRequired()
 				.HasMaxLength(50);
 
+			this.Property(t => t.Used)
+				.IsUnicode(false)
+				.IsFixedLength()
+				.HasMaxLength(1);
+
 			this.Property(t => t.UsedCardId)
 				.IsUnicode(false)
 				.IsRequired()

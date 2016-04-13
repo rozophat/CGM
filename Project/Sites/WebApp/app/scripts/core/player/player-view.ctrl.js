@@ -138,7 +138,7 @@
 	}, {
 		total: 0, // length of data
 		getData: function ($defer, params) {
-			if ($scope.tab == 2) {
+			if ($scope.tab == 3) {
 				$state.transitionTo('player-view', { id: $scope.id, tab: 3, page: params.page() }, { location: "replace", reload: false, notify: false });
 			}
 			var sortInfo = params.orderBy()[0];

@@ -73,10 +73,11 @@
 	}
 
 	$scope.onPlayerCardGroupSelect = function (item) {
-	    if (!commonService.isNullOrUndefined(item)) {
-	        $scope.PlayerStar.PlayerCardGroupId = item.Id;
-	        $scope.PlayerFullName = item.PlayerFullName;
-	        $scope.GroupName = item.GroupName;
+		if (!commonService.isNullOrUndefined(item)) {
+			$scope.CardGroupValue = "";
+			$scope.PlayerStar.PlayerCardGroupId = item.Id;
+			$scope.PlayerStar.PCGPlayerFullName = item.PlayerFullName;
+			$scope.PlayerStar.PCGGroupName = item.GroupName;
 	    }
 	};
 

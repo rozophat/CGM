@@ -24,6 +24,8 @@ namespace Service.Mappers
 			Mapper.CreateMap<CardViewModel, Card>();
 			Mapper.CreateMap<PlayerViewModel, Player>();
 			Mapper.CreateMap<PlayerAssetViewModel, PlayerAsset>();
+			Mapper.CreateMap<PlayerStarViewModel, PlayerStar>();
+			Mapper.CreateMap<PlayerCardGroupViewModel, PlayerCardGroup>();
         }
 	}
 }

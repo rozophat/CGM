@@ -222,6 +222,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AssetController.cs" />
     <Compile Include="Controllers\CardController.cs" />
     <Compile Include="Controllers\CardGroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

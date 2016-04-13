@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Enum\CommonEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Asset\AssetViewModel.cs" />
     <Compile Include="ViewModels\CardGroup\CardGroupDatatable.cs" />
     <Compile Include="ViewModels\CardGroup\CardGroupViewModel.cs" />
     <Compile Include="ViewModels\Card\CardDatatable.cs" />

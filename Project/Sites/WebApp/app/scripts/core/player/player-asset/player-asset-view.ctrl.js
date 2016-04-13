@@ -87,7 +87,7 @@
 	$scope.AjaxRequestRunning = false;
 	$scope.getASAsset = function ($viewValue) {
 	    _nextAssetSearchText = $viewValue;
-	    _nextSearchDeferral = $q.defer();
+	    _nextAssetSearchDeferral = $q.defer();
 
 	    if (!$scope.AjaxRequestRunning)
 	        triggerNextAssetSearch(_nextAssetSearchText, _nextAssetSearchDeferral);
@@ -123,7 +123,7 @@
 
 	        // If a different search is already waiting for execution, trigger it now!
 	        if (_nextAssetSearchText !== currentSearchText)
-	            triggerNextSearch(_nextAssetSearchText, _nextAssetSearchDeferral);
+	            triggerNextAssetSearch(_nextAssetSearchText, _nextAssetSearchDeferral);
 	    });
 	}
 

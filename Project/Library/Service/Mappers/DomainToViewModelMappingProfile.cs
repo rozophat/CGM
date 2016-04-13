@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Root.Models;
+using Website.ViewModels.Asset;
 using Website.ViewModels.Card;
 using Website.ViewModels.CardGroup;
 using Website.ViewModels.Player;
@@ -28,6 +29,7 @@ namespace Service.Mappers
             Mapper.CreateMap<Card, CardViewModel>();
 			Mapper.CreateMap<Player, PlayerViewModel>();
 			Mapper.CreateMap<PlayerAsset, PlayerAssetViewModel>();
+            Mapper.CreateMap<Asset, AssetViewModel>();
         }
 	}
 }

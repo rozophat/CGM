@@ -43,7 +43,7 @@
 						<div class="form-group">
 							<label class="control-label col-md-3">{{ 'PLAYER_LABEL_ASSET_ASSETNAME' | translate }}</label>
 							<div class="col-md-9">
-								<input type="text" name="AssetName" class="form-control" ng-model="PlayerAsset.AssetName"
+								<input type="text" name="AssetName" class="form-control" ng-model="PlayerAsset.AssetName" 
 								       typeahead="item for item in getASAsset($viewValue)" typeahead-template-url="template/typeahead/typeahead-asset-match.html" typeahead-on-select="onAssetSelect($item)">
 							</div>
 						</div>

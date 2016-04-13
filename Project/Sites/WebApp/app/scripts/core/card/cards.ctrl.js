@@ -39,6 +39,8 @@
                     itemsPerPage: params.count(),
                     sortBy: sortInfo.slice(1),
                     reverse: sortInfo.charAt(0) == "-",
+                    type: $scope.SearchType !== undefined ? $scope.SearchType : '',
+                    difficulty: $scope.SearchDifficulty,
                     search: $scope.SearchValue !== undefined ? $scope.SearchValue : ''
                 }
             };

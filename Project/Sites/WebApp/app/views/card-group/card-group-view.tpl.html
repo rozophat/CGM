@@ -35,7 +35,8 @@
         <div class="tabbable tabbable-custom">
             <ul class="nav nav-tabs">
                 <li ng-class="{active:isSet(1)}"><a href="javascript:;" ng-click="setTab(1)"><i class="fa fa-info-circle fa-fw"></i>Information</a></li>
-                <li ng-class="{active:isSet(2)}"><a href="javascript:;" ng-click="setTab(2)"><i class="fa fa-upload fa-fw"></i>Cards</a></li>
+                <li ng-class="{active:isSet(2)}"><a href="javascript:;" ng-click="setTab(2)"><i class="fa fa-ticket fa-fw"></i>Cards</a></li>
+                <li ng-class="{active:isSet(3)}"><a href="javascript:;" ng-click="setTab(3)"><i class="fa fa-ticket fa-fw"></i>Select Cards</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane" ng-class="{active:isSet(1)}" ng-show="isSet(1)">
@@ -184,7 +185,7 @@
                                             <input type="text" class="form-control input-small" ng-model="SearchType" style="margin-right: 5px" ng-change="Search()" placeholder="Search (type)...">
                                         </label>
                                         <label>
-                                            <select class="form-control input-small" ng-model="SearchDifficulty" style="margin-right: 5px;color: grey;" ng-change="Search()">
+                                            <select class="form-control input-small" ng-model="SearchDifficulty" style="margin-right: 5px; color: grey;" ng-change="Search()">
                                                 <option value="">--difficulty--</option>
                                                 <option value="1">{{ 'CARD_DIFFICULTY_FACILE' | translate }}</option>
                                                 <option value="2">{{ 'CARD_DIFFICULTY_MOYEN' | translate }}</option>
@@ -206,6 +207,69 @@
                                         </td>
                                         <td style="text-align: center" data-title="translateHeaderTables['Type']" sortable="'Type'" ng-bind="item.Type">
                                         </td>
+                                        <td style="text-align: center" data-title="translateHeaderTables['Difficulty']" sortable="'Difficulty'">
+                                            <span ng-show="item.Difficulty == '1'">
+                                                {{ 'CARD_DIFFICULTY_FACILE' | translate }}
+                                            </span>
+                                            <span ng-show="item.Difficulty == '2'">
+                                                {{ 'CARD_DIFFICULTY_MOYEN' | translate }}
+                                            </span>
+                                            <span ng-show="item.Difficulty == '3'">
+                                                {{ 'CARD_DIFFICULTY_DIFFICILE' | translate }}
+                                            </span>
+                                            <span ng-show="item.Difficulty == '4'">
+                                                {{ 'CARD_DIFFICULTY_EXPERT' | translate }}
+                                            </span>
+                                        </td>
+                                        <td style="text-align: center" data-title="translateHeaderTables['CreatedDate']" sortable="'CreatedDate'">
+                                            {{item.CreatedDate | date:'dd/MM/yyyy'}}
+                                        </td>
+                                        <td style="text-align: center" data-title="translateHeaderTables['UpdatedDate']" sortable="'UpdatedDate'">
+                                            {{item.UpdatedDate | date:'dd/MM/yyyy'}}
+                                        </td>
+                                        <td style="width: 80px; text-align: center">
+                                            <button class="btn btn-danger btn-sm ng-scope" ng-click="showDeleteCardFromGroup(id, row.Id)"><span class="glyphicon glyphicon-trash"></span></button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" ng-class="{active:isSet(3)}" ng-show="isSet(3)">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-toolbar">
+                                <div class="btn-group pull-right">
+                                    <div class="dataTables_filter">
+                                        <label>
+                                            <input type="text" class="form-control input-medium" ng-model="SearchValue" ng-change="Search()" placeholder="Search (question 1, question 2, question 3)...">
+                                        </label>
+                                        <label>
+                                            <input type="text" class="form-control input-small" ng-model="SearchType" style="margin-right: 5px" ng-change="Search()" placeholder="Search (type)...">
+                                        </label>
+                                        <label>
+                                            <select class="form-control input-small" ng-model="SearchDifficulty" style="margin-right: 5px;color: grey;" ng-change="Search()">
+                                                <option value="">--difficulty--</option>
+                                                <option value="1">{{ 'CARD_DIFFICULTY_FACILE' | translate }}</option>
+                                                <option value="2">{{ 'CARD_DIFFICULTY_MOYEN' | translate }}</option>
+                                                <option value="3">{{ 'CARD_DIFFICULTY_DIFFICILE' | translate }}</option>
+                                                <option value="4">{{ 'CARD_DIFFICULTY_EXPERT' | translate }}</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table ng-table="tableCGParams" class="table table-striped table-bordered table-hover">
+                                    <tr ng-repeat="item in $data">
+                                        <td style="width: 50px; text-align: center" data-title="'#'" ng-bind="(tableCGParams.page() - 1) * tableCGParams.count() + ($index + 1)"></td>
+                                        <td style="text-align: left" data-title="translateHeaderTables['Question']" data-title="'Question'">
+                                            {{ item.Question1 }} <br>
+                                            {{ item.Question2 }} <br>
+                                            {{ item.Question3 }}
+                                        </td>
+                                        <td style="text-align: center" data-title="translateHeaderTables['Type']" sortable="'Type'" ng-bind="item.Type"></td>
                                         <td style="text-align: center" data-title="translateHeaderTables['Difficulty']" sortable="'Difficulty'">
                                             <span ng-show="item.Difficulty == '1'">
                                                 {{ 'CARD_DIFFICULTY_FACILE' | translate }}

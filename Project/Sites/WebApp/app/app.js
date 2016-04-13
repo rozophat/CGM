@@ -22,7 +22,7 @@ app.config(['$httpProvider', '$stateProvider', '$locationProvider', '$urlRouterP
 
        cfpLoadingBarProvider.includeSpinner = false;
 
-       $urlRouterProvider.otherwise('/login');
+       $urlRouterProvider.otherwise('/card-groups/1/');
 
        $stateProvider
            .state('card-groups', {

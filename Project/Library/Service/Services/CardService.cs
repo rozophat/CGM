@@ -16,7 +16,7 @@ namespace Service.Services
 	{
         CardViewModel GetCardInfo(string id);
 		IEnumerable<CardViewModel> GetAutoSuggestCard(string value);
-        CardDatatable GetCardDatatable(int page, int itemsPerPage, string sortBy, bool reverse, string searchValue);
+        CardDatatable GetCardDatatable(int page, int itemsPerPage, string sortBy, bool reverse, string type, string difficulty, string searchValue);
         void CreateCard(CardViewModel card);
         void UpdateCard(CardViewModel card);
         void DeleteCard(string id);
@@ -65,7 +65,7 @@ namespace Service.Services
 			return null;
 		}
 
-		public CardDatatable GetCardDatatable(int page, int itemsPerPage, string sortBy, bool reverse, string searchValue)
+		public CardDatatable GetCardDatatable(int page, int itemsPerPage, string sortBy, bool reverse, string type, string difficulty, string searchValue)
         {
             //var cards = _cardRepository.GetAllQueryable();
             var cards = from p in _cardRepository.GetAllQueryable()
@@ -86,11 +86,19 @@ namespace Service.Services
                 };
 
             // searching
-            if (!string.IsNullOrWhiteSpace(searchValue))
-            {
-                searchValue = searchValue.ToLower();
-                cards = cards.Where(p => p.Type == searchValue);
-            }
+            searchValue = string.IsNullOrWhiteSpace(searchValue) ? "" : searchValue.ToLower();
+            type = string.IsNullOrWhiteSpace(type) ? "" : type.ToLower();
+            cards = cards.Where(p => (searchValue == "" ||
+                                        p.Question1.ToLower().Contains(searchValue) ||
+                                        p.Question2.ToLower().Contains(searchValue) ||
+                                        p.Question3.ToLower().Contains(searchValue)) &
+                                        (type == "" || p.Type == type) &
+                                        (string.IsNullOrEmpty(difficulty) || p.Difficulty == difficulty));
+            //if (!string.IsNullOrWhiteSpace(searchValue))
+            //{
+            //    searchValue = searchValue.ToLower();
+            //    cards = cards.Where(p => p.Type == searchValue);
+            //}
 
             // sorting (done with the System.Linq.Dynamic library available on NuGet)
             var cardsOrdered = cards.OrderBy(sortBy + (reverse ? " descending" : ""));

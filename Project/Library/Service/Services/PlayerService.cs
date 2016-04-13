@@ -177,7 +177,9 @@ namespace Service.Services
 			if (!string.IsNullOrWhiteSpace(searchValue))
 			{
 				searchValue = searchValue.ToLower();
-				players = players.Where(p => p.FullName.Contains(searchValue) || p.NickName.Contains(searchValue) || p.Email == searchValue);
+				players = players.Where(p => p.LastName.Contains(searchValue) || p.FirstName.Contains(searchValue) || p.FullName.Contains(searchValue) || 
+                                            p.NickName.Contains(searchValue) || p.Email == searchValue || 
+                                            p.City.Contains(searchValue) || p.City.Contains(searchValue));
 			}
 
 			// sorting (done with the System.Linq.Dynamic library available on NuGet)

@@ -44,9 +44,11 @@ namespace WebAPI.Controllers
                   int itemsPerPage = 10,
                   string sortBy = "CreatedDate",
                   bool reverse = false,
+                  string type = "",
+                  string difficulty = "",
                   string search = null)
         {
-            var cardTable = _cardService.GetCardDatatable(page, itemsPerPage, sortBy, reverse, search);
+            var cardTable = _cardService.GetCardDatatable(page, itemsPerPage, sortBy, reverse, type, difficulty, search);
             if (cardTable == null)
             {
                 return NotFound();

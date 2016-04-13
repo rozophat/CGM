@@ -29,7 +29,24 @@
                 </a>
             </div>
             <div class="btn-group pull-right">
-                <div class="dataTables_filter"><label>{{ 'LABLE_SEARCH' | translate }}: <input type="text" class="form-control input-small" ng-model="SearchValue" ng-change="Search()"></label></div>
+                <div class="dataTables_filter">
+                    <label>
+                        <!--{{ 'LABLE_SEARCH' | translate }}:--> 
+                        <input type="text" class="form-control input-medium" ng-model="SearchValue" ng-change="Search()" placeholder="Search (question 1, question 2, question 3)...">
+                    </label>
+                    <label>
+                        <input type="text" class="form-control input-small" ng-model="SearchType" style="margin-right: 5px" ng-change="Search()" placeholder="Search (type)...">
+                    </label>
+                    <label>
+                        <select class="form-control input-small" ng-model="SearchDifficulty" style="margin-right: 5px;color: grey;" ng-change="Search()">
+                            <option value="">--difficulty--</option>
+                            <option value="1">{{ 'CARD_DIFFICULTY_FACILE' | translate }}</option>
+                            <option value="2">{{ 'CARD_DIFFICULTY_MOYEN' | translate }}</option>
+                            <option value="3">{{ 'CARD_DIFFICULTY_DIFFICILE' | translate }}</option>
+                            <option value="4">{{ 'CARD_DIFFICULTY_EXPERT' | translate }}</option>
+                        </select>
+                    </label>
+                </div>
             </div>
         </div>
         <div class="table-responsive">

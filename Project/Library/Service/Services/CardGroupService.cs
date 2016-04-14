@@ -18,7 +18,8 @@ namespace Service.Services
         CardGroupViewModel GetCardGroupInfo(string id);
         CardGroupDatatable GetCardGroupDatatable(int page, int itemsPerPage, string sortBy, bool reverse, string searchValue);
         CardDatatable GetCardDatatable(int page, int itemsPerPage, string sortBy, bool reverse, string id, string type, string difficulty, string searchValue);
-        IEnumerable<CardGroupViewModel> GetAutoSuggestCardGroup(string value);
+		CardDatatable GetAllCardDatatable();
+		IEnumerable<CardGroupViewModel> GetAutoSuggestCardGroup(string value);
         void CreateCardGroup(CardGroupViewModel cardGroup);
         void UpdateCardGroup(CardGroupViewModel cardGroup);
         void DeleteCardGroup(string id);
@@ -119,7 +120,32 @@ namespace Service.Services
             return cardDatatable;
         }
 
-        public IEnumerable<CardGroupViewModel> GetAutoSuggestCardGroup(string value)
+	    public CardDatatable GetAllCardDatatable()
+	    {
+			var cards = from p in _cardRepository.GetAllQueryable()
+						where string.IsNullOrEmpty(p.GroupId)
+						select new CardViewModel()
+						{
+							Id = p.Id,
+							GroupId = p.GroupId,
+							Question1 = p.Question1,
+							Question2 = p.Question2,
+							Question3 = p.Question3,
+							Type = p.Type,
+							Difficulty = p.Difficulty,
+							CreatedDate = p.CreatedDate,
+							UpdatedDate = p.UpdatedDate
+						};
+
+			var cardDatatable = new CardDatatable()
+			{
+				Data = cards.ToList(),
+				Total = cards.Count()
+			};
+			return cardDatatable;
+	    }
+
+	    public IEnumerable<CardGroupViewModel> GetAutoSuggestCardGroup(string value)
         {
             var cardGroups = _cardGroupRepository.Query(p => p.Name.Contains(value));
             if (cardGroups != null)
@@ -132,7 +158,7 @@ namespace Service.Services
 
         public void CreateCardGroup(CardGroupViewModel vmCardGroup)
         {
-            var cardGroups = Mapper.Map<CardGroupViewModel, CardGroup>(vmCardGroup);
+			var cardGroups = Mapper.Map<CardGroupViewModel, CardGroup>(vmCardGroup);
             cardGroups.Id = Guid.NewGuid().ToString();
             _cardGroupRepository.Add(cardGroups);
             SaveCardGroup();

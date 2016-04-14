@@ -19,6 +19,7 @@
   "FORGOT_PASSWORD_BTN_SUBMIT": "Submit",
   "BUTTON_CANCEL": "Cancel",
   "BUTTON_UPDATE_INFORMATION": "Update Information",
+  "BUTTON_UPDATE_CARDTOGROUP": "Update Cards To Group",
   "MODAL_DELETE_CONFIRMATION_MESSAGE": "Are you sure you want to delete this ?",
   "MODAL_DELETE_CONFIRMATION_TITLE": "Confirmation",
   "MODAL_BUTTON_OK": "OK",

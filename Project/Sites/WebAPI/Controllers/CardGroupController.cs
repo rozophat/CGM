@@ -85,6 +85,16 @@ namespace WebAPI.Controllers
 			return Ok(cardTable);
 		}
 
+		[HttpGet]
+		[Route("api/CardGroup/UpdateCardsToGroup")]
+		public IHttpActionResult UpdateCardsToGroup(string selectedIds, string groupId)
+		{
+			var status = _cardGroupService.UpdateCardsToGroup(selectedIds, groupId);
+			
+			return Ok(status);
+		}
+
+		
         public void Post(CardGroupViewModel cardGroup)
         {
             _cardGroupService.CreateCardGroup(cardGroup);
@@ -98,6 +108,13 @@ namespace WebAPI.Controllers
         public void Delete(string id)
         {
             _cardGroupService.DeleteCardGroup(id);
+        }
+
+        [HttpDelete]
+        [Route("api/CardGroup/DeleteCardFromGroup/{id}")]
+        public void DeleteCardFromGroup(string id)
+        {
+            _cardGroupService.DeleteCardFromGroup(id);
         }
     }
 }

@@ -10,6 +10,11 @@
 
         deleteCardGroup: function (callback, id) {
             $http.delete(urlApiCardGroup + '/' + id).success(callback);
+        },
+
+        deleteCardFromGroup: function (callback, id) {
+            $http.delete(urlApiCardGroup + '/DeleteCardFromGroup/' + id).success(callback);
         }
+
     };
 });

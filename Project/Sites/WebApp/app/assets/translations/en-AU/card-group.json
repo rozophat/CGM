@@ -2,8 +2,12 @@
   "CARD_GROUP_TITLE": "Card Groups",
   "CARD_GROUP_TITLE_ADD": "Add New Card Group",
   "CARD_GROUP_TITLE_EDIT": "Edit Card Group",
+  "CARD_GROUP_TITLE_VIEW": "View Card Group",
   "CARD_GROUP_TABLE_HEADER_NAME": "Name",
   "CARD_GROUP_TABLE_HEADER_DESCRIPTION": "Description",
+  "CARD_GROUP_TAB_INFORMATION": "Information",
+  "CARD_GROUP_TAB_CARDS": "Cards",
+  "CARD_GROUP_TAB_SELECTCARD": "Select Cards",
   "CARD_GROUP_TABLE_HEADER_CREATEDDATE": "Created Date",
   "CARD_GROUP_TABLE_HEADER_UPDATEDDATE": "Updated Date",
   "CARD_GROUP_TABLE_HEADER_APPLEPRODUCTCODE": "Apple Product Code",
@@ -27,5 +31,6 @@
   "CARD_GROUP_TYPE_PURCHASE": "Purchase $$$",
   "CARD_GROUP_STATUS_ACTIVE": "Active",
   "CARD_GROUP_STATUS_DEACTIVE": "Deactive",
-  "CARD_GROUP_BUTTON_CREATE": "Create Card Group"
+  "CARD_GROUP_BUTTON_CREATE": "Create Card Group",
+  "CARD_GROUP_TITLE_SELECTEDCARD": "Selected Cards"
 }

@@ -20,9 +20,11 @@ namespace Service.Services
         CardDatatable GetCardDatatable(int page, int itemsPerPage, string sortBy, bool reverse, string id, string type, string difficulty, string searchValue);
 		CardDatatable GetAllCardDatatable();
 		IEnumerable<CardGroupViewModel> GetAutoSuggestCardGroup(string value);
+		string UpdateCardsToGroup(string selectedIds, string groupId);
         void CreateCardGroup(CardGroupViewModel cardGroup);
         void UpdateCardGroup(CardGroupViewModel cardGroup);
         void DeleteCardGroup(string id);
+        void DeleteCardFromGroup(string id);
         void SaveCardGroup();
     }
 
@@ -84,7 +86,7 @@ namespace Service.Services
                         where p.GroupId == id
                         select new CardViewModel()
                         {
-                            Id = id,
+                            Id = p.Id,
                             GroupId = p.GroupId,
                             Question1 = p.Question1,
                             Question2 = p.Question2,
@@ -156,6 +158,23 @@ namespace Service.Services
             return null;
         }
 
+		public string UpdateCardsToGroup(string selectedIds, string groupId){
+			//convert list id to array
+		    var arrSelectedId = selectedIds.Split(',');
+			for(var i =0; i < arrSelectedId.Length; i++)
+			{
+			    var selectedId = arrSelectedId[i];
+                var card = _cardRepository.Query(p=>p.Id == selectedId).FirstOrDefault();
+				if(card != null){
+					card.GroupId = groupId;
+					_cardRepository.Update(card);
+				}
+				//SaveCardGroup();
+			}
+            SaveCardGroup();
+            return null;
+		}
+		
         public void CreateCardGroup(CardGroupViewModel vmCardGroup)
         {
 			var cardGroups = Mapper.Map<CardGroupViewModel, CardGroup>(vmCardGroup);
@@ -174,6 +193,15 @@ namespace Service.Services
         public void DeleteCardGroup(string id)
         {
             _cardGroupRepository.Delete(p => p.Id == id);
+            SaveCardGroup();
+        }
+
+        public void DeleteCardFromGroup(string id)
+        {
+            var card = _cardRepository.Query(p => p.Id == id).FirstOrDefault();
+            if (card == null) return;
+            card.GroupId = "";
+            _cardRepository.Update(card);
             SaveCardGroup();
         }
 

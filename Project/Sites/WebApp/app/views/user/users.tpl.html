@@ -3,16 +3,16 @@
 	<div class="col-md-12">
 		<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 		<h3 class="page-title">
-			User Admin
+			User Admin{{ 'MENU_ADMIN_USERS' | translate }}
 		</h3>
 		<ul class="page-breadcrumb breadcrumb">
 			<li>
 				<i class="fa fa-home"></i>
-				<a href="#">Home</a>
+				<a href="#">Home{{ 'MENU_ADMIN_USERS' | translate }}</a>
 				<i class="fa fa-angle-right"></i>
 			</li>
 			<li>
-				<a href="#">User Admin</a>
+				<a href="#">User Admin{{ 'MENU_ADMIN_USERS' | translate }}</a>
 				<i class="fa fa-angle-right"></i>
 			</li>
 		</ul>
@@ -30,7 +30,7 @@
 			<div class="btn-group pull-right">
 				<div class="dataTables_filter">
 					<label>
-						Search:
+						Search:{{ 'MENU_ADMIN_USERS' | translate }}
 						<input type="text" class="form-control input-small" ng-model="SearchValue" ng-change="Search()">
 					</label>
 				</div>
@@ -69,15 +69,15 @@
 	<div class="col-md-6">
 		<ng-form name="userAddForm" class="form-horizontal listing-add-form">
 			<div class="form-body">
-				<h3 class="form-section">Add New User</h3>
+				<h3 class="form-section">Add New User{{ 'MENU_ADMIN_USERS' | translate }}</h3>
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group" ng-class="{'has-error': userAddForm.UserName.$invalid && !userAddForm.UserName.$pristine}">
-							<label class="control-label col-md-3">User Name<span class="required">*</span></label>
+							<label class="control-label col-md-3">User Name{{ 'USER_ADMIN_USERS' | translate }}<span class="required">*</span></label>
 							<div class="col-md-6">
 								<input type="text" name="KeywordName" ng-model="User.UserName" required show-errors class="form-control">
 								<span class="help-block" ng-show="userAddForm.UserName.$invalid && !userAddForm.UserName.$pristine">
-									This field is required
+									This field is required{{ 'USER_ADMIN_USERS' | translate }}
 								</span>
 							</div>
 						</div>
@@ -86,11 +86,11 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group" ng-class="{'has-error': userAddForm.Email.$invalid && !userAddForm.Email.$pristine && !userAddForm.Email.$focused}">
-							<label class="control-label col-md-3">Email</label>
+							<label class="control-label col-md-3">Email{{ 'USER_ADMIN_USERS' | translate }}</label>
 							<div class="col-md-6">
 								<input type="email" name="Email" ng-model="User.Email" show-errors class="form-control" placeholder="Ex: admin@besp.com">
 								<span class="help-block" ng-show="userAddForm.Email.$invalid && !userAddForm.Email.$pristine && !userAddForm.Email.$focused">
-									This field has error.
+									This field has error.{{ 'USER_ADMIN_USERS' | translate }}
 								</span>
 							</div>
 						</div>
@@ -99,11 +99,11 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group" ng-class="{'has-error': userAddForm.Password.$invalid && !userAddForm.Password.$pristine}">
-							<label class="control-label col-md-3">Password<span class="required">*</span></label>
+							<label class="control-label col-md-3">Password{{ 'USER_ADMIN_USERS' | translate }}<span class="required">*</span></label>
 							<div class="col-md-6">
 								<input type="password" name="Password" ng-model="User.Password" required show-errors class="form-control">
 								<span class="help-block" ng-show="userAddForm.Password.$invalid && !userAddForm.Password.$pristine">
-									This field is required
+									This field is required{{ 'USER_ADMIN_USERS' | translate }}
 								</span>
 							</div>
 						</div>
@@ -112,14 +112,14 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group" ng-class="{'has-error': userAddForm.ConfirmPassword.$invalid && !userAddForm.ConfirmPassword.$pristine}">
-							<label class="control-label col-md-3">Confirm Password<span class="required">*</span></label>
+							<label class="control-label col-md-3">Confirm Password{{ 'USER_ADMIN_USERS' | translate }}<span class="required">*</span></label>
 							<div class="col-md-6">
 								<input type="password" name="ConfirmPassword" ng-model="User.ConfirmPassword" required show-errors class="form-control">
 								<span class="help-block" ng-show="userAddForm.ConfirmPassword.$error.required && !userAddForm.ConfirmPassword.$pristine">
-									This field is required
+									This field is required{{ 'USER_ADMIN_USERS' | translate }}
 								</span>
 								<span class="help-block" ng-show="userAddForm.ConfirmPassword.$dirty && userAddForm.ConfirmPassword.$error.pwCheck">
-									Confirmation password must match.
+									Confirmation password must match.{{ 'USER_ADMIN_USERS' | translate }}
 								</span>
 							</div>
 						</div>

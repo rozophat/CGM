@@ -1,5 +1,9 @@
 {
   "HOME_TITLE": "Home",
+  "MENU_CARDS":  "Cards",
+  "MENU_CARD_GROUPS":  "Card Groups",
+  "MENU_PLAYERS":  "Players",
+  "MENU_ADMIN_USERS":  "Admin Users",
   "LABLE_SEARCH":  "Search",
   "VIEW_DETAIL_TITLE": "View Detail",
   "LOGIN_HEADER": "Login to your account",

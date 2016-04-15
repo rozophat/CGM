@@ -117,23 +117,24 @@ namespace Service.Services
 
         public void CreateCard(CardViewModel vmCard)
         {
-	        for (var i = 0; i < 100; i++)
-	        {
-		        var newCard = new Card();
-				newCard.Id = Guid.NewGuid().ToString();
-		        newCard.Question1 = "Question1_" + i;
-				newCard.Question2 = "Question2_" + i;
-				newCard.Question3 = "Question2_" + i;
-		        newCard.Type = "A";
-				newCard.Difficulty = "2";
-				_cardRepository.Add(newCard);
-				SaveCard();
-	        }
+            //for testing
+	   //     for (var i = 0; i < 100; i++)
+	   //     {
+		  //      var newCard = new Card();
+				//newCard.Id = Guid.NewGuid().ToString();
+		  //      newCard.Question1 = "Question1_" + i;
+				//newCard.Question2 = "Question2_" + i;
+				//newCard.Question3 = "Question2_" + i;
+		  //      newCard.Type = "A";
+				//newCard.Difficulty = "2";
+				//_cardRepository.Add(newCard);
+				//SaveCard();
+	   //     }
 
-			//var cards = Mapper.Map<CardViewModel, Card>(vmCard);
-			//cards.Id = Guid.NewGuid().ToString();
-			//_cardRepository.Add(cards);
-			//SaveCard();
+            var cards = Mapper.Map<CardViewModel, Card>(vmCard);
+            cards.Id = Guid.NewGuid().ToString();
+            _cardRepository.Add(cards);
+            SaveCard();
         }
 
         public void UpdateCard(CardViewModel vmCard)

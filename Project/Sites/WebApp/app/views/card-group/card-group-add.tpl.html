@@ -41,7 +41,7 @@
                             <div class="col-md-9">
                                 <input type="text" name="Name" ng-model="CardGroup.Name" required show-errors class="form-control">
                                 <span class="help-block" ng-show="cardGroupAddForm.Name.$invalid && !cardGroupAddForm.Name.$pristine">
-                                    This field is required
+                                    {{ 'INPUT_REQUIRED' | translate }}
                                 </span>
                             </div>
                         </div>

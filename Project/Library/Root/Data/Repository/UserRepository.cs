@@ -47,24 +47,26 @@ namespace Root.Data.Repository
 			{
 				return 1;
 			}
-			var checkEmailExist = _userManager.FindByEmail(userModel.Email);
-			if (checkEmailExist != null)
+
+			if (!string.IsNullOrEmpty(userModel.Email))
 			{
-				return 2;
-			}
-			else
-			{
-				User user = new User
+				var checkEmailExist = _userManager.FindByEmail(userModel.Email);
+				if (checkEmailExist != null)
 				{
-					UserName = userModel.UserName,
-					Email = userModel.Email,
-					IsActive = "1"
-				};
-
-				_userManager.Create(user, userModel.Password);
-
-				return 0;
+					return 2;
+				}
 			}
+			
+			User user = new User
+			{
+				UserName = userModel.UserName,
+				Email = userModel.Email,
+				IsActive = "1"
+			};
+
+			_userManager.Create(user, userModel.Password);
+
+			return 0;
 		}
 
 		public async Task<IdentityResult> UpdateUser(UserModel userModel)

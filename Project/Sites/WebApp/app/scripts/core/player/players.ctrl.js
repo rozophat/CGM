@@ -5,7 +5,6 @@
 	$scope.currPage = $stateParams.page !== "" ? parseInt($stateParams.page) : 1;
 	$scope.currSearchValue = $stateParams.searchValue !== "" ? $stateParams.searchValue : '';
 
-	//set language title for order table, container table, tooltipn message
 	$rootScope.$on('$translateChangeSuccess', function () {
 		translateHeaderTable();
 	});

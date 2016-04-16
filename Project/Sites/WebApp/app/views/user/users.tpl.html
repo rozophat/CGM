@@ -3,16 +3,16 @@
 	<div class="col-md-12">
 		<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 		<h3 class="page-title">
-			User Admin{{ 'MENU_ADMIN_USERS' | translate }}
+			{{ 'USER_ADMIN_TITLE' | translate }}
 		</h3>
 		<ul class="page-breadcrumb breadcrumb">
 			<li>
 				<i class="fa fa-home"></i>
-				<a href="#">Home{{ 'MENU_ADMIN_USERS' | translate }}</a>
+				<a href="#">{{ 'HOME_TITLE' | translate }}</a>
 				<i class="fa fa-angle-right"></i>
 			</li>
 			<li>
-				<a href="#">User Admin{{ 'MENU_ADMIN_USERS' | translate }}</a>
+				<a href="#">{{ 'USER_ADMIN_TITLE' | translate }}</a>
 				<i class="fa fa-angle-right"></i>
 			</li>
 		</ul>
@@ -30,27 +30,17 @@
 			<div class="btn-group pull-right">
 				<div class="dataTables_filter">
 					<label>
-						Search:{{ 'MENU_ADMIN_USERS' | translate }}
+						{{ 'LABLE_SEARCH' | translate }}:
 						<input type="text" class="form-control input-small" ng-model="SearchValue" ng-change="Search()">
 					</label>
 				</div>
 			</div>
 		</div>
-		<!--<table ng-table="tableParams" class="table table-bordered table-hover">
-			    <tr ng-repeat="user in $data" ng-form="rowForm" ng-class="{'root-admin':user.UserName == 'rootadmin'}">
-				    <td style="width: 50px; text-align: center" data-title="'#'" ng-bind="(tableParams.page() - 1) * tableParams.count() + ($index + 1)"></td>
-				    <td style="text-align: left" data-title="'UserName'" sortable="'UserName'" ng-bind="user.UserName"></td>
-				    <td style="text-align: left" data-title="'Email'" ng-bind="user.Email"></td>
-				    <td style="width: 80px; text-align: center">
-					    <button class="btn btn-danger btn-sm" ng-if="user.UserName != 'rootadmin'" ng-click="showDeleteConfirmation(user)"><span class="glyphicon glyphicon-trash"></span></button>
-				    </td>
-			    </tr>
-		    </table>-->
 		<table ng-table="tableParams" class="table table-bordered table-hover editable-table" ng-form="tableForm">
 			<tr ng-repeat="row in $data" ng-form="rowForm" ng-class="{'root-admin':row.UserName == 'rootadmin'}">
 				<td style="width: 50px; text-align: center" data-title="'#'" ng-bind="(tableParams.page() - 1) * tableParams.count() + ($index + 1)"></td>
-				<td style="text-align: left" data-title="'UserName'" sortable="'UserName'" ng-bind="row.UserName"></td>
-				<td style="text-align: left" filter="{email: 'text'}" data-title="'Email'" ng-switch="row.isEditing" ng-class="email.$dirty ? 'bg-warning' : ''" ng-form="email">
+				<td style="text-align: left" data-title="translateHeaderTables['UserName']" sortable="'UserName'" ng-bind="row.UserName"></td>
+				<td style="text-align: left" filter="{email: 'text'}" data-title="translateHeaderTables['Email']" ng-switch="row.isEditing" ng-class="email.$dirty ? 'bg-warning' : ''" ng-form="email">
 					<span ng-switch-default class="editable-text">{{row.Email}}</span>
 					<div class="controls" ng-class="email.$invalid && email.$dirty ? 'has-error' : ''" ng-switch-when="true">
 						<input type="email" name="email" ng-model="row.Email" class="editable-input form-control input-sm" required />
@@ -69,15 +59,15 @@
 	<div class="col-md-6">
 		<ng-form name="userAddForm" class="form-horizontal listing-add-form">
 			<div class="form-body">
-				<h3 class="form-section">Add New User{{ 'MENU_ADMIN_USERS' | translate }}</h3>
+				<h3 class="form-section">{{ 'USER_ADMIN_TITLE_ADD' | translate }}</h3>
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group" ng-class="{'has-error': userAddForm.UserName.$invalid && !userAddForm.UserName.$pristine}">
-							<label class="control-label col-md-3">User Name{{ 'USER_ADMIN_USERS' | translate }}<span class="required">*</span></label>
+							<label class="control-label col-md-3">{{ 'USER_ADMIN_LABLE_USERNAME' | translate }}<span class="required">*</span></label>
 							<div class="col-md-6">
-								<input type="text" name="KeywordName" ng-model="User.UserName" required show-errors class="form-control">
+								<input type="text" name="UserName" ng-model="User.UserName" required show-errors class="form-control">
 								<span class="help-block" ng-show="userAddForm.UserName.$invalid && !userAddForm.UserName.$pristine">
-									This field is required{{ 'USER_ADMIN_USERS' | translate }}
+									{{ 'INPUT_REQUIRED' | translate }}
 								</span>
 							</div>
 						</div>
@@ -86,11 +76,11 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group" ng-class="{'has-error': userAddForm.Email.$invalid && !userAddForm.Email.$pristine && !userAddForm.Email.$focused}">
-							<label class="control-label col-md-3">Email{{ 'USER_ADMIN_USERS' | translate }}</label>
+							<label class="control-label col-md-3">{{ 'USER_ADMIN_LABLE_EMAIL' | translate }}</label>
 							<div class="col-md-6">
 								<input type="email" name="Email" ng-model="User.Email" show-errors class="form-control" placeholder="Ex: admin@besp.com">
 								<span class="help-block" ng-show="userAddForm.Email.$invalid && !userAddForm.Email.$pristine && !userAddForm.Email.$focused">
-									This field has error.{{ 'USER_ADMIN_USERS' | translate }}
+									{{ 'INPUT_WRONG_FORMAT' | translate }}
 								</span>
 							</div>
 						</div>
@@ -99,11 +89,11 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group" ng-class="{'has-error': userAddForm.Password.$invalid && !userAddForm.Password.$pristine}">
-							<label class="control-label col-md-3">Password{{ 'USER_ADMIN_USERS' | translate }}<span class="required">*</span></label>
+							<label class="control-label col-md-3">{{ 'USER_ADMIN_LABLE_PASSWORD' | translate }}<span class="required">*</span></label>
 							<div class="col-md-6">
 								<input type="password" name="Password" ng-model="User.Password" required show-errors class="form-control">
 								<span class="help-block" ng-show="userAddForm.Password.$invalid && !userAddForm.Password.$pristine">
-									This field is required{{ 'USER_ADMIN_USERS' | translate }}
+									{{ 'INPUT_REQUIRED' | translate }}
 								</span>
 							</div>
 						</div>
@@ -112,14 +102,14 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="form-group" ng-class="{'has-error': userAddForm.ConfirmPassword.$invalid && !userAddForm.ConfirmPassword.$pristine}">
-							<label class="control-label col-md-3">Confirm Password{{ 'USER_ADMIN_USERS' | translate }}<span class="required">*</span></label>
+							<label class="control-label col-md-3">{{ 'USER_ADMIN_LABLE_CONFIRMPASSWORD' | translate }}<span class="required">*</span></label>
 							<div class="col-md-6">
 								<input type="password" name="ConfirmPassword" ng-model="User.ConfirmPassword" required show-errors class="form-control">
 								<span class="help-block" ng-show="userAddForm.ConfirmPassword.$error.required && !userAddForm.ConfirmPassword.$pristine">
-									This field is required{{ 'USER_ADMIN_USERS' | translate }}
+									{{ 'INPUT_REQUIRED' | translate }}
 								</span>
 								<span class="help-block" ng-show="userAddForm.ConfirmPassword.$dirty && userAddForm.ConfirmPassword.$error.pwCheck">
-									Confirmation password must match.{{ 'USER_ADMIN_USERS' | translate }}
+									{{ 'INPUT_PASSWORD_WRONG_CONFIRM' | translate }}
 								</span>
 							</div>
 						</div>

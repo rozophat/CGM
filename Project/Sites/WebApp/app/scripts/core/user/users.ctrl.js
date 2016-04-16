@@ -1,5 +1,18 @@
-﻿app.controller('UsersController', function ($scope, notifyService,
-    commonService, userService, ngTableParams, $modal) {
+﻿app.controller('UsersController', function ($rootScope, $scope, notifyService,
+    commonService, userService, ngTableParams, $modal, $translate, $translatePartialLoader) {
+	$translatePartialLoader.addPart('user');
+
+	$rootScope.$on('$translateChangeSuccess', function () {
+		translateHeaderTable();
+	});
+
+	translateHeaderTable();
+	function translateHeaderTable() {
+		$scope.translateHeaderTables = {
+			'UserName': $translate.instant('USER_ADMIN_HEADER_USERNAME'),
+			'Email': $translate.instant('USER_ADMIN_HEADER_EMAIL')
+		};
+	}
 
 	var originalData = [];
 	$scope.tableParams = new ngTableParams({

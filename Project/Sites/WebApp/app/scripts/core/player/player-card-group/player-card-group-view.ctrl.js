@@ -1,5 +1,6 @@
 ﻿app.controller('PlayerCardGroupViewController', function ($scope, $stateParams, $state, $q, $modal, ngTableParams, commonService, notifyService, playerService, $translate, $translatePartialLoader) {
 	$translatePartialLoader.addPart('player');
+	$translatePartialLoader.addPart('card');
 
 	$scope.PlayerCardGroup = {};
 	$scope.id = $stateParams.id;

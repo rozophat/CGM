@@ -1,115 +1,119 @@
 ﻿<div class="row">
-    <div class="col-md-12">
-        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
-        <h3 class="page-title">
-            {{ 'CARD_TITLE_EDIT' | translate }}
-        </h3>
-        <ul class="page-breadcrumb breadcrumb">
-            <li>
-                <i class="fa fa-home"></i>
-                <a href="javascript:void()">{{ 'HOME_TITLE' | translate }}</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a href="players">{{ 'CARD_TITLE' | translate }}</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a href="javascript:void()">{{ 'CARD_TITLE_EDIT' | translate }}</a>
-            </li>
-            <li class="pull-right">
-                <div id="dashboard-report-range" class="dashboard-date-range tooltips" data-placement="top" data-original-title="Change dashboard date range">
-                    <i class="fa fa-calendar"></i>
-                    <span></span>
-                    <i class="fa fa-angle-down"></i>
-                </div>
-            </li>
-        </ul>
-        <!-- END PAGE TITLE & BREADCRUMB-->
-    </div>
+	<div class="col-md-12">
+		<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+		<h3 class="page-title">
+			<i class="fa fa-recycle fa-fw"></i>{{ 'PLAYER_CARDGROUP_TITLE_EDIT' | translate }}
+		</h3>
+		<ul class="page-breadcrumb breadcrumb">
+			<li>
+				<i class="fa fa-home"></i>
+				<a href="javascript:void()">{{ 'HOME_TITLE' | translate }}</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a ui-sref="players">{{ 'PLAYER_TITLE' | translate }}</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a ui-sref="player-view({id: PlayerCardGroup.PlayerId})">{{PlayerCardGroup.PlayerId}}</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<span>{{ 'VIEW_DETAIL_TITLE' | translate }}</span>
+			</li>
+			<li class="pull-right">
+				<div id="dashboard-report-range" class="dashboard-date-range tooltips" data-placement="top" data-original-title="Change dashboard date range">
+					<i class="fa fa-calendar"></i>
+					<span></span>
+					<i class="fa fa-angle-down"></i>
+				</div>
+			</li>
+		</ul>
+		<!-- END PAGE TITLE & BREADCRUMB-->
+	</div>
 </div>
 <!-- END PAGE HEADER-->
 <div class="row">
-    <div class="col-md-12">
-        <!-- BEGIN FORM-->
-        <ng-form name="playerCardGroupEditForm" class="form-horizontal">
-            <div class="form-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_GROUPNAME' | translate }}</label>
-                            <div class="col-md-9">
+	<div class="col-md-12">
+		<!-- BEGIN FORM-->
+		<ng-form name="playerCardGroupEditForm" class="form-horizontal">
+			<div class="form-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_GROUPNAME' | translate }}</label>
+							<div class="col-md-9">
 								<input type="text" name="GroupName" class="form-control"
 									   typeahead="item for item in getASCardGroup($viewValue)" typeahead-template-url="template/typeahead/typeahead-card-group-match.html" typeahead-on-select="onCardGroupSelect($item)" ng-model="PlayerCardGroup.GroupName">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group" ng-class="{'has-error': playerCardGroupEditForm.PurchasedDate.$invalid && !playerCardGroupEditForm.PurchasedDate.$pristine}">
-                            <label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_PURCHASEDDATE' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="PurchasedDate" class="form-control" ng-model="PlayerCardGroup.PurchasedDate" bs-datepicker
-                                       bs-show="showPurchasedDatePicker" ng-blur="showPurchasedDatePicker = false" ng-click="showPurchasedDatePicker = true"
-                                       ng-class="{'error': (playerCardGroupEditForm.PurchasedDate.$error.date && !playerCardGroupEditForm.PurchasedDate.$pristine)}" show-errors>
-                                <span class="help-block" ng-show="playerCardGroupEditForm.PurchasedDate.$error.date && !playerCardGroupEditForm.PurchasedDate.$pristine">
-                                    {{ 'INPUT_WRONG_FORMAT' | translate }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_PURCHASESOURCE' | translate }}</label>
-                            <div class="col-md-9">
-                                <select class="form-control" ng-model="PlayerCardGroup.PurchaseSource">
-                                    <option value="G">{{ 'PLAYER_CARDGROUP_SLC_PURCHASESOURCE_G' | translate }}</option>
-                                    <option value="A">{{ 'PLAYER_CARDGROUP_SLC_PURCHASESOURCE_A' | translate }}</option>
-                                    <option value="S">{{ 'PLAYER_CARDGROUP_SLC_PURCHASESOURCE_S' | translate }}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_TRANSACTIONID' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="TransactionId" class="form-control" ng-model="PlayerCardGroup.TransactionId">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_STORECOST' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="StoreCost" class="form-control" ng-model="PlayerCardGroup.StoreCost">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_STARSCOST' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="StarsCost" class="form-control" ng-model="PlayerCardGroup.StarsCost">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="col-md-offset-3 col-md-9">
-                            <button type="button" class="btn btn-success" ng-click="updatePlayerCardGroup()">{{ 'BUTTON_UPDATE_INFORMATION' | translate }}</button>
-                            <button type="button" class="btn btn-default" ng-click="doTheBack()">{{ 'BUTTON_CANCEL' | translate }}</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </ng-form>
-        <!-- END FORM-->
-    </div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group" ng-class="{'has-error': playerCardGroupEditForm.PurchasedDate.$invalid && !playerCardGroupEditForm.PurchasedDate.$pristine}">
+							<label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_PURCHASEDDATE' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="PurchasedDate" class="form-control" ng-model="PlayerCardGroup.PurchasedDate" bs-datepicker
+									   bs-show="showPurchasedDatePicker" ng-blur="showPurchasedDatePicker = false" ng-click="showPurchasedDatePicker = true"
+									   ng-class="{'error': (playerCardGroupEditForm.PurchasedDate.$error.date && !playerCardGroupEditForm.PurchasedDate.$pristine)}" show-errors>
+								<span class="help-block" ng-show="playerCardGroupEditForm.PurchasedDate.$error.date && !playerCardGroupEditForm.PurchasedDate.$pristine">
+									{{ 'INPUT_WRONG_FORMAT' | translate }}
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_PURCHASESOURCE' | translate }}</label>
+							<div class="col-md-9">
+								<select class="form-control" ng-model="PlayerCardGroup.PurchaseSource">
+									<option value="G">{{ 'PLAYER_CARDGROUP_SLC_PURCHASESOURCE_G' | translate }}</option>
+									<option value="A">{{ 'PLAYER_CARDGROUP_SLC_PURCHASESOURCE_A' | translate }}</option>
+									<option value="S">{{ 'PLAYER_CARDGROUP_SLC_PURCHASESOURCE_S' | translate }}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_TRANSACTIONID' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="TransactionId" class="form-control" ng-model="PlayerCardGroup.TransactionId">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_STORECOST' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="StoreCost" class="form-control" ng-model="PlayerCardGroup.StoreCost">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'PLAYER_CARDGROUP_LABEL_STARSCOST' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="StarsCost" class="form-control" ng-model="PlayerCardGroup.StarsCost">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="fluid">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="col-md-offset-3 col-md-9">
+							<button type="button" class="btn btn-success" ng-click="updatePlayerCardGroup()">{{ 'BUTTON_UPDATE_INFORMATION' | translate }}</button>
+							<button type="button" class="btn btn-default" ng-click="doTheBack()">{{ 'BUTTON_CANCEL' | translate }}</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ng-form>
+		<!-- END FORM-->
+	</div>
 </div>

@@ -25,6 +25,7 @@ namespace Root.Models.Mapping
 				.HasMaxLength(50);
 
 			this.Property(t => t.Type)
+				.IsUnicode(false)
 				.IsFixedLength()
 				.HasMaxLength(1);
 

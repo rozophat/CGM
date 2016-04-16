@@ -1,96 +1,98 @@
 ﻿<!-- BEGIN PAGE HEADER-->
 <div class="row">
-    <div class="col-md-12">
-        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
-        <h3 class="page-title">
-            <i class="fa fa-user"></i>{{ 'CARD_TITLE' | translate }}
-        </h3>
-        <ul class="page-breadcrumb breadcrumb">
-            <li>
-                <i class="fa fa-home"></i>
-                <a href="javascript:void()">{{ 'HOME_TITLE' | translate }}</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a ui-sref="cards">{{ 'CARD_TITLE' | translate }}</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-        </ul>
-        <!-- END PAGE TITLE & BREADCRUMB-->
-    </div>
+	<div class="col-md-12">
+		<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+		<h3 class="page-title">
+			<i class="fa fa-user"></i>{{ 'CARD_TITLE' | translate }}
+		</h3>
+		<ul class="page-breadcrumb breadcrumb">
+			<li>
+				<i class="fa fa-home"></i>
+				<a href="javascript:void()">{{ 'HOME_TITLE' | translate }}</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a ui-sref="cards">{{ 'CARD_TITLE' | translate }}</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+		</ul>
+		<!-- END PAGE TITLE & BREADCRUMB-->
+	</div>
 </div>
 <!-- END PAGE HEADER-->
 <div class="row">
-    <div class="col-md-12">
-        <div class="table-toolbar">
-            <div class="btn-group">
-                <a ui-sref="card-add" class="btn btn-success">
-                    {{ 'CARD_TITLE_ADD' | translate }} <i class="fa fa-plus"></i>
-                </a>
-            </div>
-            <div class="btn-group pull-right">
-                <div class="dataTables_filter">
-                    <label>
-                        <!--{{ 'LABLE_SEARCH' | translate }}:--> 
-                        <input type="text" class="form-control input-medium" ng-model="SearchValue" ng-change="Search()" placeholder="Search (question 1, question 2, question 3)...">
-                    </label>
-                    <label>
-                        <input type="text" class="form-control input-small" ng-model="SearchType" style="margin-right: 5px" ng-change="Search()" placeholder="Search (type)...">
-                    </label>
-                    <label>
-                        <select class="form-control input-small" ng-model="SearchDifficulty" style="margin-right: 5px;color: grey;" ng-change="Search()">
-                            <option value="">--difficulty--</option>
-                            <option value="1">{{ 'CARD_DIFFICULTY_FACILE' | translate }}</option>
-                            <option value="2">{{ 'CARD_DIFFICULTY_MOYEN' | translate }}</option>
-                            <option value="3">{{ 'CARD_DIFFICULTY_DIFFICILE' | translate }}</option>
-                            <option value="4">{{ 'CARD_DIFFICULTY_EXPERT' | translate }}</option>
-                        </select>
-                    </label>
-                </div>
-            </div>
-        </div>
-        <div class="table-responsive">
-            <table ng-table="tableParams" class="table table-striped table-bordered table-hover">
-                <tr ng-repeat="item in $data">
-                    <td style="width: 50px; text-align: center" data-title="'#'" ng-bind="(tableParams.page() - 1) * tableParams.count() + ($index + 1)"></td>
-                    <td style="width: 20%; text-align: center; font-weight: bold" data-title="translateHeaderTables['GroupName']" sortable="'GroupName'">
-                        <a href="#/card-group/view/{{item.GroupId}}/1/1">{{item.GroupName}}</a>
-                    </td>
-                    <td style="text-align: left" data-title="translateHeaderTables['Question']" data-title="'Question'">
-                        {{ item.Question1 }} <br>
-                        {{ item.Question2 }} <br>
-                        {{ item.Question3 }}
-                    </td>
-                    <td style="text-align: center" data-title="translateHeaderTables['Type']" sortable="'Type'" ng-bind="item.Type"></td>
-                    <td style="text-align: center" data-title="translateHeaderTables['Difficulty']">
-                        <span ng-show="item.Difficulty == '1'">
-                            {{ 'CARD_DIFFICULTY_FACILE' | translate }}
-                        </span>
-                        <span ng-show="item.Difficulty == '2'">
-                            {{ 'CARD_DIFFICULTY_MOYEN' | translate }}
-                        </span>
-                        <span ng-show="item.Difficulty == '3'">
-                            {{ 'CARD_DIFFICULTY_DIFFICILE' | translate }}
-                        </span>
-                        <span ng-show="item.Difficulty == '4'">
-                            {{ 'CARD_DIFFICULTY_EXPERT' | translate }}
-                        </span>
-                    </td>
-                    <td style="text-align: center" data-title="translateHeaderTables['CreatedDate']" sortable="'CreatedDate'">
-                        {{item.CreatedDate | date:'dd/MM/yyyy'}}
-                    </td>
-                    <td style="text-align: center" data-title="translateHeaderTables['UpdatedDate']" sortable="'UpdatedDate'">
-                        {{item.UpdatedDate | date:'dd/MM/yyyy'}}
-                    </td>
-                    <td style="width: 80px; text-align: center">
-                        <a href="#/card/view/{{item.Id}}" class="btn btn-default btn-sm ng-scope"><span class="glyphicon glyphicon-pencil"></span></a>
-                    </td>
-                    <td style="width: 80px; text-align: center">
-                        <button href="#" class="btn btn-danger btn-sm ng-scope" ng-click="showDeleteConfirmation(item.Id)"><span class="glyphicon glyphicon-trash"></span></button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-</div>
+	<div class="col-md-12">
+		<div class="table-toolbar">
+			<div class="btn-group">
+				<a ui-sref="card-add" class="btn btn-success">
+					{{ 'CARD_TITLE_ADD' | translate }} <i class="fa fa-plus"></i>
+				</a>
+			</div>
+			<div class="btn-group pull-right">
+				<div class="dataTables_filter">
+					<label>
+						<!--{{ 'LABLE_SEARCH' | translate }}:-->
+						<input type="text" class="form-control input-medium" ng-model="SearchValue" ng-change="Search()" placeholder="Search (question 1, question 2, question 3)...">
+					</label>
+					<label>
+						<input type="text" class="form-control input-small" ng-model="SearchType" style="margin-right: 5px" ng-change="Search()" placeholder="Search (type)...">
+					</label>
+					<label>
+						<select class="form-control input-small" ng-model="SearchDifficulty" style="margin-right: 5px;color: grey;" ng-change="Search()">
+							<option value="">--difficulty--</option>
+							<option value="1">{{ 'CARD_DIFFICULTY_FACILE' | translate }}</option>
+							<option value="2">{{ 'CARD_DIFFICULTY_MOYEN' | translate }}</option>
+							<option value="3">{{ 'CARD_DIFFICULTY_DIFFICILE' | translate }}</option>
+							<option value="4">{{ 'CARD_DIFFICULTY_EXPERT' | translate }}</option>
+						</select>
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table ng-table="tableParams" class="table table-striped table-bordered table-hover">
+				<tr ng-repeat="item in $data">
+					<td style="width: 50px; text-align: center" data-title="'#'" ng-bind="(tableParams.page() - 1) * tableParams.count() + ($index + 1)"></td>
 
+					<td style="text-align: left; font-weight: bold" data-title="translateHeaderTables['Question']" data-title="'Question'">
+						<a href="#/card/view/{{item.Id}}">
+							{{ item.Question1 }} <br>
+							{{ item.Question2 }} <br>
+							{{ item.Question3 }}
+						</a>
+					</td>
+					<td style="width: 20%; text-align: center; font-weight: bold" data-title="translateHeaderTables['GroupName']" sortable="'GroupName'">
+						<a href="#/card-group/view/{{item.GroupId}}/1/1">{{item.GroupName}}</a>
+					</td>
+					<td style="text-align: center" data-title="translateHeaderTables['Type']" sortable="'Type'" ng-bind="item.Type"></td>
+					<td style="text-align: center" data-title="translateHeaderTables['Difficulty']">
+						<span ng-show="item.Difficulty == '1'">
+							{{ 'CARD_DIFFICULTY_FACILE' | translate }}
+						</span>
+						<span ng-show="item.Difficulty == '2'">
+							{{ 'CARD_DIFFICULTY_MOYEN' | translate }}
+						</span>
+						<span ng-show="item.Difficulty == '3'">
+							{{ 'CARD_DIFFICULTY_DIFFICILE' | translate }}
+						</span>
+						<span ng-show="item.Difficulty == '4'">
+							{{ 'CARD_DIFFICULTY_EXPERT' | translate }}
+						</span>
+					</td>
+					<td style="text-align: center" data-title="translateHeaderTables['CreatedDate']" sortable="'CreatedDate'">
+						{{item.CreatedDate | date:'dd/MM/yyyy'}}
+					</td>
+					<td style="text-align: center" data-title="translateHeaderTables['UpdatedDate']" sortable="'UpdatedDate'">
+						{{item.UpdatedDate | date:'dd/MM/yyyy'}}
+					</td>
+					<td style="width: 80px; text-align: center">
+						<a href="#/card/view/{{item.Id}}" class="btn btn-default btn-sm ng-scope"><span class="glyphicon glyphicon-pencil"></span></a>
+					</td>
+					<td style="width: 80px; text-align: center">
+						<button href="#" class="btn btn-danger btn-sm ng-scope" ng-click="showDeleteConfirmation(item.Id)"><span class="glyphicon glyphicon-trash"></span></button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

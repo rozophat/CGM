@@ -1,219 +1,222 @@
 ﻿<div class="row">
-    <div class="col-md-12">
-        <!-- BEGIN PAGE TITLE & BREADCRUMB-->
-        <h3 class="page-title">
-            {{ 'CARD_TITLE_ADD' | translate }}
-        </h3>
-        <ul class="page-breadcrumb breadcrumb">
-            <li>
-                <i class="fa fa-home"></i>
-                <a href="javascript:void()">{{ 'HOME_TITLE' | translate }}</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a href="Cards">{{ 'CARD_TITLE' | translate }}</a>
-                <i class="fa fa-angle-right"></i>
-            </li>
-            <li>
-                <a href="javascript:void()">{{ 'CARD_TITLE_ADD' | translate }}</a>
-            </li>
-            <li class="pull-right">
-                <div id="dashboard-report-range" class="dashboard-date-range tooltips" data-placement="top" data-original-title="Change dashboard date range">
-                    <i class="fa fa-calendar"></i>
-                    <span></span>
-                    <i class="fa fa-angle-down"></i>
-                </div>
-            </li>
-        </ul>
-        <!-- END PAGE TITLE & BREADCRUMB-->
-    </div>
+	<div class="col-md-12">
+		<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+		<h3 class="page-title">
+			{{ 'CARD_TITLE_ADD' | translate }}
+		</h3>
+		<ul class="page-breadcrumb breadcrumb">
+			<li>
+				<i class="fa fa-home"></i>
+				<a href="javascript:void()">{{ 'HOME_TITLE' | translate }}</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a ui-sref="cards">{{ 'CARD_TITLE' | translate }}</a>
+				<i class="fa fa-angle-right"></i>
+			</li>
+			<li>
+				<a href="javascript:void()">{{ 'CARD_TITLE_ADD' | translate }}</a>
+			</li>
+			<li class="pull-right">
+				<div id="dashboard-report-range" class="dashboard-date-range tooltips" data-placement="top" data-original-title="Change dashboard date range">
+					<i class="fa fa-calendar"></i>
+					<span></span>
+					<i class="fa fa-angle-down"></i>
+				</div>
+			</li>
+		</ul>
+		<!-- END PAGE TITLE & BREADCRUMB-->
+	</div>
 </div>
 <!-- END PAGE HEADER-->
 <div class="row">
-    <div class="col-md-12">
-        <!-- BEGIN FORM-->
-        <ng-form name="cardAddForm" class="form-horizontal">
-            <div class="form-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_GROUPNAME' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="GroupName" ng-model="Card.GroupName" class="form-control"
-                                       typeahead="item for item in getASCardGroup($viewValue)" typeahead-template-url="template/typeahead/typeahead-card-group-match.html" typeahead-on-select="onCardGroupSelect($item)">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group" ng-class="{'has-error': cardAddForm.CreatedDate.$invalid && !cardAddForm.CreatedDate.$pristine}">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_CREATEDDATE' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="CreatedDate" class="form-control" ng-model="Card.CreatedDate" bs-datepicker
-                                       bs-show="showCreatedDatePicker" ng-blur="showCreatedDatePicker = false" ng-click="showCreatedDatePicker = true"
-                                       ng-class="{'error': (cardAddForm.CreatedDate.$error.date && !cardAddForm.CreatedDate.$pristine)}" show-errors>
-                                <span class="help-block" ng-show="cardAddForm.CreatedDate.$error.date && !cardAddForm.CreatedDate.$pristine">
-                                    {{ 'INPUT_WRONG_FORMAT' | translate }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group" ng-class="{'has-error': cardAddForm.UpdatedDate.$invalid && !cardAddForm.UpdatedDate.$pristine}">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_UPDATEDDATE' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="UpdatedDate" class="form-control" ng-model="Card.UpdatedDate" bs-datepicker
-                                       bs-show="showUpdatedDatePicker" ng-blur="showUpdatedDatePicker = false" ng-click="showUpdatedDatePicker = true"
-                                       ng-class="{'error': (cardAddForm.UpdatedDate.$error.date && !cardAddForm.UpdatedDate.$pristine)}" show-errors>
-                                <span class="help-block" ng-show="cardAddForm.UpdatedDate.$error.date && !cardAddForm.UpdatedDate.$pristine">
-                                    {{ 'INPUT_WRONG_FORMAT' | translate }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_TYPE' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="Type" class="form-control" ng-model="Card.Type">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_DIFFICULTY' | translate }}</label>
-                            <div class="col-md-9">
-                                <select class="form-control" ng-model="Card.Difficulty">
-                                    <option value="1">{{ 'CARD_DIFFICULTY_FACILE' | translate }}</option>
-                                    <option value="2">{{ 'CARD_DIFFICULTY_MOYEN' | translate }}</option>
-                                    <option value="3">{{ 'CARD_DIFFICULTY_DIFFICILE' | translate }}</option>
-                                    <option value="4">{{ 'CARD_DIFFICULTY_EXPERT' | translate }}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_QUESTION1' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="Question1" class="form-control" ng-model="Card.Question1">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_ANSWER1' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="Answer1" class="form-control" ng-model="Card.Answer1">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_HINT1' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="Hint1" class="form-control" ng-model="Card.Hint1">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_QUESTION2' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="Question2" class="form-control" ng-model="Card.Question2">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_ANSWER2' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="Answer2" class="form-control" ng-model="Card.Answer2">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_HINT2' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="Hint2" class="form-control" ng-model="Card.Hint2">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_QUESTION3' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="Question3" class="form-control" ng-model="Card.Question3">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_ANSWER3' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="Answer3" class="form-control" ng-model="Card.Answer3">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_HINT3' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="Hint3" class="form-control" ng-model="Card.Hint3">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_ANSWEREDCORRECTCOUNT1' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="AnsweredCorrectCount1" class="form-control" ng-model="Card.AnsweredCorrectCount1">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_ANSWEREDCORRECTCOUNT2' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="AnsweredCorrectCount2" class="form-control" ng-model="Card.AnsweredCorrectCount2">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">{{ 'CARD_LABEL_ANSWEREDCORRECTCOUNT3' | translate }}</label>
-                            <div class="col-md-9">
-                                <input type="text" name="AnsweredCorrectCount3" class="form-control" ng-model="Card.AnsweredCorrectCount3">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="fluid">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="col-md-offset-3 col-md-9">
-                            <button type="button" class="btn btn-success" ng-click="createCard()">{{ 'CARD_BUTTON_CREATE' | translate }}</button>
-                            <button type="button" class="btn btn-default" ng-click="doTheBack()">{{ 'BUTTON_CANCEL' | translate }}</button>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                </div>
-            </div>
-        </ng-form>
-        <!-- END FORM-->
-    </div>
+	<div class="col-md-12">
+		<!-- BEGIN FORM-->
+		<ng-form name="cardAddForm" class="form-horizontal">
+			<div class="form-body">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group" ng-class="{'has-error': cardAddForm.Question1.$invalid && !cardAddForm.Question1.$pristine}">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_QUESTION1' | translate }}<span class="required">*</span></label>
+							<div class="col-md-9">
+								<input type="text" name="Question1" ng-model="Card.Question1" required show-errors class="form-control">
+								<span class="help-block" ng-show="cardAddForm.Question1.$invalid && !cardAddForm.Question1.$pristine">
+									{{ 'INPUT_REQUIRED' | translate }}
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_ANSWER1' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="Answer1" class="form-control" ng-model="Card.Answer1">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_HINT1' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="Hint1" class="form-control" ng-model="Card.Hint1">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_QUESTION2' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="Question2" class="form-control" ng-model="Card.Question2">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_ANSWER2' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="Answer2" class="form-control" ng-model="Card.Answer2">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_HINT2' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="Hint2" class="form-control" ng-model="Card.Hint2">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_QUESTION3' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="Question3" class="form-control" ng-model="Card.Question3">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_ANSWER3' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="Answer3" class="form-control" ng-model="Card.Answer3">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_HINT3' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="Hint3" class="form-control" ng-model="Card.Hint3">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_ANSWEREDCORRECTCOUNT1' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="AnsweredCorrectCount1" class="form-control" ng-model="Card.AnsweredCorrectCount1">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_ANSWEREDCORRECTCOUNT2' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="AnsweredCorrectCount2" class="form-control" ng-model="Card.AnsweredCorrectCount2">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_ANSWEREDCORRECTCOUNT3' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="AnsweredCorrectCount3" class="form-control" ng-model="Card.AnsweredCorrectCount3">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_GROUPNAME' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="GroupName" ng-model="Card.GroupName" class="form-control"
+									   typeahead="item for item in getASCardGroup($viewValue)" typeahead-template-url="template/typeahead/typeahead-card-group-match.html" typeahead-on-select="onCardGroupSelect($item)">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_TYPE' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="Type" class="form-control" ng-pattern-restrict="^[a-nA-N]{0,1}$" ng-model="Card.Type">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_DIFFICULTY' | translate }}</label>
+							<div class="col-md-9">
+								<select class="form-control" ng-model="Card.Difficulty">
+									<option value="1">{{ 'CARD_DIFFICULTY_FACILE' | translate }}</option>
+									<option value="2">{{ 'CARD_DIFFICULTY_MOYEN' | translate }}</option>
+									<option value="3">{{ 'CARD_DIFFICULTY_DIFFICILE' | translate }}</option>
+									<option value="4">{{ 'CARD_DIFFICULTY_EXPERT' | translate }}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+
+					<div class="col-md-4">
+						<div class="form-group" ng-class="{'has-error': cardAddForm.CreatedDate.$invalid && !cardAddForm.CreatedDate.$pristine}">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_CREATEDDATE' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="CreatedDate" class="form-control" ng-model="Card.CreatedDate" bs-datepicker
+									   bs-show="showCreatedDatePicker" ng-blur="showCreatedDatePicker = false" ng-click="showCreatedDatePicker = true"
+									   ng-class="{'error': (cardAddForm.CreatedDate.$error.date && !cardAddForm.CreatedDate.$pristine)}" show-errors>
+								<span class="help-block" ng-show="cardAddForm.CreatedDate.$error.date && !cardAddForm.CreatedDate.$pristine">
+									{{ 'INPUT_WRONG_FORMAT' | translate }}
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group" ng-class="{'has-error': cardAddForm.UpdatedDate.$invalid && !cardAddForm.UpdatedDate.$pristine}">
+							<label class="control-label col-md-3">{{ 'CARD_LABEL_UPDATEDDATE' | translate }}</label>
+							<div class="col-md-9">
+								<input type="text" name="UpdatedDate" class="form-control" ng-model="Card.UpdatedDate" bs-datepicker
+									   bs-show="showUpdatedDatePicker" ng-blur="showUpdatedDatePicker = false" ng-click="showUpdatedDatePicker = true"
+									   ng-class="{'error': (cardAddForm.UpdatedDate.$error.date && !cardAddForm.UpdatedDate.$pristine)}" show-errors>
+								<span class="help-block" ng-show="cardAddForm.UpdatedDate.$error.date && !cardAddForm.UpdatedDate.$pristine">
+									{{ 'INPUT_WRONG_FORMAT' | translate }}
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="fluid">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="col-md-offset-3 col-md-9">
+							<button type="button" class="btn btn-success" ng-click="createCard()">{{ 'CARD_BUTTON_CREATE' | translate }}</button>
+							<button type="button" class="btn btn-default" ng-click="doTheBack()">{{ 'BUTTON_CANCEL' | translate }}</button>
+						</div>
+					</div>
+					<div class="col-md-6">
+					</div>
+				</div>
+			</div>
+		</ng-form>
+		<!-- END FORM-->
+	</div>
 </div>

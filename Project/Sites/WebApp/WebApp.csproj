@@ -521,6 +521,7 @@
     <Content Include="app\assets\translations\fr-FR\player.json" />
     <Content Include="app\assets\translations\en-AU\card-group.json" />
     <Content Include="app\assets\translations\fr-FR\card-group.json" />
+    <Content Include="app\assets\translations\en-AU\user.json" />
     <None Include="app\scripts\libs\jquery\jquery-2.1.1.intellisense.js" />
     <Content Include="app\scripts\libs\jquery\jquery-2.1.1.js" />
     <Content Include="app\scripts\libs\jquery\jquery-migrate-1.2.1.js" />

@@ -176,22 +176,22 @@ namespace WebAPI.Controllers
 		}
 
 		[HttpDelete]
-		[Route("api/Profile/DeletePlayerCardGroup/{id}")]
+		[Route("api/Player/DeletePlayerCardGroup/{id}")]
 		public void DeletePlayerCardGroup(string id)
 		{
 			_playerService.DeletePlayerCardGroup(id);
 		}
 
 		[HttpDelete]
-		[Route("api/Profile/DeletePlayerStar/{id}")]
+		[Route("api/Player/DeletePlayerStar/{id}")]
 		public void DeletePlayerStar(string id)
 		{
 			_playerService.DeletePlayerStar(id);
 		}
 
 		[HttpDelete]
-		[Route("api/Profile/DeleteAssetStar/{id}")]
-		public void DeleteAssetStar(string id)
+		[Route("api/Player/DeletePlayerAsset/{id}")]
+		public void DeletePlayerAsset(string id)
 		{
 			_playerService.DeletePlayerAsset(id);
 		}

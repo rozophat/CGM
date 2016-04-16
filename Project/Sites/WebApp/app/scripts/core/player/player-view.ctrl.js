@@ -94,7 +94,7 @@
 					sortBy: sortInfo.slice(1),
 					reverse: sortInfo.charAt(0) == "-",
 					playerId: $scope.id,
-					search: ''
+					search: $scope.SearchCGValue !== undefined ? $scope.SearchCGValue : ''
 				}
 			};
 			var ajaxCardGroupPromise = commonService.request(urlApiPlayer + "/PlayerCardGroupDatatable", pagingInfo);
@@ -104,7 +104,21 @@
 			});
 		}
 	});
-	
+
+	$scope.CGSearch = function() {
+		$scope.tableCGParams.reload();
+	};
+
+	var deletePlayerCardGroup = function (id) {
+		playerService.deletePlayerCardGroup(function () {
+			//reload datatable
+			$scope.tableCGParams.reload();
+
+			//display notification
+			notifyService.popDeleteSuccessful();
+		}, id);
+	};
+
 	$scope.showDeleteCGConfirmation = function (id) {
 		var modalInstance = $modal.open({
 			templateUrl: dialogTemplatePath + 'delete-confirmation-modal.tpl.html',
@@ -116,16 +130,6 @@
 			deletePlayerCardGroup(id);
 		}, function () {
 		});
-	};
-
-	var deletePlayerCardGroup = function (id) {
-		playerService.deletePlayerCardGroup(function () {
-			//reload datatable
-			$scope.tableCGParams.reload();
-
-			//display notification
-			notifyService.popDeleteSuccessful();
-		}, id);
 	};
 
 	//STARS
@@ -149,7 +153,7 @@
 					sortBy: sortInfo.slice(1),
 					reverse: sortInfo.charAt(0) == "-",
 					playerId: $scope.id,
-					search: ''
+					search: $scope.SearchStarValue !== undefined ? $scope.SearchStarValue : ''
 				}
 			};
 			var ajaxPlayerStarPromise = commonService.request(urlApiPlayer + "/PlayerStarDatatable", pagingInfo);
@@ -159,7 +163,11 @@
 			});
 		}
 	});
-	
+
+	$scope.StarSearch = function () {
+		$scope.tableStarParams.reload();
+	};
+
 	$scope.showDeleteStarConfirmation = function (id) {
 		var modalInstance = $modal.open({
 			templateUrl: dialogTemplatePath + 'delete-confirmation-modal.tpl.html',
@@ -204,7 +212,7 @@
 					sortBy: sortInfo.slice(1),
 					reverse: sortInfo.charAt(0) == "-",
 					playerId: $scope.id,
-					search: ''
+					search: $scope.SearchAssetValue !== undefined ? $scope.SearchAssetValue : ''
 				}
 			};
 			var ajaxAssetPromise = commonService.request(urlApiPlayer + "/PlayerAssetDatatable", pagingInfo);
@@ -214,6 +222,20 @@
 			});
 		}
 	});
+
+	$scope.AssetSearch = function () {
+		$scope.tableAssetParams.reload();
+	};
+
+	var deletePlayerAsset = function (id) {
+		playerService.deletePlayerAsset(function () {
+			//reload datatable
+			$scope.tableAssetParams.reload();
+
+			//display notification
+			notifyService.popDeleteSuccessful();
+		}, id);
+	};
 
 	$scope.showDeleteAssetConfirmation = function (id) {
 		var modalInstance = $modal.open({
@@ -228,15 +250,7 @@
 		});
 	};
 
-	var deletePlayerAsset = function (id) {
-		playerService.deletePlayerAsset(function () {
-			//reload datatable
-			$scope.tableAssetParams.reload();
-
-			//display notification
-			notifyService.popDeleteSuccessful();
-		}, id);
-	};
+	
 
 	//TAB Handler
 	$scope.defaultTab = function (tabId) {

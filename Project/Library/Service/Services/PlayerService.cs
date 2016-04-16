@@ -223,7 +223,7 @@ namespace Service.Services
 			if (!string.IsNullOrWhiteSpace(searchValue))
 			{
 				searchValue = searchValue.ToLower();
-				cgPlayers = cgPlayers.Where(p => p.PlayerFullName.Contains(searchValue) || p.GroupName.Contains(searchValue));
+				cgPlayers = cgPlayers.Where(p => p.GroupName.Contains(searchValue) || p.TransactionId.Contains(searchValue) || p.PurchaseSource.Contains(searchValue));
 			}
 
 			// sorting (done with the System.Linq.Dynamic library available on NuGet)
@@ -268,7 +268,7 @@ namespace Service.Services
 			if (!string.IsNullOrWhiteSpace(searchValue))
 			{
 				searchValue = searchValue.ToLower();
-				starPlayers = starPlayers.Where(p => p.PCGPlayerFullName.Contains(searchValue) || p.PCGGroupName.Contains(searchValue));
+				starPlayers = starPlayers.Where(p => p.PCGPlayerFullName.Contains(searchValue) || p.PCGGroupName.Contains(searchValue) || p.PurchaseTransactionId.Contains(searchValue));
 			}
 
 			// sorting (done with the System.Linq.Dynamic library available on NuGet)
@@ -332,6 +332,7 @@ namespace Service.Services
 		public void UpdatePlayer(PlayerViewModel vmPlyaer)
 		{
 			var player = Mapper.Map<PlayerViewModel, Player>(vmPlyaer);
+			player.FullName = player.FirstName + " " + player.LastName;
 			_playerRepository.Update(player);
 			SavePlayer();
 		}
@@ -368,19 +369,19 @@ namespace Service.Services
 
 		public void DeletePlayerCardGroup(string id)
 		{
-			_playerCardGroupRepository.Delete(p => p.PlayerId == id);
+			_playerCardGroupRepository.Delete(p => p.Id == id);
 			SavePlayer();
 		}
 
 		public void DeletePlayerStar(string id)
 		{
-			_playerStarRepository.Delete(p => p.PlayerId == id);
+			_playerStarRepository.Delete(p => p.Id == id);
 			SavePlayer();
 		}
 
 		public void DeletePlayerAsset(string id)
 		{
-			_playerAssetRepository.Delete(p => p.PlayerId == id);
+			_playerAssetRepository.Delete(p => p.Id == id);
 			SavePlayer();
 		}
 
